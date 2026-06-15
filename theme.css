@@ -761,7 +761,7 @@ textarea:focus {
 .headerTabs,
 .libraryViewNav {
   align-items: center !important;
-  gap: .45rem !important;
+  gap: .7rem !important;
   min-height: 3.25rem !important;
   padding: .35rem .6rem !important;
 }
@@ -1490,7 +1490,7 @@ textarea:focus,
   align-items: center !important;
   display: flex !important;
   flex: 0 1 auto !important;
-  gap: .45rem !important;
+  gap: .7rem !important;
   justify-content: center !important;
   min-height: 3.25rem !important;
   min-width: 0 !important;
@@ -1558,7 +1558,7 @@ textarea:focus,
 @media (max-width: 50em) {
   .skinHeader .headerTabs,
   .skinHeader .libraryViewNav {
-    gap: .3rem !important;
+    gap: .48rem !important;
     padding-inline: .25rem !important;
   }
 

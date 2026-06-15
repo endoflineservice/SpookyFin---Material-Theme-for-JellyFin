@@ -6,6 +6,7 @@
 - Removed older card artwork, blurhash, placeholder, and overlay rules that could block clicks or keep poster placeholders visible.
 - Removed local user avatar references from the public theme.
 - Removed the glow from the active Home/Favorites tab buttons.
+- Increased spacing between the Home/Favorites header tabs.
 
 ## 1.0.1
 
