@@ -4205,3 +4205,49 @@ video.videoElement,
   transform: none !important;
   visibility: visible !important;
 }
+
+/* Codex Jellyfin image/click recovery v3.6
+   Do not force Jellyfin blurhash/skeleton layers to stay visible. They sit
+   above real artwork while loading and can block card clicks if kept alive. */
+.cardImageContainer,
+.cardImage,
+.coveredImage,
+.primaryImageWrapper,
+.itemDetailImage,
+.listItemImage,
+.listItemImageButton,
+.listItemImageButton-icon,
+.listItemImage-large {
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+.cardImageContainer canvas,
+.cardImageContainer .blurhash,
+.cardImageContainer .blurHash,
+.cardImageContainer .blurhashCanvas,
+.cardImageContainer [class*="blurhash" i],
+.cardImageContainer [class*="placeholder" i],
+.cardImageContainer [class*="skeleton" i] {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+.card .cardOverlayContainer {
+  background: transparent !important;
+  box-shadow: none !important;
+  pointer-events: none !important;
+}
+
+.card .cardOverlayContainer button,
+.card .cardOverlayContainer .emby-button,
+.card .cardOverlayContainer .paper-icon-button-light,
+.card .cardOverlayContainer .cardOverlayButton,
+.card .cardOverlayContainer .cardOverlayFab-primary,
+.card .cardOverlayContainer .cardOverlayFab-secondary,
+.card .cardOverlayContainer .btnCardOptions,
+.card .cardOverlayContainer .cardMenuButton,
+.card .cardOverlayContainer .cardOptionsButton {
+  pointer-events: auto !important;
+}
