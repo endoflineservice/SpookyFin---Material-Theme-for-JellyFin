@@ -1,8 +1,8 @@
-/*
+﻿/*
  * Spookyfin for Jellyfin
- * A fast, rounded, cyan-accent Material You inspired custom CSS theme.
+ * Android-inspired Material You theme for Jellyfin Web.
  * Repository: https://github.com/endoflineservice/spookyfin
- * Build: 2026-06-15 safe rounded CSS-only release.
+ * Build: 2026-06-15 Android polish release.
  */
 /* Codex Material You Fast Rounded v2.6 for Jellyfin
    Installed 2026-06-14. Local CSS only: no imports, no blur, no heavy animation. */
@@ -1026,6 +1026,7 @@ textarea:focus,
   to {
     transform: rotate(1turn);
   }
+
 }
 
 @keyframes codexMaterialLoaderPulse {
@@ -1035,10 +1036,11 @@ textarea:focus,
     transform: scale(.84);
   }
 
-  50% {
+50% {
     opacity: 1;
     transform: scale(1);
   }
+
 }
 
 .splashLogo,
@@ -1161,32 +1163,32 @@ textarea:focus,
     --my-radius-xl: 30px;
   }
 
-  .skinHeader {
+.skinHeader {
     min-height: 4.25em;
   }
 
-  .headerButton,
+.headerButton,
   .paper-icon-button-light {
     min-width: 2.55rem !important;
     width: 2.55rem !important;
     height: 2.55rem !important;
   }
 
-  .emby-tab-button {
+.emby-tab-button {
     min-height: 2.4rem !important;
     padding: 0 .75rem !important;
   }
 
-  .loginPage h1,
+.loginPage h1,
   .loginPage .pageTitle {
     font-size: 1.65rem !important;
   }
 
-  .dialog {
+.dialog {
     max-width: calc(100vw - 1rem) !important;
   }
 
-  .dialog-small:has(.availableImagesList),
+.dialog-small:has(.availableImagesList),
   .dialog-small:has(#imagesContainer),
   .dialog-small:has(.imageEditor-buttons) {
     width: calc(100vw - .75rem) !important;
@@ -1194,21 +1196,22 @@ textarea:focus,
     height: calc(100vh - .75rem) !important;
   }
 
-  .dialog:has(.availableImagesList) .dialogContentInner,
+.dialog:has(.availableImagesList) .dialogContentInner,
   .dialog:has(#imagesContainer) .dialogContentInner,
   .dialog:has(.imageEditor-buttons) .dialogContentInner {
     padding-left: .85rem !important;
     padding-right: .85rem !important;
   }
 
-  .dialog:has(.availableImagesList) .availableImagesList {
+.dialog:has(.availableImagesList) .availableImagesList {
     grid-template-columns: repeat(auto-fill, minmax(5.9rem, 1fr)) !important;
     gap: .75rem !important;
   }
 
-  .dialog:has(.availableImagesList) .availableImagesList .imageEditorCard {
+.dialog:has(.availableImagesList) .availableImagesList .imageEditorCard {
     min-width: 5.9rem !important;
   }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1220,7 +1223,9 @@ textarea:focus,
     transition-duration: .001ms !important;
     scroll-behavior: auto !important;
   }
+
 }
+
 /* Codex top bar alignment repair v2.7 */
 .skinHeader .headerTop,
 .skinHeader .headerLeft,
@@ -1379,6 +1384,7 @@ textarea:focus,
 .headerUserButton:has(img)::before {
   content: none !important;
 }
+
 /* Codex signed-in avatar and header icon polish v2.8 */
 .skinHeader .headerButton,
 .skinHeader .paper-icon-button-light,
@@ -1448,7 +1454,9 @@ textarea:focus,
   box-shadow: none !important;
   filter: none !important;
   outline: 0 !important;
-}.homePage .sectionTitleContainer,
+}
+
+.homePage .sectionTitleContainer,
 .homePage .itemsContainer,
 .homePage .emby-scroller,
 .homePage .scrollSlider,
@@ -1484,6 +1492,7 @@ textarea:focus,
   box-shadow: none !important;
   filter: none !important;
 }
+
 /* Codex header text nav spacing repair v2.9 */
 .skinHeader .headerTabs,
 .skinHeader .libraryViewNav {
@@ -1505,7 +1514,9 @@ textarea:focus,
 .skinHeader .headerTabs button,
 .skinHeader .libraryViewNav .emby-button,
 .skinHeader .libraryViewNav button {
-  align-items: center !important;
+    margin-left: .32rem !important;
+  margin-right: .32rem !important;
+align-items: center !important;
   aspect-ratio: auto !important;
   box-sizing: border-box !important;
   display: inline-flex !important;
@@ -1562,7 +1573,7 @@ textarea:focus,
     padding-inline: .25rem !important;
   }
 
-  .skinHeader .emby-tab-button,
+.skinHeader .emby-tab-button,
   .skinHeader .MuiTab-root,
   .skinHeader .headerTabs .emby-button,
   .skinHeader .headerTabs button,
@@ -1571,7 +1582,9 @@ textarea:focus,
     min-height: 2.35rem !important;
     padding-inline: .85rem !important;
   }
+
 }
+
 /* Codex borderless tinted surfaces v3.0 */
 :root {
   --my-outline: rgba(0, 0, 0, 0) !important;
@@ -1794,7 +1807,9 @@ tr:hover,
     border: 0 !important;
     box-shadow: 0 .55rem 1.5rem rgba(0, 0, 0, .18) !important;
   }
+
 }
+
 /* Codex adaptive Jellyfin SVG logo v3.1 */
 :root {
   --codex-jellyfin-logo-mark: url("data:image/svg+xml,%3csvg%20xmlns%3d%22http%3a%2f%2fwww.w3.org%2f2000%2fsvg%22%20viewBox%3d%220%200%20512%20512%22%3e%3cpath%20d%3d%22M256%201c41%200%2097%2062%20153%20149%2060%2093%20103%20188%20103%20249%200%2084-512%2084-512%200%200-61%2043-156%20103-249C159%2063%20215%201%20256%201Zm0%2073c-26%200-69%2051-111%20116-49%2077-80%20154-80%20197%200%2030%20382%2030%20382%200%200-43-31-120-80-197-42-65-85-116-111-116Zm0%20132c17%200%2043%2031%2069%2074%2024%2041%2040%2078%2040%20100%200%2031-218%2031-218%200%200-22%2016-59%2040-100%2026-43%2052-74%2069-74Z%22%2f%3e%3c%2fsvg%3e");
@@ -1899,7 +1914,7 @@ tr:hover,
     width: 8.8rem !important;
   }
 
-  .skinHeader img[src*="icon-transparent"],
+.skinHeader img[src*="icon-transparent"],
   .skinHeader img[src*="touchicon"],
   .skinHeader .imgLogoIcon,
   .skinHeader .headerLogoIcon,
@@ -1914,7 +1929,9 @@ tr:hover,
     min-width: 1.9rem !important;
     width: 1.9rem !important;
   }
+
 }
+
 /* Codex header active tab glow unclipped v3.2 */
 .skinHeader,
 .skinHeader-withBackground,
@@ -1941,7 +1958,9 @@ tr:hover,
 .skinHeader .headerTabs button,
 .skinHeader .libraryViewNav .emby-button,
 .skinHeader .libraryViewNav button {
-  margin-top: .1rem !important;
+    margin-left: .32rem !important;
+  margin-right: .32rem !important;
+margin-top: .1rem !important;
   margin-bottom: .1rem !important;
   position: relative !important;
   z-index: 1 !important;
@@ -2222,12 +2241,14 @@ body,
   to {
     background-position-x: 48px;
   }
+
 }
 
 @keyframes codexSquiggleSpin {
   to {
     transform: rotate(1turn);
   }
+
 }
 
 @keyframes codexSquiggleBreathe {
@@ -2237,10 +2258,11 @@ body,
     transform: scale(.96) rotate(0deg);
   }
 
-  50% {
+50% {
     opacity: 1;
     transform: scale(1.04) rotate(.5turn);
   }
+
 }
 
 .mdl-slider-background-flex,
@@ -2423,14 +2445,15 @@ input[type="range"] {
     transform: translateY(.65rem) scale(.985);
   }
 
-  45% {
+45% {
     opacity: 0;
   }
 
-  100% {
+100% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+
 }
 
 @keyframes codexM3SharedAxisIn {
@@ -2439,10 +2462,11 @@ input[type="range"] {
     transform: translateX(.9rem) scale(.99);
   }
 
-  100% {
+100% {
     opacity: 1;
     transform: translateX(0) scale(1);
   }
+
 }
 
 @keyframes codexM3DialogIn {
@@ -2451,10 +2475,11 @@ input[type="range"] {
     transform: translateY(1.15rem) scale(.96);
   }
 
-  100% {
+100% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+
 }
 
 @keyframes codexM3MenuIn {
@@ -2463,10 +2488,11 @@ input[type="range"] {
     transform: translateY(-.35rem) scale(.96);
   }
 
-  100% {
+100% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+
 }
 
 @keyframes codexM3ToastIn {
@@ -2475,10 +2501,11 @@ input[type="range"] {
     transform: translateY(.75rem) scale(.98);
   }
 
-  100% {
+100% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+
 }
 
 .mainAnimatedPage:not(.hide),
@@ -2603,7 +2630,7 @@ select,
     transition-duration: .001ms !important;
   }
 
-  .mdl-slider-background-lower,
+.mdl-slider-background-lower,
   .MuiSlider-track,
   .MuiLinearProgress-bar,
   .linearProgress .bar,
@@ -2614,6 +2641,7 @@ select,
   .taskProgressInner {
     animation: none !important;
   }
+
 }
 
 /* Codex home row and carousel arrow cleanup v2.13 */
@@ -2772,6 +2800,7 @@ select,
     --codex-home-row-arrow-gutter: 4.25rem;
     --codex-home-row-arrow-size: 2.4rem;
   }
+
 }
 
 /* Codex header logo de-dupe v3.3 */
@@ -2840,6 +2869,7 @@ select,
     min-width: 1.9rem !important;
     width: 1.9rem !important;
   }
+
 }
 
 /* Codex clean home lanes and centered carousel arrows v2.14 */
@@ -3057,13 +3087,14 @@ select,
     --codex-home-row-arrow-size: 2.35rem;
   }
 
-  .homePage .emby-scrollbuttons,
+.homePage .emby-scrollbuttons,
   .homePage .scrollButtons,
   .homePage .scrollbuttons {
     inset-inline-end: .85rem !important;
     right: .85rem !important;
     top: .25rem !important;
   }
+
 }
 
 /* Codex official Jellyfin header brand repair v3.4 */
@@ -3197,6 +3228,7 @@ select,
     --codex-header-brand-height: 1.95rem;
     --codex-header-brand-width: 8.25rem;
   }
+
 }
 
 /* Codex episode counter inset and padding repair v2.15 */
@@ -3274,6 +3306,7 @@ select,
     right: .55rem !important;
     top: .55rem !important;
   }
+
 }
 
 .card .cardText,
@@ -3328,6 +3361,7 @@ select,
     padding-left: .28rem !important;
     padding-right: .28rem !important;
   }
+
 }
 
 /* Codex centered poster action rail v2.17 */
@@ -3342,7 +3376,9 @@ select,
     --codex-card-action-size: 2rem;
     --codex-card-action-gap: .3rem;
   }
+
 }
+
 /* Codex Jellyfin home row strip cleanup v3.8
    Final override for leftover odd/even row tints, section glows, and short
    background bars below home rows. Cards keep their tint; row containers do not. */
@@ -3435,6 +3471,7 @@ select,
   overflow: visible !important;
   padding-bottom: 0 !important;
 }
+
 /* End Codex Jellyfin home row strip cleanup v3.8 */
 /* Codex Jellyfin media tile internals purge v4.2
    CSS-only fix: the theme no longer styles Jellyfin's internal poster, blurhash,
@@ -3521,6 +3558,7 @@ select,
   filter: none !important;
   pointer-events: none !important;
 }
+
 /* Codex Jellyfin media tile internals purge v4.2 end */
 /* Codex Jellyfin safe rounded corners only v4.4 */
 :root {
@@ -3632,4 +3670,596 @@ select,
 input[type="range"] {
   border-radius: var(--codex-round-pill) !important;
 }
+
 /* Codex Jellyfin safe rounded corners only v4.4 end */
+
+/* Codex Continue Watching card polish v4.5 */
+.homePage .resumeSection .cardScalable {
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.homePage .resumeSection .cardScalable .itemProgressBar {
+  animation: none !important;
+  background: rgba(7, 16, 20, .68) !important;
+  background-image: none !important;
+  border: 1px solid rgba(169, 247, 255, .16) !important;
+  border-radius: 999px !important;
+  bottom: .72rem !important;
+  box-shadow: 0 .28rem .9rem rgba(0, 0, 0, .44) !important;
+  height: .46rem !important;
+  left: .82rem !important;
+  max-height: .46rem !important;
+  min-height: .46rem !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  right: .82rem !important;
+  top: auto !important;
+  width: auto !important;
+  z-index: 5 !important;
+}
+
+.homePage .resumeSection .cardScalable .itemProgressBarForeground {
+  animation: none !important;
+  background: var(--my-primary) !important;
+  background-image: none !important;
+  border-radius: inherit !important;
+  box-shadow: 0 0 .55rem rgba(0, 229, 255, .4) !important;
+  height: 100% !important;
+  min-height: 100% !important;
+}
+
+.homePage .resumeSection .cardOverlayContainer > .cardOverlayFab-primary,
+.homePage .resumeSection .cardOverlayButton-centered,
+.homePage .resumeSection .cardOverlayButton-hover[title="Play"],
+.homePage .resumeSection .cardOverlayButton-hover[aria-label="Play"],
+.homePage .resumeSection .cardOverlayButton-hover[title="Resume"],
+.homePage .resumeSection .cardOverlayButton-hover[aria-label="Resume"] {
+  align-items: center !important;
+  bottom: auto !important;
+  display: flex !important;
+  height: 3rem !important;
+  justify-content: center !important;
+  left: 50% !important;
+  margin: 0 !important;
+  min-height: 3rem !important;
+  min-width: 3rem !important;
+  padding: 0 !important;
+  position: absolute !important;
+  right: auto !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  transform-origin: center center !important;
+  width: 3rem !important;
+  z-index: 6 !important;
+}
+
+.homePage .resumeSection .cardOverlayContainer > .cardOverlayFab-primary:hover,
+.homePage .resumeSection .cardOverlayButton-centered:hover,
+.homePage .resumeSection .cardOverlayButton-hover[title="Play"]:hover,
+.homePage .resumeSection .cardOverlayButton-hover[aria-label="Play"]:hover,
+.homePage .resumeSection .cardOverlayButton-hover[title="Resume"]:hover,
+.homePage .resumeSection .cardOverlayButton-hover[aria-label="Resume"]:hover {
+  transform: translate(-50%, -50%) scale(1.08) !important;
+}
+
+.homePage .resumeSection .cardOverlayContainer > .cardOverlayFab-primary .material-icons,
+.homePage .resumeSection .cardOverlayContainer > .cardOverlayFab-primary .material-symbols-rounded,
+.homePage .resumeSection .cardOverlayContainer > .cardOverlayFab-primary svg,
+.homePage .resumeSection .cardOverlayButton-centered .material-icons,
+.homePage .resumeSection .cardOverlayButton-centered .material-symbols-rounded,
+.homePage .resumeSection .cardOverlayButton-centered svg,
+.homePage .resumeSection .cardOverlayButton-hover[title="Play"] .material-icons,
+.homePage .resumeSection .cardOverlayButton-hover[aria-label="Play"] .material-icons,
+.homePage .resumeSection .cardOverlayButton-hover[title="Resume"] .material-icons,
+.homePage .resumeSection .cardOverlayButton-hover[aria-label="Resume"] .material-icons {
+  align-items: center !important;
+  display: flex !important;
+  height: 100% !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: center !important;
+  transform: none !important;
+  width: 100% !important;
+}
+
+/* Codex Continue Watching card polish v4.5 end */
+
+/* Codex Continue Watching selector repair v4.6 */
+.card:has(.itemProgressBar) .cardScalable {
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.card:has(.itemProgressBar) .cardImageContainer > .innerCardFooter:has(.itemProgressBar),
+.card:has(.itemProgressBar) .innerCardFooter:has(.itemProgressBar) {
+  background: transparent !important;
+  border: 0 !important;
+  bottom: .78rem !important;
+  box-shadow: none !important;
+  height: .5rem !important;
+  left: .86rem !important;
+  max-height: .5rem !important;
+  max-width: none !important;
+  min-height: .5rem !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  position: absolute !important;
+  right: .86rem !important;
+  top: auto !important;
+  width: auto !important;
+  z-index: 12 !important;
+}
+
+.card:has(.itemProgressBar) .innerCardFooter:has(.itemProgressBar) > .itemProgressBar,
+.card:has(.itemProgressBar) .innerCardFooter:has(.itemProgressBar) .itemProgressBar .itemProgressBar,
+.card:has(.itemProgressBar) .cardScalable > .itemProgressBar,
+.card:has(.itemProgressBar) .cardImageContainer > .itemProgressBar {
+  animation: none !important;
+  background: rgba(7, 16, 20, .7) !important;
+  background-image: none !important;
+  border: 1px solid rgba(169, 247, 255, .18) !important;
+  border-radius: 999px !important;
+  box-shadow: 0 .28rem .9rem rgba(0, 0, 0, .48) !important;
+  box-sizing: border-box !important;
+  height: .5rem !important;
+  max-height: .5rem !important;
+  min-height: .5rem !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+.card:has(.itemProgressBar) .cardScalable > .itemProgressBar,
+.card:has(.itemProgressBar) .cardImageContainer > .itemProgressBar {
+  bottom: .78rem !important;
+  left: .86rem !important;
+  position: absolute !important;
+  right: .86rem !important;
+  top: auto !important;
+  width: auto !important;
+  z-index: 12 !important;
+}
+
+.card:has(.itemProgressBar) .innerCardFooter:has(.itemProgressBar) > .itemProgressBar:has(.itemProgressBar) {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.card:has(.itemProgressBar) .itemProgressBarForeground {
+  animation: none !important;
+  background: var(--my-primary) !important;
+  background-image: none !important;
+  border-radius: inherit !important;
+  box-shadow: 0 0 .55rem rgba(0, 229, 255, .45) !important;
+  height: 100% !important;
+  min-height: 100% !important;
+}
+
+.cardOverlayContainer > .cardOverlayFab-primary,
+.cardOverlayContainer .cardOverlayFab-primary,
+.cardOverlayButton-centered {
+  align-items: center !important;
+  bottom: auto !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  height: 3rem !important;
+  justify-content: center !important;
+  left: 50% !important;
+  margin: 0 !important;
+  min-height: 3rem !important;
+  min-width: 3rem !important;
+  padding: 0 !important;
+  position: absolute !important;
+  right: auto !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  transform-origin: center center !important;
+  width: 3rem !important;
+  z-index: 20 !important;
+}
+
+.cardOverlayContainer > .cardOverlayFab-primary:hover,
+.cardOverlayContainer .cardOverlayFab-primary:hover,
+.cardOverlayButton-centered:hover {
+  transform: translate(-50%, -50%) scale(1.08) !important;
+}
+
+.cardOverlayContainer > .cardOverlayFab-primary .cardOverlayButtonIcon,
+.cardOverlayContainer .cardOverlayFab-primary .cardOverlayButtonIcon,
+.cardOverlayButton-centered .cardOverlayButtonIcon,
+.cardOverlayContainer > .cardOverlayFab-primary .material-icons,
+.cardOverlayContainer .cardOverlayFab-primary .material-icons,
+.cardOverlayButton-centered .material-icons,
+.cardOverlayContainer > .cardOverlayFab-primary svg,
+.cardOverlayContainer .cardOverlayFab-primary svg,
+.cardOverlayButton-centered svg {
+  align-items: center !important;
+  display: flex !important;
+  height: 100% !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+  width: 100% !important;
+}
+
+/* Codex Continue Watching selector repair v4.6 end */
+
+/* Codex Android card, FAB, and dialog polish v4.7 */
+:root {
+  --codex-m3-surface-container-low: rgba(13, 28, 33, .78);
+  --codex-m3-surface-container: rgba(18, 38, 45, .88);
+  --codex-m3-surface-container-high: rgba(24, 49, 57, .94);
+  --codex-m3-state-hover: rgba(169, 247, 255, .075);
+  --codex-m3-state-focus: rgba(169, 247, 255, .16);
+  --codex-m3-outline-soft: rgba(169, 247, 255, .18);
+  --codex-m3-outline-focus: rgba(0, 229, 255, .62);
+  --codex-m3-elevation-1: 0 .18rem .55rem rgba(0, 0, 0, .22);
+  --codex-m3-elevation-2: 0 .35rem 1rem rgba(0, 0, 0, .26);
+}
+
+.card .cardImageContainer,
+.card .cardContent,
+.card .cardScalable,
+.card .visualCardBox {
+  isolation: isolate !important;
+}
+
+.card .cardImageContainer::after,
+.card .cardContent::after {
+  background: var(--codex-m3-state-hover) !important;
+  border-radius: inherit !important;
+  content: "" !important;
+  inset: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  transition: opacity .16s ease, background-color .16s ease !important;
+  z-index: 2 !important;
+}
+
+.card-hoverable:hover .cardImageContainer::after,
+.card-hoverable:hover .cardContent::after,
+.card:focus-within .cardImageContainer::after,
+.card:focus-within .cardContent::after {
+  opacity: 1 !important;
+}
+
+.card:focus-within .cardImageContainer::after,
+.card:focus-within .cardContent::after,
+.card.show-focus:focus .cardImageContainer::after,
+.card.show-focus:focus .cardContent::after {
+  background: var(--codex-m3-state-focus) !important;
+}
+
+.card .cardBox,
+.card .visualCardBox {
+  box-shadow: none !important;
+  transition:
+    background-color .16s ease,
+    box-shadow .18s ease,
+    outline-color .16s ease,
+    transform .18s ease !important;
+}
+
+.card-hoverable:hover .cardBox,
+.card-hoverable:hover .visualCardBox,
+.card:focus-within .cardBox,
+.card:focus-within .visualCardBox {
+  box-shadow: var(--codex-m3-elevation-1) !important;
+}
+
+.card:focus-visible .cardBox,
+.card:focus-within .cardBox {
+  outline: 2px solid var(--codex-m3-outline-focus) !important;
+  outline-offset: 3px !important;
+}
+
+.cardFooter,
+.visualCardBox-cardFooter {
+  background: transparent !important;
+}
+
+.cardText,
+.cardText-first {
+  color: var(--my-text) !important;
+}
+
+.cardText-secondary {
+  color: var(--my-muted) !important;
+}
+
+.cardOverlayContainer {
+  background: rgba(7, 16, 20, .32) !important;
+}
+
+.cardOverlayContainer > .cardOverlayFab-primary,
+.cardOverlayContainer .cardOverlayFab-primary,
+.cardOverlayButton-centered {
+  background: var(--my-primary) !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  box-shadow: var(--codex-m3-elevation-2) !important;
+  color: var(--my-on-primary) !important;
+  height: 3.25rem !important;
+  min-height: 3.25rem !important;
+  min-width: 3.25rem !important;
+  width: 3.25rem !important;
+}
+
+.cardOverlayContainer > .cardOverlayFab-primary:hover,
+.cardOverlayContainer .cardOverlayFab-primary:hover,
+.cardOverlayButton-centered:hover {
+  background: var(--my-primary-2) !important;
+  box-shadow: var(--codex-m3-elevation-2) !important;
+}
+
+.cardOverlayContainer > .cardOverlayFab-primary .cardOverlayButtonIcon,
+.cardOverlayContainer .cardOverlayFab-primary .cardOverlayButtonIcon,
+.cardOverlayButton-centered .cardOverlayButtonIcon,
+.cardOverlayContainer > .cardOverlayFab-primary .material-icons,
+.cardOverlayContainer .cardOverlayFab-primary .material-icons,
+.cardOverlayButton-centered .material-icons {
+  background: transparent !important;
+  color: var(--my-on-primary) !important;
+  font-size: 1.9rem !important;
+}
+
+.btnPlay,
+.btnResume,
+.btnShuffle,
+.itemDetailPage .btnPlay,
+.itemDetailPage .btnResume,
+.itemDetailPage .btnShuffle,
+.detailPagePrimaryContainer .btnPlay,
+.detailPagePrimaryContainer .btnResume,
+.detailPagePrimaryContainer .btnShuffle {
+  align-items: center !important;
+  background: var(--my-primary) !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  box-shadow: var(--codex-m3-elevation-1) !important;
+  color: var(--my-on-primary) !important;
+  display: inline-flex !important;
+  font-weight: 750 !important;
+  min-height: 3rem !important;
+  padding: .72rem 1.28rem !important;
+}
+
+.btnPlay:hover,
+.btnResume:hover,
+.btnShuffle:hover,
+.itemDetailPage .btnPlay:hover,
+.itemDetailPage .btnResume:hover,
+.itemDetailPage .btnShuffle:hover {
+  background: var(--my-primary-2) !important;
+  color: var(--my-on-primary) !important;
+  transform: translateY(-1px) !important;
+}
+
+.btnPlay .material-icons,
+.btnResume .material-icons,
+.btnShuffle .material-icons,
+.btnPlay svg,
+.btnResume svg,
+.btnShuffle svg {
+  color: var(--my-on-primary) !important;
+}
+
+.dialog,
+.MuiDialog-paper,
+.actionSheet,
+.MuiPopover-paper,
+.MuiMenu-paper,
+.formDialog,
+.promptDialog,
+.toast,
+.snackbar {
+  background: var(--codex-m3-surface-container-high) !important;
+  border: 1px solid var(--codex-m3-outline-soft) !important;
+  border-radius: 1.75rem !important;
+  box-shadow: 0 1rem 2.8rem rgba(0, 0, 0, .38) !important;
+  color: var(--my-text) !important;
+}
+
+.dialog .formDialogHeader,
+.dialog .dialogHeader,
+.MuiDialogTitle-root,
+.actionSheetTitle {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(169, 247, 255, .1) !important;
+  color: var(--my-text) !important;
+}
+
+.dialog .dialogContentInner,
+.dialog .formDialogContent,
+.MuiDialogContent-root,
+.actionSheetContent {
+  background: transparent !important;
+  color: var(--my-text) !important;
+}
+
+.dialog .formDialogFooter,
+.dialog .dialogFooter,
+.MuiDialogActions-root {
+  background: transparent !important;
+  border-top: 1px solid rgba(169, 247, 255, .1) !important;
+}
+
+.actionSheetMenuItem,
+.MuiMenuItem-root,
+.MuiListItemButton-root {
+  border-radius: 1rem !important;
+  margin-inline: .35rem !important;
+}
+
+.actionSheetMenuItem:hover,
+.MuiMenuItem-root:hover,
+.MuiListItemButton-root:hover {
+  background: var(--codex-m3-state-hover) !important;
+}
+
+@media (max-width: 48em) {
+  .dialog,
+  .MuiDialog-paper,
+  .formDialog,
+  .promptDialog {
+    border-radius: 1.35rem !important;
+  }
+
+.cardOverlayContainer > .cardOverlayFab-primary,
+  .cardOverlayContainer .cardOverlayFab-primary,
+  .cardOverlayButton-centered {
+    height: 3rem !important;
+    min-height: 3rem !important;
+    min-width: 3rem !important;
+    width: 3rem !important;
+  }
+
+}
+
+/* Codex Android card, FAB, and dialog polish v4.7 end */
+
+/* Codex home image blanking repair v4.8 */
+.homePage .card,
+.homePage .card:not(.show-animation),
+.homePage .cardBox,
+.homePage .visualCardBox,
+.homePage .cardScalable,
+.homePage .cardContent,
+.homePage .cardImageContainer,
+.homePage .cardImage,
+.homePage .coveredImage {
+  contain: none !important;
+  content-visibility: visible !important;
+}
+
+.homePage .cardImageContainer,
+.homePage .cardContent,
+.homePage .coveredImage,
+.homePage .cardImage {
+  background-position: 50% 50% !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  will-change: auto !important;
+}
+
+.homePage .cardImageContainer[data-src],
+.homePage .cardContent[data-src],
+.homePage .cardImageContainer.lazy,
+.homePage .cardContent.lazy {
+  background-color: rgba(255, 255, 255, .055) !important;
+}
+
+.homePage .cardImageContainer img,
+.homePage .cardContent img,
+.homePage .cardImageContainer picture,
+.homePage .cardContent picture,
+.homePage .cardImageContainer canvas,
+.homePage .cardContent canvas {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Codex home image blanking repair v4.8 end */
+
+/* Codex header color switcher v4.9 */
+.skinHeader .codex-color-button,
+.codex-color-button {
+  background: rgba(8, 28, 34, .76) !important;
+  border: 1px solid rgba(169, 247, 255, .12) !important;
+  border-radius: 999px !important;
+  box-shadow: 0 .35rem 1rem rgba(0, 0, 0, .18) !important;
+  color: var(--my-primary-2) !important;
+  margin-inline: .16rem !important;
+  overflow: visible !important;
+}
+
+.skinHeader .codex-color-button:hover,
+.codex-color-button:hover,
+.codex-color-button[aria-expanded="true"] {
+  background: var(--my-state-hover) !important;
+  border-color: rgba(169, 247, 255, .26) !important;
+  color: var(--my-primary) !important;
+}
+
+.skinHeader .codex-color-button .material-icons,
+.codex-color-button .material-icons {
+  color: currentColor !important;
+}
+
+.codex-color-menu {
+  background: var(--codex-m3-surface-container-high, var(--my-surface-2)) !important;
+  border: 1px solid var(--codex-m3-outline-soft, rgba(169, 247, 255, .18)) !important;
+  border-radius: 1.15rem !important;
+  box-shadow: 0 .9rem 2.6rem rgba(0, 0, 0, .42) !important;
+  color: var(--my-text) !important;
+  display: none !important;
+  min-width: 11rem !important;
+  padding: .45rem !important;
+  position: fixed !important;
+  z-index: 99999 !important;
+}
+
+.codex-color-menu.is-open {
+  display: grid !important;
+  gap: .18rem !important;
+}
+
+.codex-color-option {
+  align-items: center !important;
+  appearance: none !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: .82rem !important;
+  color: var(--my-text) !important;
+  cursor: pointer !important;
+  display: grid !important;
+  font: inherit !important;
+  font-weight: 680 !important;
+  gap: .62rem !important;
+  grid-template-columns: 1.1rem 1fr !important;
+  min-height: 2.35rem !important;
+  padding: .46rem .7rem !important;
+  text-align: left !important;
+}
+
+.codex-color-option:hover,
+.codex-color-option.is-selected {
+  background: var(--my-state-hover) !important;
+  color: var(--my-primary-2) !important;
+}
+
+.codex-color-option.is-selected {
+  box-shadow: inset 0 0 0 1px var(--my-primary-container-soft) !important;
+}
+
+.codex-color-swatch {
+  border-radius: 999px !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .24) !important;
+  display: inline-block !important;
+  height: 1.1rem !important;
+  width: 1.1rem !important;
+}
+
+.codex-color-option-blue .codex-color-swatch {
+  background: #00e5ff !important;
+}
+
+.codex-color-option-purple .codex-color-swatch {
+  background: #c78cff !important;
+}
+
+.codex-color-option-pink .codex-color-swatch {
+  background: #ff6fcf !important;
+}
+
+/* Codex header color switcher v4.9 end */

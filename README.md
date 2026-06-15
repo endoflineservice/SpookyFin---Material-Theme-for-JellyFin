@@ -1,31 +1,31 @@
 # Spookyfin
 
 [![Jellyfin custom CSS](https://img.shields.io/badge/Jellyfin-custom%20CSS-00e5ff?style=for-the-badge)](https://jellyfin.org/)
-[![Material You inspired](https://img.shields.io/badge/Material%20You-inspired-101b20?style=for-the-badge)](https://m3.material.io/)
+[![Android inspired](https://img.shields.io/badge/Android-inspired-101b20?style=for-the-badge)](https://m3.material.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-a9f7ff?style=for-the-badge)](LICENSE)
 
-![Spookyfin preview](docs/screenshots/home-preview.png)
+![Spookyfin home preview](docs/screenshots/home-preview.png)
 
-Spookyfin is a fast, rounded, cyan-accent Jellyfin custom CSS theme inspired by Material You, Android-style surfaces, and spooky-cute media library art.
+Spookyfin is a rounded Android/Material You inspired theme for Jellyfin Web. It keeps Jellyfin fast and readable while adding softer surfaces, pill controls, floating progress bars, Material-style dialogs, and an optional header color switcher.
 
 It is built for people searching for:
 
 `jellyfin theme`, `jellyfin custom css`, `material you jellyfin`, `android jellyfin theme`, `jellyfin dark theme`, `jellyfin library images`, `spooky jellyfin theme`, `media server theme`
 
-## Features
+## Highlights
 
-- Material You inspired dark UI with bright cyan accent color.
-- Rounded cards, buttons, dialogs, menus, and library tiles.
-- Cleaner home rows with tinted card surfaces instead of heavy borders.
-- Centered poster hover actions and better padding for badges and long titles.
-- Safe rounded styling that avoids overriding Jellyfin's internal poster, blurhash, lazy-load, and card click layers.
-- Included spooky-cute library artwork for Movies, Shows, Music, Collections, Anime, Cartoons, Audio Books, ASMR, Kids, Photos, Music Videos, Playlists, and an extra X library image.
-
-## Who This Is For
-
-Use Spookyfin if you want Jellyfin to feel more like a modern Android media app: rounded, fast, high contrast, touch friendly, and still clean enough for daily couch use.
+- Android-style dark surfaces with cyan as the default accent.
+- Optional header palette button with Blue, Purple, and Pink color modes.
+- Material-style card hover/focus state layers.
+- Floating rounded Continue Watching progress bars.
+- Centered card hover play buttons and Material FAB-style play actions.
+- Softer rounded dialogs, menus, action sheets, and form surfaces.
+- Home page image blanking repair for lazy-loaded Jellyfin card art.
+- Included spooky-cute library artwork for common media libraries.
 
 ## Install
+
+### CSS theme
 
 1. Open Jellyfin.
 2. Go to `Dashboard` -> `General`.
@@ -37,6 +37,22 @@ Optional CDN install:
 
 ```css
 @import url("https://cdn.jsdelivr.net/gh/endoflineservice/spookyfin@main/theme.css");
+```
+
+### Optional helper script
+
+[`spookyfin-helper.js`](spookyfin-helper.js) powers the header color button, home row ordering, and image rehydration behavior. Jellyfin's Custom CSS box cannot run JavaScript, so the helper must be loaded as a web client script.
+
+The usual Docker/custom-image approach is:
+
+```powershell
+docker cp .\spookyfin-helper.js jellyfin:/jellyfin/jellyfin-web/spookyfin-helper.js
+```
+
+Then add this before Jellyfin's app bundle scripts in `/jellyfin/jellyfin-web/index.html`:
+
+```html
+<script defer="defer" src="spookyfin-helper.js?spookyfin=20260615"></script>
 ```
 
 More details are in [docs/INSTALL.md](docs/INSTALL.md).
@@ -69,28 +85,26 @@ The full-size PNGs are in [`assets/library-images`](assets/library-images).
 
 ## Customize
 
-Most of the personality lives in the first `:root` block of [`theme.css`](theme.css).
+Blue is the default accent. If you use the helper script, the header palette button can switch between Blue, Purple, and Pink per browser.
 
-Change these variables to recolor the theme:
+For CSS-only installs, recolor the first `:root` block in [`theme.css`](theme.css):
 
 ```css
 :root {
   --my-primary: #00e5ff;
   --my-primary-2: #a9f7ff;
   --my-primary-container: #006b80;
-  --my-bg: #071014;
-  --my-surface: #101b20;
 }
 ```
 
 ## Notes
 
-- This is a Jellyfin custom CSS theme, not a server plugin.
-- Tested against Jellyfin 10.11.x web UI.
-- The theme intentionally keeps media image/click internals light so posters, libraries, and playback controls keep behaving like stock Jellyfin.
+- The core theme is Jellyfin custom CSS, not a server plugin.
+- The color switcher and image rehydration behavior require the optional helper script.
+- Tested against Jellyfin 10.11.x Web UI.
 - Always keep a copy of your old custom CSS before replacing it.
-- If posters look stale after installing, hard refresh the browser or clear Jellyfin web cache.
+- If the UI looks stale after installing, hard refresh with `Ctrl+F5` or clear Jellyfin web cache.
 
 ## License
 
-MIT for the CSS, docs, and bundled artwork in this repository. See [LICENSE](LICENSE).
+MIT for the CSS, helper script, docs, and bundled artwork in this repository. See [LICENSE](LICENSE).

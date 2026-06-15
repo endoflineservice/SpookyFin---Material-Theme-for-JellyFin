@@ -1,8 +1,11 @@
 # Install Spookyfin
 
-Spookyfin is installed through Jellyfin's built-in Custom CSS setting.
+Spookyfin has two parts:
 
-## Recommended install
+- `theme.css`: the Jellyfin Custom CSS theme.
+- `spookyfin-helper.js`: an optional web client helper for the header color switcher, home row ordering, and lazy-image repair.
+
+## Install the CSS theme
 
 1. Open Jellyfin in a browser.
 2. Go to `Dashboard` -> `General`.
@@ -11,21 +14,55 @@ Spookyfin is installed through Jellyfin's built-in Custom CSS setting.
 5. Save.
 6. Hard refresh the browser with `Ctrl+F5`.
 
-This is the most reliable install because your theme will keep working even if a CDN is unavailable.
-
-## CDN install
-
-Paste this into Jellyfin's Custom CSS field:
+CDN option:
 
 ```css
 @import url("https://cdn.jsdelivr.net/gh/endoflineservice/spookyfin@main/theme.css");
 ```
 
-If you want GitHub raw instead:
+Raw GitHub option:
 
 ```css
 @import url("https://raw.githubusercontent.com/endoflineservice/spookyfin/main/theme.css");
 ```
+
+## Install the optional helper script
+
+The helper script cannot be pasted into Jellyfin's Custom CSS field. It must be loaded by Jellyfin Web.
+
+For Docker installs, copy the helper into the web directory:
+
+```powershell
+docker cp .\spookyfin-helper.js jellyfin:/jellyfin/jellyfin-web/spookyfin-helper.js
+```
+
+Back up and edit Jellyfin Web's `index.html`:
+
+```powershell
+docker exec jellyfin sh -lc "cp /jellyfin/jellyfin-web/index.html /jellyfin/jellyfin-web/index.html.spookyfin-backup"
+```
+
+Add this before Jellyfin's main app scripts:
+
+```html
+<script defer="defer" src="spookyfin-helper.js?spookyfin=20260615"></script>
+```
+
+Restart Jellyfin:
+
+```powershell
+docker restart jellyfin
+```
+
+If you rebuild or update the Jellyfin container, reapply the helper script or bake it into your custom image.
+
+## What the helper adds
+
+- A top-right palette button.
+- Blue, Purple, and Pink theme modes.
+- Per-browser persistence with `localStorage`.
+- Continue Watching and Next Up home row ordering.
+- Rehydration for Jellyfin card images that go blank after scrolling.
 
 ## Use the library images
 
@@ -55,6 +92,7 @@ Suggested mapping:
 ## Troubleshooting
 
 - If the theme does not appear, hard refresh with `Ctrl+F5`.
+- If the helper button does not appear, confirm `index.html` references `spookyfin-helper.js`.
 - If the web app still looks old, clear the browser cache for the Jellyfin site.
-- If something looks wrong, remove the custom CSS field, save, then re-add the theme.
-- If you use reverse proxies or aggressive caching, purge that cache after changing CSS.
+- If you use a reverse proxy or aggressive caching, purge that cache after changing CSS or scripts.
+- If something looks wrong, remove the Custom CSS field, save, then re-add the theme.

@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.1.0
+
+- Added Android/Material You card state-layer polish.
+- Added floating rounded Continue Watching progress bars.
+- Fixed card hover play button centering.
+- Added Material FAB-style play buttons and softer rounded dialogs.
+- Added home page image blanking repair for lazy-loaded Jellyfin cards.
+- Added optional `spookyfin-helper.js` with Blue, Purple, and Pink header color switcher.
+- Updated preview screenshots and install documentation for the new look.
+
 ## 1.0.2
 
 - Rebuilt `theme.css` from the working safe rounded Jellyfin CSS.
