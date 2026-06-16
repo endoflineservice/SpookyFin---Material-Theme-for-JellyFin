@@ -1,4 +1,4 @@
-﻿/* Codex Material You Fast Rounded v2.6 for Jellyfin
+/* Codex Material You Fast Rounded v2.6 for Jellyfin
    Installed 2026-06-14. Local CSS only: no imports, no blur, no heavy animation. */
 :root {
   --my-bg: #071014;
@@ -6472,5 +6472,305 @@ body,
   margin-right: 0 !important;
 }
 /* Codex home card row spacing repair v9.6 end */
+
+/* Codex home awesome additions v9.7 */
+:root {
+  --codex-home-texture-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='black'%3E%3Ccircle cx='8' cy='9' r='1.35'/%3E%3Ccircle cx='35' cy='27' r='1.05'/%3E%3Cpath d='M15 45h12v1.4H15z'/%3E%3Cpath d='M42 10h7v1.3h-7z'/%3E%3C/g%3E%3C/svg%3E");
+  --codex-row-arrow-size: 2.4rem;
+  --codex-spotlight-height: clamp(13.5rem, 24vw, 20rem);
+}
+
+body .homePage {
+  isolation: isolate !important;
+  overflow-x: hidden !important;
+  position: relative !important;
+}
+
+body .homePage::before {
+  background: var(--my-primary) !important;
+  bottom: 0 !important;
+  content: "" !important;
+  display: block !important;
+  left: 0 !important;
+  -webkit-mask-image: var(--codex-home-texture-mask) !important;
+  mask-image: var(--codex-home-texture-mask) !important;
+  -webkit-mask-repeat: repeat !important;
+  mask-repeat: repeat !important;
+  -webkit-mask-size: 56px 56px !important;
+  mask-size: 56px 56px !important;
+  opacity: .045 !important;
+  pointer-events: none !important;
+  position: fixed !important;
+  right: 0 !important;
+  top: 0 !important;
+  z-index: 0 !important;
+}
+
+body .homePage > * {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.homePage .sectionTitle,
+.homePage .sectionTitle-cards {
+  align-items: center !important;
+  color: var(--my-primary-2) !important;
+  display: inline-flex !important;
+  gap: .46rem !important;
+}
+
+.homePage .sectionTitle::before,
+.homePage .sectionTitle-cards::before {
+  align-items: center !important;
+  background: color-mix(in srgb, var(--my-primary) 11%, transparent) !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 18%, transparent) !important;
+  border-radius: 999px !important;
+  color: var(--my-primary) !important;
+  content: "grid_view" !important;
+  display: inline-flex !important;
+  flex: 0 0 1.45em !important;
+  font-family: "Material Icons", "Material Icons Round", sans-serif !important;
+  font-size: .82em !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  height: 1.45em !important;
+  justify-content: center !important;
+  letter-spacing: normal !important;
+  line-height: 1 !important;
+  text-transform: none !important;
+  width: 1.45em !important;
+}
+
+.homePage [data-codex-section-kind="media"] .sectionTitle::before,
+.homePage .sectionTitle[data-codex-section-kind="media"]::before {
+  content: "apps" !important;
+}
+
+.homePage [data-codex-section-kind="continue"] .sectionTitle::before,
+.homePage .sectionTitle[data-codex-section-kind="continue"]::before {
+  content: "play_circle" !important;
+}
+
+.homePage [data-codex-section-kind="nextup"] .sectionTitle::before,
+.homePage .sectionTitle[data-codex-section-kind="nextup"]::before {
+  content: "skip_next" !important;
+}
+
+.homePage [data-codex-section-kind="recent"] .sectionTitle::before,
+.homePage .sectionTitle[data-codex-section-kind="recent"]::before {
+  content: "schedule" !important;
+}
+
+.homePage [data-codex-section-kind="marvel"] .sectionTitle::before,
+.homePage .sectionTitle[data-codex-section-kind="marvel"]::before {
+  content: "auto_awesome" !important;
+}
+
+.homePage [data-codex-section-kind="favorite"] .sectionTitle::before,
+.homePage .sectionTitle[data-codex-section-kind="favorite"]::before {
+  content: "favorite" !important;
+}
+
+.homePage [data-codex-section-kind="movie"] .sectionTitle::before,
+.homePage .sectionTitle[data-codex-section-kind="movie"]::before {
+  content: "movie" !important;
+}
+
+.homePage [data-codex-section-kind="show"] .sectionTitle::before,
+.homePage .sectionTitle[data-codex-section-kind="show"]::before {
+  content: "live_tv" !important;
+}
+
+.homePage [data-codex-section-kind="music"] .sectionTitle::before,
+.homePage .sectionTitle[data-codex-section-kind="music"]::before {
+  content: "music_note" !important;
+}
+
+#codex-spotlight-home-section {
+  box-sizing: border-box !important;
+  margin: .25rem 0 1.35rem !important;
+  padding: 0 clamp(1.4rem, 3.4vw, 3rem) !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+#codex-spotlight-home-section .codex-spotlight-link {
+  background: color-mix(in srgb, var(--my-primary) 7%, var(--my-bg-raised)) !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 18%, transparent) !important;
+  border-radius: 1.05rem !important;
+  box-shadow: 0 .9rem 1.65rem rgba(0, 0, 0, .28) !important;
+  color: var(--my-text) !important;
+  display: block !important;
+  min-height: var(--codex-spotlight-height) !important;
+  overflow: hidden !important;
+  position: relative !important;
+  text-decoration: none !important;
+}
+
+#codex-spotlight-home-section .codex-spotlight-backdrop,
+#codex-spotlight-home-section .codex-spotlight-tint {
+  bottom: 0 !important;
+  left: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  right: 0 !important;
+  top: 0 !important;
+}
+
+#codex-spotlight-home-section .codex-spotlight-backdrop {
+  background-position: 50% 45% !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  opacity: .94 !important;
+}
+
+#codex-spotlight-home-section .codex-spotlight-tint {
+  background: color-mix(in srgb, var(--my-bg) 42%, transparent) !important;
+}
+
+#codex-spotlight-home-section .codex-spotlight-copy {
+  background: color-mix(in srgb, var(--my-bg) 76%, transparent) !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 18%, transparent) !important;
+  border-radius: .9rem !important;
+  bottom: clamp(.8rem, 1.8vw, 1.25rem) !important;
+  box-sizing: border-box !important;
+  left: clamp(.8rem, 1.8vw, 1.25rem) !important;
+  max-width: min(43rem, calc(100% - 1.6rem)) !important;
+  padding: clamp(.8rem, 1.6vw, 1.1rem) !important;
+  position: absolute !important;
+  text-shadow: none !important;
+}
+
+#codex-spotlight-home-section .codex-spotlight-kicker {
+  color: var(--my-primary) !important;
+  font-size: .78rem !important;
+  font-weight: 900 !important;
+  letter-spacing: .03em !important;
+  line-height: 1.1 !important;
+  margin-bottom: .25rem !important;
+  text-transform: uppercase !important;
+}
+
+#codex-spotlight-home-section .codex-spotlight-title {
+  color: var(--my-text) !important;
+  font-size: clamp(1.55rem, 3.2vw, 2.65rem) !important;
+  font-weight: 900 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.03 !important;
+  margin: 0 !important;
+}
+
+#codex-spotlight-home-section .codex-spotlight-meta {
+  color: var(--my-primary-2) !important;
+  font-size: .92rem !important;
+  font-weight: 750 !important;
+  margin-top: .38rem !important;
+}
+
+#codex-spotlight-home-section .codex-spotlight-overview {
+  color: var(--my-text) !important;
+  display: -webkit-box !important;
+  font-size: .94rem !important;
+  line-height: 1.35 !important;
+  margin: .55rem 0 0 !important;
+  max-width: 38rem !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+  overflow: hidden !important;
+}
+
+#codex-spotlight-home-section .codex-spotlight-action {
+  align-items: center !important;
+  background: var(--my-primary) !important;
+  border-radius: 999px !important;
+  color: var(--my-on-primary) !important;
+  display: inline-flex !important;
+  font-size: .88rem !important;
+  font-weight: 850 !important;
+  gap: .38rem !important;
+  line-height: 1 !important;
+  margin-top: .82rem !important;
+  min-height: 2.25rem !important;
+  padding: 0 .9rem !important;
+}
+
+#codex-spotlight-home-section .codex-spotlight-action .material-icons {
+  font-size: 1.1rem !important;
+  line-height: 1 !important;
+}
+
+.homePage .emby-scrollbuttons {
+  gap: .55rem !important;
+}
+
+.homePage .btnNextPage,
+.homePage .btnPreviousPage,
+.homePage .emby-scrollbuttons-button,
+.homePage .emby-scrollbuttons .paper-icon-button-light {
+  background: color-mix(in srgb, var(--my-primary) 10%, transparent) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 10%, transparent) !important;
+  background-image: none !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 13%, transparent) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  color: var(--my-primary-2) !important;
+  height: var(--codex-row-arrow-size) !important;
+  min-height: var(--codex-row-arrow-size) !important;
+  min-width: var(--codex-row-arrow-size) !important;
+  opacity: .88 !important;
+  transition: background-color .14s ease, color .14s ease, opacity .14s ease, transform .14s ease !important;
+  width: var(--codex-row-arrow-size) !important;
+}
+
+.homePage .btnNextPage:hover,
+.homePage .btnPreviousPage:hover,
+.homePage .emby-scrollbuttons-button:hover,
+.homePage .emby-scrollbuttons .paper-icon-button-light:hover {
+  background: color-mix(in srgb, var(--my-primary) 18%, transparent) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 18%, transparent) !important;
+  color: var(--my-primary) !important;
+  opacity: 1 !important;
+  transform: translateY(-1px) !important;
+}
+
+.homePage .btnNextPage[disabled],
+.homePage .btnPreviousPage[disabled],
+.homePage .emby-scrollbuttons-button[disabled],
+.homePage .btnNextPage[aria-disabled="true"],
+.homePage .btnPreviousPage[aria-disabled="true"],
+.homePage .emby-scrollbuttons-button[aria-disabled="true"],
+.homePage .btnNextPage.disabled,
+.homePage .btnPreviousPage.disabled,
+.homePage .emby-scrollbuttons-button.disabled,
+.homePage .emby-scrollbuttons-button.emby-scrollbuttons-button-hidden {
+  background: color-mix(in srgb, var(--my-primary) 5%, transparent) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 5%, transparent) !important;
+  border-color: transparent !important;
+  color: color-mix(in srgb, var(--my-primary-2) 42%, transparent) !important;
+  opacity: .28 !important;
+  pointer-events: none !important;
+  transform: none !important;
+}
+
+@media (max-width: 47.99em) {
+  #codex-spotlight-home-section {
+    padding: 0 1rem !important;
+  }
+
+  #codex-spotlight-home-section .codex-spotlight-link {
+    min-height: 18rem !important;
+  }
+
+  #codex-spotlight-home-section .codex-spotlight-copy {
+    left: .7rem !important;
+    right: .7rem !important;
+    max-width: none !important;
+  }
+
+  #codex-spotlight-home-section .codex-spotlight-overview {
+    -webkit-line-clamp: 3 !important;
+  }
+}
+/* Codex home awesome additions v9.7 end */
 
 /* Codex dynamic accent backgrounds v7.7 end */

@@ -7,6 +7,7 @@
   const THEME_KEY = "codex-jellyfin-theme-color";
   const MARVEL_COLLECTION_ID = "f7855f569b4a8751e9329d441ecfbabc";
   const MARVEL_SECTION_ID = "codex-marvel-home-section";
+  const SPOTLIGHT_SECTION_ID = "codex-spotlight-home-section";
   const THEMES = {
     blue: {
       label: "Blue",
@@ -269,6 +270,8 @@
 
   let marvelItemsCache = null;
   let marvelLoadPromise = null;
+  let spotlightItemCache = null;
+  let spotlightLoadPromise = null;
 
   const parseJson = (value) => {
     try {
@@ -367,22 +370,112 @@
     return response.json();
   };
 
-  const getMarvelImageUrl = (item) => {
+  const getItemImageUrl = (item, options = {}) => {
+    const {
+      preferBackdrop = false,
+      fillWidth = "700",
+      fillHeight = "395",
+      quality = "90"
+    } = options;
+    const hasBackdrop = Boolean(item.BackdropImageTags?.length);
     const hasPrimary = Boolean(item.ImageTags?.Primary);
-    const type = hasPrimary ? "Primary" : item.BackdropImageTags?.length ? "Backdrop/0" : "Primary";
+    const useBackdrop = preferBackdrop && hasBackdrop;
+    const type = useBackdrop ? "Backdrop/0" : hasPrimary ? "Primary" : hasBackdrop ? "Backdrop/0" : "Primary";
     const params = new URLSearchParams({
-      fillHeight: "520",
-      fillWidth: "350",
-      quality: "92"
+      fillHeight: String(fillHeight),
+      fillWidth: String(fillWidth),
+      quality: String(quality)
     });
 
-    if (hasPrimary) {
+    if (type === "Primary" && hasPrimary) {
       params.set("tag", item.ImageTags.Primary);
-    } else if (item.BackdropImageTags?.[0]) {
+    } else if (type === "Backdrop/0" && item.BackdropImageTags?.[0]) {
       params.set("tag", item.BackdropImageTags[0]);
     }
 
     return `/Items/${item.Id}/Images/${type}?${params.toString()}`;
+  };
+
+  const decodeEntities = (value) => {
+    if (!value) return "";
+    const element = document.createElement("textarea");
+    element.innerHTML = String(value);
+    return element.value;
+  };
+
+  const trimText = (value, maxLength) => {
+    const text = decodeEntities(value).replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+    if (text.length <= maxLength) return text;
+    return `${text.slice(0, maxLength - 1).replace(/\s+\S*$/, "")}...`;
+  };
+
+  const getRuntimeText = (ticks) => {
+    const totalMinutes = Math.round(Number(ticks || 0) / 600000000);
+    if (!totalMinutes) return "";
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+    if (!hours) return `${minutes}m`;
+    return minutes ? `${hours}h ${minutes}m` : `${hours}h`;
+  };
+
+  const getSpotlightMeta = (item) => {
+    const parts = [];
+    if (item.SeriesName && item.Type === "Episode") parts.push(item.SeriesName);
+    if (item.ProductionYear) parts.push(String(item.ProductionYear));
+    if (item.Type) parts.push(item.Type);
+    const runtime = getRuntimeText(item.RunTimeTicks);
+    if (runtime) parts.push(runtime);
+    return parts.join(" • ");
+  };
+
+  const pickSpotlightItem = (items) => {
+    const candidates = (items || []).filter((item) => {
+      return item?.Id && item?.Name && (item.BackdropImageTags?.length || item.ImageTags?.Primary);
+    });
+
+    return (
+      candidates.find((item) => item.BackdropImageTags?.length && item.Overview) ||
+      candidates.find((item) => item.BackdropImageTags?.length) ||
+      candidates[0] ||
+      null
+    );
+  };
+
+  const getSpotlightItem = async () => {
+    const apiInfo = getJellyfinApiInfo();
+    if (!apiInfo?.userId) return null;
+
+    const fields = "BackdropImageTags,EndDate,Genres,ImageTags,Overview,PremiereDate,ProductionYear,RunTimeTicks,SeriesName,SortName";
+    const resumeParams = new URLSearchParams({
+      IncludeItemTypes: "Movie,Episode,Series",
+      Recursive: "true",
+      Limit: "12",
+      Fields: fields,
+      ImageTypeLimit: "1",
+      EnableImageTypes: "Primary,Backdrop"
+    });
+
+    const resumeData = await fetchJson(`/Users/${apiInfo.userId}/Items/Resume?${resumeParams.toString()}`).catch(() => null);
+    const resumePick = pickSpotlightItem(resumeData?.Items);
+    if (resumePick) return resumePick;
+
+    const latestParams = new URLSearchParams({
+      IncludeItemTypes: "Movie,Episode,Series",
+      Limit: "16",
+      Fields: fields,
+      ImageTypeLimit: "1",
+      EnableImageTypes: "Primary,Backdrop"
+    });
+    const latestData = await fetchJson(`/Users/${apiInfo.userId}/Items/Latest?${latestParams.toString()}`).catch(() => null);
+    return pickSpotlightItem(Array.isArray(latestData) ? latestData : latestData?.Items);
+  };
+
+  const getMarvelImageUrl = (item) => {
+    return getItemImageUrl(item, {
+      fillHeight: "520",
+      fillWidth: "350",
+      quality: "92"
+    });
   };
 
   const getMarvelSubtitle = (item) => {
@@ -688,11 +781,12 @@
     section.id = MARVEL_SECTION_ID;
     section.className = "verticalSection codex-marvel-home-section";
     section.setAttribute("data-codex-managed", "true");
+    section.setAttribute("data-codex-section-kind", "marvel");
 
     section.innerHTML = `
       <div class="sectionTitleContainer sectionTitleContainer-cards padded-left">
         <a class="sectionTitleButton sectionTitleTextButton" href="#/details?id=${MARVEL_COLLECTION_ID}">
-          <h2 class="sectionTitle sectionTitle-cards">MARVEL</h2>
+          <h2 class="sectionTitle sectionTitle-cards" data-codex-section-kind="marvel">MARVEL</h2>
         </a>
       </div>
       <div class="emby-scroller scrollX hiddenScrollX codex-marvel-scroller">
@@ -717,6 +811,86 @@
     return section;
   };
 
+  const renderSpotlightItem = (section, item) => {
+    const link = section.querySelector(".codex-spotlight-link");
+    const backdrop = section.querySelector(".codex-spotlight-backdrop");
+    const title = section.querySelector(".codex-spotlight-title");
+    const meta = section.querySelector(".codex-spotlight-meta");
+    const overview = section.querySelector(".codex-spotlight-overview");
+    if (!link || !backdrop || !title || !meta || !overview) return;
+
+    link.href = `#/details?id=${item.Id}`;
+    link.title = item.Name || "Open details";
+    backdrop.style.backgroundImage = cssUrl(
+      getItemImageUrl(item, {
+        preferBackdrop: true,
+        fillWidth: "1320",
+        fillHeight: "430",
+        quality: "90"
+      })
+    );
+    title.textContent = item.Name || "Tonight's Pick";
+    meta.textContent = getSpotlightMeta(item);
+    overview.textContent = trimText(item.Overview || item.Tagline || "", 220);
+    section.setAttribute("data-codex-loaded", "true");
+  };
+
+  const loadSpotlightItem = (section) => {
+    if (spotlightItemCache) {
+      renderSpotlightItem(section, spotlightItemCache);
+      return;
+    }
+
+    if (!spotlightLoadPromise) {
+      spotlightLoadPromise = getSpotlightItem()
+        .then((item) => {
+          if (!item) return null;
+          spotlightItemCache = item;
+          return item;
+        })
+        .catch(() => null)
+        .finally(() => {
+          spotlightLoadPromise = null;
+        });
+    }
+
+    spotlightLoadPromise.then((item) => {
+      if (item && document.contains(section)) {
+        renderSpotlightItem(section, item);
+      } else if (!item && document.contains(section)) {
+        section.remove();
+      }
+    });
+  };
+
+  const createSpotlightHomeSection = () => {
+    const section = document.createElement("section");
+    section.id = SPOTLIGHT_SECTION_ID;
+    section.className = "verticalSection codex-spotlight-home-section";
+    section.setAttribute("data-codex-managed", "true");
+    section.setAttribute("data-codex-section-kind", "spotlight");
+
+    section.innerHTML = `
+      <a class="codex-spotlight-link" href="#/home">
+        <div class="codex-spotlight-backdrop" aria-hidden="true"></div>
+        <div class="codex-spotlight-tint" aria-hidden="true"></div>
+        <div class="codex-spotlight-copy">
+          <div class="codex-spotlight-kicker">Tonight's Pick</div>
+          <h2 class="codex-spotlight-title">Loading...</h2>
+          <div class="codex-spotlight-meta"></div>
+          <p class="codex-spotlight-overview"></p>
+          <span class="codex-spotlight-action">
+            <span class="material-icons visibility" aria-hidden="true"></span>
+            <span>Open details</span>
+          </span>
+        </div>
+      </a>
+    `;
+
+    loadSpotlightItem(section);
+    return section;
+  };
+
   const getHomeSectionHost = (sections) => {
     for (const entry of sections.values()) {
       if (entry.parent) return entry.parent;
@@ -729,6 +903,27 @@
       document.querySelector(".page.homePage") ||
       document.querySelector("[data-role='page']")
     );
+  };
+
+  const ensureSpotlightHomeSection = (sections = findSections()) => {
+    if (!isMarvelHomeTarget()) {
+      document.getElementById(SPOTLIGHT_SECTION_ID)?.remove();
+      return;
+    }
+
+    const host = getHomeSectionHost(sections);
+    if (!host) return;
+
+    const section = document.getElementById(SPOTLIGHT_SECTION_ID) || createSpotlightHomeSection();
+    const firstSection = [...host.children].find((child) => {
+      return child !== section && child.id !== MARVEL_SECTION_ID && !/^(SCRIPT|STYLE)$/i.test(child.tagName || "");
+    });
+
+    if (section.parentElement !== host || (firstSection && section.nextElementSibling !== firstSection)) {
+      host.insertBefore(section, firstSection || host.firstChild || null);
+    }
+
+    loadSpotlightItem(section);
   };
 
   const ensureMarvelHomeSection = (sections = findSections()) => {
@@ -788,6 +983,42 @@
     }
   };
 
+  const getSectionIconKind = (text) => {
+    if (/^marvel$/i.test(text)) return "marvel";
+    if (/my media|libraries/i.test(text)) return "media";
+    if (CONTINUE_RE.test(text)) return "continue";
+    if (NEXT_UP_RE.test(text)) return "nextup";
+    if (RECENT_RE.test(text)) return "recent";
+    if (/favorite/i.test(text)) return "favorite";
+    if (/movie/i.test(text)) return "movie";
+    if (/show|episode|series/i.test(text)) return "show";
+    if (/music|album|song/i.test(text)) return "music";
+    return "default";
+  };
+
+  const decorateHomeSectionIcons = () => {
+    if (!isHomePage()) return;
+
+    const headings = [
+      ...document.querySelectorAll(
+        ".homePage .sectionTitle, .homePage .sectionTitleButton, .homePage h2, .homePage h3, .homeTabContent .sectionTitle, .homeTabContent h2, .homeTabContent h3"
+      )
+    ];
+
+    for (const heading of headings) {
+      const text = cleanText(heading);
+      if (!text) continue;
+
+      const kind = getSectionIconKind(text);
+      heading.setAttribute("data-codex-section-kind", kind);
+
+      const section = sectionForHeading(heading);
+      if (section) {
+        section.setAttribute("data-codex-section-kind", kind);
+      }
+    }
+  };
+
   const findSections = () => {
     const candidates = [
       ...document.querySelectorAll(
@@ -810,6 +1041,8 @@
 
       const section = sectionForHeading(heading);
       if (!section?.parentElement) continue;
+      section.setAttribute("data-codex-section-kind", type);
+      heading.setAttribute("data-codex-section-kind", type);
       sections.set(type, { section, parent: section.parentElement, text });
     }
 
@@ -826,9 +1059,12 @@
     const recent = sections.get("recent");
     const watching = sections.get("continue");
     const nextUp = sections.get("nextup");
+    decorateHomeSectionIcons();
 
     applyingOrder = true;
     try {
+      ensureSpotlightHomeSection(sections);
+
       if (recent?.parent) {
         if (watching?.parent === recent.parent && watching.section !== recent.section) {
           recent.parent.insertBefore(watching.section, recent.section);
