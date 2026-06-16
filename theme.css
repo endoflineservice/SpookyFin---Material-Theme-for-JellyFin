@@ -6773,4 +6773,16 @@ body .homePage > * {
 }
 /* Codex home awesome additions v9.7 end */
 
+/* Codex spotlight rollback guard v9.8 */
+#codex-spotlight-home-section {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  max-height: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+/* Codex spotlight rollback guard v9.8 end */
+
 /* Codex dynamic accent backgrounds v7.7 end */

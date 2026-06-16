@@ -8,6 +8,7 @@
   const MARVEL_COLLECTION_ID = "f7855f569b4a8751e9329d441ecfbabc";
   const MARVEL_SECTION_ID = "codex-marvel-home-section";
   const SPOTLIGHT_SECTION_ID = "codex-spotlight-home-section";
+  const ENABLE_SPOTLIGHT = false;
   const THEMES = {
     blue: {
       label: "Blue",
@@ -906,7 +907,7 @@
   };
 
   const ensureSpotlightHomeSection = (sections = findSections()) => {
-    if (!isMarvelHomeTarget()) {
+    if (!ENABLE_SPOTLIGHT || !isMarvelHomeTarget()) {
       document.getElementById(SPOTLIGHT_SECTION_ID)?.remove();
       return;
     }
