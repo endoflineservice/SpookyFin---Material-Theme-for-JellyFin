@@ -45,7 +45,7 @@ docker exec jellyfin sh -lc "cp /jellyfin/jellyfin-web/index.html /jellyfin/jell
 Add this before Jellyfin's main app scripts:
 
 ```html
-<script defer="defer" src="spookyfin-helper.js?spookyfin=20260615"></script>
+<script defer="defer" src="spookyfin-helper.js?spookyfin=20260616"></script>
 ```
 
 Restart Jellyfin:

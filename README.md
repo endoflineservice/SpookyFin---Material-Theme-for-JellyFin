@@ -6,7 +6,7 @@
 
 ![Spookyfin home preview](docs/screenshots/home-preview.png)
 
-Spookyfin is a rounded Android/Material You inspired theme for Jellyfin Web. It keeps Jellyfin fast and readable while adding softer surfaces, pill controls, floating progress bars, Material-style dialogs, and an optional header color switcher.
+Spookyfin is a rounded Android/Material You inspired theme for Jellyfin Web. It keeps Jellyfin fast and readable while adding softer surfaces, pill controls, floating progress bars, a scalloped header, Material-style dialogs, and an optional header color switcher.
 
 It is built for people searching for:
 
@@ -16,12 +16,13 @@ It is built for people searching for:
 
 - Android-style dark surfaces with cyan as the default accent.
 - Optional header palette button with Blue, Purple, and Pink color modes.
-- Material-style card hover/focus state layers.
+- Accent-linked card hover footers, row arrows, badges, and progress bars.
 - Floating rounded Continue Watching progress bars.
 - Centered card hover play buttons and Material FAB-style play actions.
-- Softer rounded dialogs, menus, action sheets, and form surfaces.
+- Softer rounded dialogs, menus, action sheets, settings lists, and form surfaces.
+- Static scalloped top bar that follows the selected accent background.
 - Home page image blanking repair for lazy-loaded Jellyfin card art.
-- Included spooky-cute library artwork for common media libraries.
+- Included spooky-cute library artwork for common media libraries, including 3D Movies.
 
 ## Install
 
@@ -52,7 +53,7 @@ docker cp .\spookyfin-helper.js jellyfin:/jellyfin/jellyfin-web/spookyfin-helper
 Then add this before Jellyfin's app bundle scripts in `/jellyfin/jellyfin-web/index.html`:
 
 ```html
-<script defer="defer" src="spookyfin-helper.js?spookyfin=20260615"></script>
+<script defer="defer" src="spookyfin-helper.js?spookyfin=20260616"></script>
 ```
 
 More details are in [docs/INSTALL.md](docs/INSTALL.md).

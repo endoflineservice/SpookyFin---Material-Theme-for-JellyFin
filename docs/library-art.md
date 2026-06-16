@@ -4,6 +4,8 @@ Spookyfin includes full-size PNG library artwork in `assets/library-images`.
 
 These images are meant for Jellyfin library primary images and backdrops. They use a cohesive cyan, purple, and dark spooky-cute style so the home screen feels unified.
 
+The current image pack includes the newer 3D Movies banner plus matching artwork for Anime, ASMR, Audio Books, Cartoons, Collections, Movies, Music, and the rest of the common home libraries.
+
 ## Files
 
 - `collections.png`

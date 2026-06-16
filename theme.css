@@ -1,10 +1,4 @@
-﻿/*
- * Spookyfin for Jellyfin
- * Android-inspired Material You theme for Jellyfin Web.
- * Repository: https://github.com/endoflineservice/spookyfin
- * Build: 2026-06-15 Android polish release.
- */
-/* Codex Material You Fast Rounded v2.6 for Jellyfin
+﻿/* Codex Material You Fast Rounded v2.6 for Jellyfin
    Installed 2026-06-14. Local CSS only: no imports, no blur, no heavy animation. */
 :root {
   --my-bg: #071014;
@@ -472,7 +466,7 @@ h4 {
 }
 
 /* Lists and dense screens */
-.listItem {
+.listItem:not(.actionSheetMenuItem) {
   min-height: 4rem !important;
   padding: .42rem .65rem !important;
   margin: .18rem 0 !important;
@@ -601,7 +595,6 @@ textarea:focus {
 .dialog,
 .formDialogHeader,
 .formDialogFooter,
-.actionSheet,
 .toast {
   background: var(--my-surface) !important;
   color: var(--my-text) !important;
@@ -680,15 +673,6 @@ textarea:focus {
 
 .dialog:has(.availableImagesList) .btnDownloadRemoteImage {
   margin-top: .2rem !important;
-}
-
-.actionSheet {
-  border-radius: var(--my-radius-lg) !important;
-  overflow: hidden !important;
-}
-
-.actionSheetMenuItem {
-  min-height: 2.8rem !important;
 }
 
 .toast {
@@ -859,23 +843,20 @@ textarea:focus {
   font-weight: 720 !important;
 }
 
-.listItem,
-.actionSheetMenuItem,
+.listItem:not(.actionSheetMenuItem),
 .MuiListItemButton-root,
 .MuiMenuItem-root {
   border-radius: var(--my-radius-md) !important;
 }
 
-.listItem:hover,
-.actionSheetMenuItem:hover,
+.listItem:not(.actionSheetMenuItem):hover,
 .MuiListItemButton-root:hover,
 .MuiMenuItem-root:hover {
   background: var(--my-state-hover) !important;
 }
 
-.listItem.selected,
-.listItem[data-selected="true"],
-.actionSheetMenuItem-selected,
+.listItem:not(.actionSheetMenuItem).selected,
+.listItem:not(.actionSheetMenuItem)[data-selected="true"],
 .MuiListItemButton-root.Mui-selected,
 .MuiMenuItem-root.Mui-selected {
   background: var(--my-state-selected) !important;
@@ -961,17 +942,13 @@ textarea:focus,
 .dialog,
 .formDialogHeader,
 .formDialogFooter,
-.actionSheet,
 .toast,
-.MuiDialog-paper,
-.MuiPopover-paper,
-.MuiMenu-paper {
+.MuiDialog-paper {
   border-radius: var(--my-radius-xl) !important;
 }
 
 .dialog,
-.MuiDialog-paper,
-.actionSheet {
+.MuiDialog-paper {
   background: var(--my-surface) !important;
   border-color: rgba(213, 243, 247, .16) !important;
 }
@@ -1026,7 +1003,6 @@ textarea:focus,
   to {
     transform: rotate(1turn);
   }
-
 }
 
 @keyframes codexMaterialLoaderPulse {
@@ -1036,11 +1012,10 @@ textarea:focus,
     transform: scale(.84);
   }
 
-50% {
+  50% {
     opacity: 1;
     transform: scale(1);
   }
-
 }
 
 .splashLogo,
@@ -1163,32 +1138,32 @@ textarea:focus,
     --my-radius-xl: 30px;
   }
 
-.skinHeader {
+  .skinHeader {
     min-height: 4.25em;
   }
 
-.headerButton,
+  .headerButton,
   .paper-icon-button-light {
     min-width: 2.55rem !important;
     width: 2.55rem !important;
     height: 2.55rem !important;
   }
 
-.emby-tab-button {
+  .emby-tab-button {
     min-height: 2.4rem !important;
     padding: 0 .75rem !important;
   }
 
-.loginPage h1,
+  .loginPage h1,
   .loginPage .pageTitle {
     font-size: 1.65rem !important;
   }
 
-.dialog {
+  .dialog {
     max-width: calc(100vw - 1rem) !important;
   }
 
-.dialog-small:has(.availableImagesList),
+  .dialog-small:has(.availableImagesList),
   .dialog-small:has(#imagesContainer),
   .dialog-small:has(.imageEditor-buttons) {
     width: calc(100vw - .75rem) !important;
@@ -1196,22 +1171,21 @@ textarea:focus,
     height: calc(100vh - .75rem) !important;
   }
 
-.dialog:has(.availableImagesList) .dialogContentInner,
+  .dialog:has(.availableImagesList) .dialogContentInner,
   .dialog:has(#imagesContainer) .dialogContentInner,
   .dialog:has(.imageEditor-buttons) .dialogContentInner {
     padding-left: .85rem !important;
     padding-right: .85rem !important;
   }
 
-.dialog:has(.availableImagesList) .availableImagesList {
+  .dialog:has(.availableImagesList) .availableImagesList {
     grid-template-columns: repeat(auto-fill, minmax(5.9rem, 1fr)) !important;
     gap: .75rem !important;
   }
 
-.dialog:has(.availableImagesList) .availableImagesList .imageEditorCard {
+  .dialog:has(.availableImagesList) .availableImagesList .imageEditorCard {
     min-width: 5.9rem !important;
   }
-
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1223,9 +1197,7 @@ textarea:focus,
     transition-duration: .001ms !important;
     scroll-behavior: auto !important;
   }
-
 }
-
 /* Codex top bar alignment repair v2.7 */
 .skinHeader .headerTop,
 .skinHeader .headerLeft,
@@ -1384,7 +1356,6 @@ textarea:focus,
 .headerUserButton:has(img)::before {
   content: none !important;
 }
-
 /* Codex signed-in avatar and header icon polish v2.8 */
 .skinHeader .headerButton,
 .skinHeader .paper-icon-button-light,
@@ -1430,6 +1401,62 @@ textarea:focus,
   transform: none !important;
 }
 
+.skinHeader .headerUserButton,
+.skinHeader .btnUser,
+.skinHeader .userMenuButton,
+.skinHeader .headerButton[title="End0fL1ne"],
+.skinHeader .paper-icon-button-light[title="End0fL1ne"],
+.skinHeader button[title="End0fL1ne"],
+.skinHeader button[aria-label="End0fL1ne"],
+.skinHeader button[aria-label*="End0fL1ne"] {
+  background-color: transparent !important;
+  background-image: url("/Users/358ee53982f74dfe9f69e5cc378de82f/Images/Primary?tag=09eedaeae4899a8558f5e2dcb9319d55&quality=90") !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  border-color: rgba(50, 219, 255, .55) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08) !important;
+}
+
+.skinHeader .headerUserButton > *,
+.skinHeader .btnUser > *,
+.skinHeader .userMenuButton > *,
+.skinHeader .headerButton[title="End0fL1ne"] > *,
+.skinHeader .paper-icon-button-light[title="End0fL1ne"] > *,
+.skinHeader button[title="End0fL1ne"] > *,
+.skinHeader button[aria-label="End0fL1ne"] > *,
+.skinHeader button[aria-label*="End0fL1ne"] > * {
+  background-color: transparent !important;
+  background-image: url("/Users/358ee53982f74dfe9f69e5cc378de82f/Images/Primary?tag=09eedaeae4899a8558f5e2dcb9319d55&quality=90") !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  border-radius: 999px !important;
+  height: 100% !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  width: 100% !important;
+}
+
+.skinHeader .headerUserButton .material-icons,
+.skinHeader .btnUser .material-icons,
+.skinHeader .userMenuButton .material-icons,
+.skinHeader .headerButton[title="End0fL1ne"] .material-icons,
+.skinHeader .paper-icon-button-light[title="End0fL1ne"] .material-icons,
+.skinHeader button[title="End0fL1ne"] .material-icons,
+.skinHeader button[aria-label="End0fL1ne"] .material-icons,
+.skinHeader button[aria-label*="End0fL1ne"] .material-icons,
+.skinHeader .headerUserButton svg,
+.skinHeader .btnUser svg,
+.skinHeader .userMenuButton svg,
+.skinHeader .headerButton[title="End0fL1ne"] svg,
+.skinHeader .paper-icon-button-light[title="End0fL1ne"] svg,
+.skinHeader button[title="End0fL1ne"] svg,
+.skinHeader button[aria-label="End0fL1ne"] svg,
+.skinHeader button[aria-label*="End0fL1ne"] svg {
+  opacity: 0 !important;
+}
+
 /* Codex Material You v2.8: flatter home rows and tinted cards, no glow halos. */
 :root {
   --my-row-flat: rgba(5, 24, 29, .42);
@@ -1454,9 +1481,7 @@ textarea:focus,
   box-shadow: none !important;
   filter: none !important;
   outline: 0 !important;
-}
-
-.homePage .sectionTitleContainer,
+}.homePage .sectionTitleContainer,
 .homePage .itemsContainer,
 .homePage .emby-scroller,
 .homePage .scrollSlider,
@@ -1492,7 +1517,6 @@ textarea:focus,
   box-shadow: none !important;
   filter: none !important;
 }
-
 /* Codex header text nav spacing repair v2.9 */
 .skinHeader .headerTabs,
 .skinHeader .libraryViewNav {
@@ -1573,7 +1597,7 @@ align-items: center !important;
     padding-inline: .25rem !important;
   }
 
-.skinHeader .emby-tab-button,
+  .skinHeader .emby-tab-button,
   .skinHeader .MuiTab-root,
   .skinHeader .headerTabs .emby-button,
   .skinHeader .headerTabs button,
@@ -1582,9 +1606,7 @@ align-items: center !important;
     min-height: 2.35rem !important;
     padding-inline: .85rem !important;
   }
-
 }
-
 /* Codex borderless tinted surfaces v3.0 */
 :root {
   --my-outline: rgba(0, 0, 0, 0) !important;
@@ -1770,14 +1792,14 @@ hr {
 }
 
 tr,
-.listItem,
+.listItem:not(.actionSheetMenuItem),
 .metadataField,
 .dashboardSection {
   background: rgba(16, 27, 32, .72) !important;
 }
 
 tr:hover,
-.listItem:hover,
+.listItem:not(.actionSheetMenuItem):hover,
 .metadataField:hover {
   background: var(--my-tint-surface-2) !important;
 }
@@ -1807,9 +1829,7 @@ tr:hover,
     border: 0 !important;
     box-shadow: 0 .55rem 1.5rem rgba(0, 0, 0, .18) !important;
   }
-
 }
-
 /* Codex adaptive Jellyfin SVG logo v3.1 */
 :root {
   --codex-jellyfin-logo-mark: url("data:image/svg+xml,%3csvg%20xmlns%3d%22http%3a%2f%2fwww.w3.org%2f2000%2fsvg%22%20viewBox%3d%220%200%20512%20512%22%3e%3cpath%20d%3d%22M256%201c41%200%2097%2062%20153%20149%2060%2093%20103%20188%20103%20249%200%2084-512%2084-512%200%200-61%2043-156%20103-249C159%2063%20215%201%20256%201Zm0%2073c-26%200-69%2051-111%20116-49%2077-80%20154-80%20197%200%2030%20382%2030%20382%200%200-43-31-120-80-197-42-65-85-116-111-116Zm0%20132c17%200%2043%2031%2069%2074%2024%2041%2040%2078%2040%20100%200%2031-218%2031-218%200%200-22%2016-59%2040-100%2026-43%2052-74%2069-74Z%22%2f%3e%3c%2fsvg%3e");
@@ -1914,7 +1934,7 @@ tr:hover,
     width: 8.8rem !important;
   }
 
-.skinHeader img[src*="icon-transparent"],
+  .skinHeader img[src*="icon-transparent"],
   .skinHeader img[src*="touchicon"],
   .skinHeader .imgLogoIcon,
   .skinHeader .headerLogoIcon,
@@ -1929,9 +1949,7 @@ tr:hover,
     min-width: 1.9rem !important;
     width: 1.9rem !important;
   }
-
 }
-
 /* Codex header active tab glow unclipped v3.2 */
 .skinHeader,
 .skinHeader-withBackground,
@@ -2031,9 +2049,6 @@ body,
 .MuiDrawer-paper,
 .dialog,
 .MuiDialog-paper,
-.actionSheet,
-.MuiPopover-paper,
-.MuiMenu-paper,
 .toast,
 .snackbar,
 .MuiSnackbarContent-root,
@@ -2056,8 +2071,7 @@ body,
 .playbackSettingsContainer,
 .MuiPaper-root,
 .MuiCard-root,
-.listItem,
-.actionSheetMenuItem,
+.listItem:not(.actionSheetMenuItem),
 .MuiListItemButton-root,
 .MuiMenuItem-root,
 .navMenuOption,
@@ -2093,10 +2107,7 @@ body,
 .mainDrawer,
 .MuiDrawer-paper,
 .dialog,
-.MuiDialog-paper,
-.actionSheet,
-.MuiPopover-paper,
-.MuiMenu-paper {
+.MuiDialog-paper {
   background-color: var(--my-bg-raised) !important;
 }
 
@@ -2130,9 +2141,7 @@ body,
 .libraryViewNav .emby-button-active,
 .libraryViewNav button[aria-selected="true"],
 .navMenuOption-selected,
-.MuiListItemButton-root.Mui-selected,
-.actionSheetMenuItem-selected,
-.MuiMenuItem-root.Mui-selected {
+.MuiListItemButton-root.Mui-selected {
   background: var(--my-primary) !important;
   background-color: var(--my-primary) !important;
   background-image: none !important;
@@ -2149,23 +2158,6 @@ body,
   background-image: none !important;
   border-color: rgba(0, 229, 255, .24) !important;
   color: var(--my-primary-2) !important;
-}
-
-.actionSheetMenuItem,
-.MuiMenuItem-root {
-  align-items: center !important;
-  background: transparent !important;
-  background-image: none !important;
-  border: 0 !important;
-  border-radius: 1rem !important;
-  min-height: 2.75rem !important;
-  padding: .55rem .8rem !important;
-}
-
-.actionSheetMenuItem:hover,
-.MuiMenuItem-root:hover {
-  background: rgba(0, 229, 255, .12) !important;
-  background-image: none !important;
 }
 
 @media (hover: hover) {
@@ -2241,14 +2233,12 @@ body,
   to {
     background-position-x: 48px;
   }
-
 }
 
 @keyframes codexSquiggleSpin {
   to {
     transform: rotate(1turn);
   }
-
 }
 
 @keyframes codexSquiggleBreathe {
@@ -2258,11 +2248,10 @@ body,
     transform: scale(.96) rotate(0deg);
   }
 
-50% {
+  50% {
     opacity: 1;
     transform: scale(1.04) rotate(.5turn);
   }
-
 }
 
 .mdl-slider-background-flex,
@@ -2445,15 +2434,14 @@ input[type="range"] {
     transform: translateY(.65rem) scale(.985);
   }
 
-45% {
+  45% {
     opacity: 0;
   }
 
-100% {
+  100% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
-
 }
 
 @keyframes codexM3SharedAxisIn {
@@ -2462,11 +2450,10 @@ input[type="range"] {
     transform: translateX(.9rem) scale(.99);
   }
 
-100% {
+  100% {
     opacity: 1;
     transform: translateX(0) scale(1);
   }
-
 }
 
 @keyframes codexM3DialogIn {
@@ -2475,11 +2462,10 @@ input[type="range"] {
     transform: translateY(1.15rem) scale(.96);
   }
 
-100% {
+  100% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
-
 }
 
 @keyframes codexM3MenuIn {
@@ -2488,11 +2474,10 @@ input[type="range"] {
     transform: translateY(-.35rem) scale(.96);
   }
 
-100% {
+  100% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
-
 }
 
 @keyframes codexM3ToastIn {
@@ -2501,11 +2486,10 @@ input[type="range"] {
     transform: translateY(.75rem) scale(.98);
   }
 
-100% {
+  100% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
-
 }
 
 .mainAnimatedPage:not(.hide),
@@ -2524,7 +2508,7 @@ input[type="range"] {
 }
 
 .card,
-.listItem,
+.listItem:not(.actionSheetMenuItem),
 .MuiCard-root,
 .paperList,
 .dashboardSectionContent {
@@ -2546,8 +2530,6 @@ input[type="range"] {
 .MuiTab-root,
 .navMenuOption,
 .MuiListItemButton-root,
-.actionSheetMenuItem,
-.MuiMenuItem-root,
 .btnCardOptions,
 .cardMenuButton,
 .cardOptionsButton {
@@ -2558,31 +2540,20 @@ input[type="range"] {
     transform var(--m3-duration-short3) var(--m3-motion-easing-standard) !important;
 }
 
-.emby-button:active,
+.emby-button:not(.actionSheetMenuItem):active,
 .paper-icon-button-light:active,
 .headerButton:active,
 .detailButton:active,
 .MuiButton-root:active,
 .MuiIconButton-root:active,
 .navMenuOption:active,
-.MuiListItemButton-root:active,
-.actionSheetMenuItem:active,
-.MuiMenuItem-root:active {
+.MuiListItemButton-root:active {
   transform: scale(.94) !important;
 }
 
-.dialog,
-.MuiDialog-paper,
-.actionSheet {
+.MuiDialog-paper {
   animation: codexM3DialogIn var(--m3-duration-medium3) var(--m3-motion-easing-emphasized-decelerate) both !important;
   transform-origin: center !important;
-}
-
-.MuiPopover-paper,
-.MuiMenu-paper,
-.actionSheetMenu {
-  animation: codexM3MenuIn var(--m3-duration-short4) var(--m3-motion-easing-emphasized-decelerate) both !important;
-  transform-origin: top right !important;
 }
 
 .toast,
@@ -2630,7 +2601,7 @@ select,
     transition-duration: .001ms !important;
   }
 
-.mdl-slider-background-lower,
+  .mdl-slider-background-lower,
   .MuiSlider-track,
   .MuiLinearProgress-bar,
   .linearProgress .bar,
@@ -2641,7 +2612,6 @@ select,
   .taskProgressInner {
     animation: none !important;
   }
-
 }
 
 /* Codex home row and carousel arrow cleanup v2.13 */
@@ -2800,7 +2770,6 @@ select,
     --codex-home-row-arrow-gutter: 4.25rem;
     --codex-home-row-arrow-size: 2.4rem;
   }
-
 }
 
 /* Codex header logo de-dupe v3.3 */
@@ -2869,7 +2838,6 @@ select,
     min-width: 1.9rem !important;
     width: 1.9rem !important;
   }
-
 }
 
 /* Codex clean home lanes and centered carousel arrows v2.14 */
@@ -3087,14 +3055,13 @@ select,
     --codex-home-row-arrow-size: 2.35rem;
   }
 
-.homePage .emby-scrollbuttons,
+  .homePage .emby-scrollbuttons,
   .homePage .scrollButtons,
   .homePage .scrollbuttons {
     inset-inline-end: .85rem !important;
     right: .85rem !important;
     top: .25rem !important;
   }
-
 }
 
 /* Codex official Jellyfin header brand repair v3.4 */
@@ -3228,7 +3195,6 @@ select,
     --codex-header-brand-height: 1.95rem;
     --codex-header-brand-width: 8.25rem;
   }
-
 }
 
 /* Codex episode counter inset and padding repair v2.15 */
@@ -3306,7 +3272,6 @@ select,
     right: .55rem !important;
     top: .55rem !important;
   }
-
 }
 
 .card .cardText,
@@ -3361,7 +3326,6 @@ select,
     padding-left: .28rem !important;
     padding-right: .28rem !important;
   }
-
 }
 
 /* Codex centered poster action rail v2.17 */
@@ -3376,9 +3340,7 @@ select,
     --codex-card-action-size: 2rem;
     --codex-card-action-gap: .3rem;
   }
-
 }
-
 /* Codex Jellyfin home row strip cleanup v3.8
    Final override for leftover odd/even row tints, section glows, and short
    background bars below home rows. Cards keep their tint; row containers do not. */
@@ -3471,7 +3433,6 @@ select,
   overflow: visible !important;
   padding-bottom: 0 !important;
 }
-
 /* End Codex Jellyfin home row strip cleanup v3.8 */
 /* Codex Jellyfin media tile internals purge v4.2
    CSS-only fix: the theme no longer styles Jellyfin's internal poster, blurhash,
@@ -3558,7 +3519,6 @@ select,
   filter: none !important;
   pointer-events: none !important;
 }
-
 /* Codex Jellyfin media tile internals purge v4.2 end */
 /* Codex Jellyfin safe rounded corners only v4.4 */
 :root {
@@ -3617,12 +3577,10 @@ select,
 .button-submit,
 .emby-tab-button,
 .navMenuOption,
-.actionSheetMenuItem,
 .MuiButton-root,
 .MuiIconButton-root,
 .MuiChip-root,
 .MuiTab-root,
-.MuiMenuItem-root,
 .MuiListItemButton-root,
 .btnMoreFrom,
 .btnMoreItems,
@@ -3634,9 +3592,6 @@ select,
 
 .dialog,
 .MuiDialog-paper,
-.actionSheet,
-.MuiPopover-paper,
-.MuiMenu-paper,
 .toast,
 .snackbar,
 .paperList,
@@ -3646,7 +3601,7 @@ select,
 .playbackSettingsContainer,
 .MuiPaper-root,
 .MuiCard-root,
-.listItem,
+.listItem:not(.actionSheetMenuItem),
 .emby-input,
 .emby-select,
 .emby-textarea,
@@ -3670,7 +3625,6 @@ select,
 input[type="range"] {
   border-radius: var(--codex-round-pill) !important;
 }
-
 /* Codex Jellyfin safe rounded corners only v4.4 end */
 
 /* Codex Continue Watching card polish v4.5 */
@@ -3765,7 +3719,6 @@ input[type="range"] {
   transform: none !important;
   width: 100% !important;
 }
-
 /* Codex Continue Watching card polish v4.5 end */
 
 /* Codex Continue Watching selector repair v4.6 */
@@ -3888,7 +3841,6 @@ input[type="range"] {
   transform: none !important;
   width: 100% !important;
 }
-
 /* Codex Continue Watching selector repair v4.6 end */
 
 /* Codex Android card, FAB, and dialog polish v4.7 */
@@ -4054,9 +4006,6 @@ input[type="range"] {
 
 .dialog,
 .MuiDialog-paper,
-.actionSheet,
-.MuiPopover-paper,
-.MuiMenu-paper,
 .formDialog,
 .promptDialog,
 .toast,
@@ -4070,8 +4019,7 @@ input[type="range"] {
 
 .dialog .formDialogHeader,
 .dialog .dialogHeader,
-.MuiDialogTitle-root,
-.actionSheetTitle {
+.MuiDialogTitle-root {
   background: transparent !important;
   border-bottom: 1px solid rgba(169, 247, 255, .1) !important;
   color: var(--my-text) !important;
@@ -4079,8 +4027,7 @@ input[type="range"] {
 
 .dialog .dialogContentInner,
 .dialog .formDialogContent,
-.MuiDialogContent-root,
-.actionSheetContent {
+.MuiDialogContent-root {
   background: transparent !important;
   color: var(--my-text) !important;
 }
@@ -4092,15 +4039,11 @@ input[type="range"] {
   border-top: 1px solid rgba(169, 247, 255, .1) !important;
 }
 
-.actionSheetMenuItem,
-.MuiMenuItem-root,
 .MuiListItemButton-root {
   border-radius: 1rem !important;
   margin-inline: .35rem !important;
 }
 
-.actionSheetMenuItem:hover,
-.MuiMenuItem-root:hover,
 .MuiListItemButton-root:hover {
   background: var(--codex-m3-state-hover) !important;
 }
@@ -4113,7 +4056,7 @@ input[type="range"] {
     border-radius: 1.35rem !important;
   }
 
-.cardOverlayContainer > .cardOverlayFab-primary,
+  .cardOverlayContainer > .cardOverlayFab-primary,
   .cardOverlayContainer .cardOverlayFab-primary,
   .cardOverlayButton-centered {
     height: 3rem !important;
@@ -4121,9 +4064,7 @@ input[type="range"] {
     min-width: 3rem !important;
     width: 3rem !important;
   }
-
 }
-
 /* Codex Android card, FAB, and dialog polish v4.7 end */
 
 /* Codex home image blanking repair v4.8 */
@@ -4168,7 +4109,6 @@ input[type="range"] {
   opacity: 1 !important;
   visibility: visible !important;
 }
-
 /* Codex home image blanking repair v4.8 end */
 
 /* Codex header color switcher v4.9 */
@@ -4261,5 +4201,2276 @@ input[type="range"] {
 .codex-color-option-pink .codex-color-swatch {
   background: #ff6fcf !important;
 }
-
 /* Codex header color switcher v4.9 end */
+
+/* Codex dynamic accent coverage v5.0 */
+.card .playedIndicator,
+.card .countIndicator,
+.card .mediaSourceIndicator,
+.card .videoIndicator,
+.card .indicator,
+.card .cardIndicator,
+.card .cardIndicators .playedIndicator,
+.card .cardIndicators .countIndicator {
+  background: var(--my-primary) !important;
+  background-color: var(--my-primary) !important;
+  background-image: none !important;
+  border-color: var(--my-primary-container-soft) !important;
+  box-shadow: 0 .25rem .75rem var(--my-accent-shadow-soft, var(--my-primary-container-soft)) !important;
+  color: var(--my-on-primary) !important;
+}
+
+.card .playedIndicator *,
+.card .countIndicator *,
+.card .mediaSourceIndicator *,
+.card .videoIndicator *,
+.card .indicator *,
+.card .cardIndicator *,
+.card .playedIndicator svg,
+.card .countIndicator svg,
+.card .indicator svg {
+  color: var(--my-on-primary) !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+.skinHeader .headerButton,
+.skinHeader .paper-icon-button-light,
+.skinHeader .MuiIconButton-root,
+.skinHeader button[is="emby-button"],
+.skinHeader button[aria-label],
+.skinHeader button[title],
+.homePage .btnNextPage,
+.homePage .btnPreviousPage,
+.homePage .emby-scrollbuttons-button {
+  color: var(--my-primary-2) !important;
+}
+
+.skinHeader .headerButton:not(:has(.profileImage)):not(:has(.userImage)):not(:has(img)):hover,
+.skinHeader .paper-icon-button-light:not(:has(.profileImage)):not(:has(.userImage)):not(:has(img)):hover,
+.skinHeader .MuiIconButton-root:hover,
+.skinHeader button[is="emby-button"]:not(.headerUserButton):not(.btnUser):not(.userMenuButton):hover,
+.skinHeader button[aria-label]:not(.headerUserButton):not(.btnUser):not(.userMenuButton):not([aria-label*="End0fL1ne"]):hover,
+.skinHeader button[title]:not(.headerUserButton):not(.btnUser):not(.userMenuButton):not([title="End0fL1ne"]):hover,
+.homePage .btnNextPage,
+.homePage .btnPreviousPage,
+.homePage .emby-scrollbuttons-button,
+.verticalSection:has(.emby-scrollbuttons) .btnNextPage,
+.verticalSection:has(.emby-scrollbuttons) .btnPreviousPage,
+.verticalSection:has(.emby-scrollbuttons) .emby-scrollbuttons-button {
+  background: var(--my-state-hover) !important;
+  background-color: var(--my-state-hover) !important;
+  border-color: var(--my-primary-container-soft) !important;
+  box-shadow: 0 .35rem 1rem var(--my-accent-shadow-soft, transparent) !important;
+}
+
+.skinHeader .headerButton:not(:has(.profileImage)):not(:has(.userImage)):not(:has(img)):hover,
+.skinHeader .paper-icon-button-light:not(:has(.profileImage)):not(:has(.userImage)):not(:has(img)):hover,
+.skinHeader .MuiIconButton-root:hover,
+.skinHeader button[is="emby-button"]:not(.headerUserButton):not(.btnUser):not(.userMenuButton):hover,
+.skinHeader button[aria-label]:not(.headerUserButton):not(.btnUser):not(.userMenuButton):not([aria-label*="End0fL1ne"]):hover,
+.skinHeader button[title]:not(.headerUserButton):not(.btnUser):not(.userMenuButton):not([title="End0fL1ne"]):hover,
+.homePage .btnNextPage:hover,
+.homePage .btnPreviousPage:hover,
+.homePage .emby-scrollbuttons-button:hover,
+.verticalSection:has(.emby-scrollbuttons) .btnNextPage:hover,
+.verticalSection:has(.emby-scrollbuttons) .btnPreviousPage:hover,
+.verticalSection:has(.emby-scrollbuttons) .emby-scrollbuttons-button:hover {
+  background: var(--my-state-selected) !important;
+  background-color: var(--my-state-selected) !important;
+  color: var(--my-primary) !important;
+}
+
+.skinHeader .headerButton .material-icons,
+.skinHeader .paper-icon-button-light .material-icons,
+.skinHeader .MuiIconButton-root .material-icons,
+.skinHeader button[is="emby-button"] .material-icons,
+.skinHeader .headerButton svg,
+.skinHeader .paper-icon-button-light svg,
+.skinHeader .MuiIconButton-root svg,
+.skinHeader button[is="emby-button"] svg,
+.homePage .btnNextPage .material-icons,
+.homePage .btnPreviousPage .material-icons,
+.homePage .emby-scrollbuttons-button .material-icons,
+.homePage .btnNextPage svg,
+.homePage .btnPreviousPage svg,
+.homePage .emby-scrollbuttons-button svg {
+  color: currentColor !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+.skinHeader .headerUserButton,
+.skinHeader .btnUser,
+.skinHeader .userMenuButton,
+.skinHeader .headerButton[title="End0fL1ne"],
+.skinHeader .paper-icon-button-light[title="End0fL1ne"],
+.skinHeader button[title="End0fL1ne"],
+.skinHeader button[aria-label="End0fL1ne"],
+.skinHeader button[aria-label*="End0fL1ne"] {
+  border-color: var(--my-accent-outline, var(--codex-m3-outline-focus)) !important;
+  box-shadow: inset 0 0 0 1px var(--my-primary-container-soft) !important;
+}
+
+.sectionTitleButton,
+.btnMoreFrom,
+.btnMoreItems,
+.alphaPickerButton,
+.genreButton,
+.MuiChip-root,
+.emby-tab-button,
+.navMenuOption,
+.MuiTab-root,
+.MuiBottomNavigationAction-root {
+  background: var(--my-state-hover) !important;
+  background-color: var(--my-state-hover) !important;
+  border-color: var(--my-primary-container-soft) !important;
+  color: var(--my-primary-2) !important;
+}
+
+.button-submit,
+.emby-tab-button-active,
+.MuiTab-root.Mui-selected,
+.headerTabs .emby-button-active,
+.headerTabs button[aria-selected="true"],
+.libraryViewNav .emby-button-active,
+.libraryViewNav button[aria-selected="true"],
+.navMenuOption-selected,
+.MuiListItemButton-root.Mui-selected,
+.MuiChip-root.Mui-selected,
+.alphaPickerButton.selected {
+  background: var(--my-primary) !important;
+  background-color: var(--my-primary) !important;
+  border-color: var(--my-primary) !important;
+  color: var(--my-on-primary) !important;
+}
+
+.MuiIconButton-colorPrimary,
+.MuiSvgIcon-colorPrimary,
+.MuiCheckbox-root.Mui-checked,
+.MuiRadio-root.Mui-checked,
+.MuiSwitch-switchBase.Mui-checked,
+.MuiTab-root.Mui-selected,
+.emby-checkbox:checked + span,
+.checkboxOutline.checked,
+.checkboxContainer input:checked + span {
+  color: var(--my-primary) !important;
+  border-color: var(--my-primary) !important;
+}
+
+.emby-checkbox:checked + span,
+.checkboxContainer input:checked + span,
+.MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track,
+.MuiTabs-indicator {
+  background: var(--my-primary) !important;
+  background-color: var(--my-primary) !important;
+}
+
+.MuiListItemButton-root:hover {
+  background: var(--my-state-hover) !important;
+  background-color: var(--my-state-hover) !important;
+}
+
+.progressbar,
+.progressBar,
+.itemProgressBar,
+.taskProgressOuter,
+.MuiLinearProgress-root,
+.mdl-slider-background-flex,
+.mdl-slider-background-upper,
+.MuiSlider-rail,
+input[type="range"] {
+  background-color: var(--my-state-hover) !important;
+  background-image: var(--codex-wave-line-soft) !important;
+}
+
+.mdl-slider-background-lower,
+.MuiSlider-track,
+.MuiLinearProgress-bar,
+.linearProgress .bar,
+.progressbar .bar,
+.progressBar .bar,
+.itemProgressBarForeground,
+.playbackProgress > div,
+.taskProgressInner,
+input[type="range"]::-moz-range-progress {
+  background-image: var(--codex-wave-line) !important;
+  box-shadow: 0 0 .55rem var(--my-accent-shadow-strong, transparent) !important;
+}
+
+.splashLogo::before,
+.loadingSpinner::before,
+.busyIndicator::before,
+.spinner::before,
+.paper-spinner::before,
+.mdl-spinner::before,
+.MuiCircularProgress-root::before {
+  background-image: var(--codex-wave-ring) !important;
+}
+
+.codex-color-button,
+.codex-color-option:hover,
+.codex-color-option.is-selected {
+  border-color: var(--my-primary-container-soft) !important;
+}
+
+.codex-color-button:hover,
+.codex-color-button[aria-expanded="true"] {
+  background: var(--my-state-selected) !important;
+  background-color: var(--my-state-selected) !important;
+  color: var(--my-primary) !important;
+}
+/* Codex dynamic accent coverage v5.0 end */
+
+/* Codex desktop player progress normalization v5.1 */
+:root {
+  --codex-player-progress-track: color-mix(in srgb, var(--my-primary) 16%, transparent);
+  --codex-player-progress-fill: var(--my-primary);
+}
+
+.mdl-slider-background-flex,
+.mdl-slider-background-upper,
+.MuiSlider-rail,
+.MuiLinearProgress-root,
+.linearProgress,
+.progressbar,
+.progressBar,
+.itemProgressBar,
+.taskProgressOuter,
+.playbackProgress,
+input[type="range"],
+input[type="range"]::-webkit-slider-runnable-track,
+input[type="range"]::-moz-range-track {
+  animation: none !important;
+  background: var(--codex-player-progress-track) !important;
+  background-color: var(--codex-player-progress-track) !important;
+  background-image: none !important;
+  background-position: initial !important;
+  background-repeat: no-repeat !important;
+  background-size: auto !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  filter: none !important;
+  outline: none !important;
+  overflow: hidden !important;
+}
+
+.mdl-slider-background-lower,
+.MuiSlider-track,
+.MuiLinearProgress-bar,
+.linearProgress .bar,
+.progressbar .bar,
+.progressBar .bar,
+.itemProgressBarForeground,
+.playbackProgress > div,
+.taskProgressInner,
+input[type="range"]::-moz-range-progress {
+  animation: none !important;
+  background: var(--codex-player-progress-fill) !important;
+  background-color: var(--codex-player-progress-fill) !important;
+  background-image: none !important;
+  background-position: initial !important;
+  background-repeat: no-repeat !important;
+  background-size: auto !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  filter: none !important;
+  min-height: .46rem !important;
+}
+
+.progressbar,
+.progressBar,
+.taskProgressOuter,
+.MuiLinearProgress-root,
+.playbackProgress,
+.mdl-slider-background-flex,
+.mdl-slider-background-upper,
+.mdl-slider-background-lower,
+.MuiSlider-rail,
+.MuiSlider-track,
+input[type="range"]::-webkit-slider-runnable-track,
+input[type="range"]::-moz-range-track,
+input[type="range"]::-moz-range-progress {
+  height: .46rem !important;
+  min-height: .46rem !important;
+}
+
+.itemProgressBar,
+.itemProgressBarForeground {
+  height: .38rem !important;
+  min-height: .38rem !important;
+}
+
+.nowPlayingBar .playbackProgress,
+.nowPlayingBar .mdl-slider-background-flex,
+.nowPlayingBar .mdl-slider-background-upper,
+.nowPlayingBar .mdl-slider-background-lower,
+.videoOsdBottom .playbackProgress,
+.videoOsdBottom .mdl-slider-background-flex,
+.videoOsdBottom .mdl-slider-background-upper,
+.videoOsdBottom .mdl-slider-background-lower,
+.osdControls .playbackProgress,
+.osdControls .mdl-slider-background-flex,
+.osdControls .mdl-slider-background-upper,
+.osdControls .mdl-slider-background-lower {
+  height: .5rem !important;
+  min-height: .5rem !important;
+}
+
+input[type="range"] {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  accent-color: var(--codex-player-progress-fill) !important;
+  background: transparent !important;
+  height: 1.05rem !important;
+  min-height: 1.05rem !important;
+  overflow: visible !important;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  animation: none !important;
+  background: var(--codex-player-progress-fill) !important;
+  background-image: none !important;
+  border: .18rem solid var(--my-bg) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  filter: none !important;
+  height: 1.05rem !important;
+  margin-top: -.295rem !important;
+  width: 1.05rem !important;
+}
+
+input[type="range"]::-moz-range-thumb,
+.MuiSlider-thumb {
+  animation: none !important;
+  background: var(--codex-player-progress-fill) !important;
+  background-image: none !important;
+  border: .18rem solid var(--my-bg) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  filter: none !important;
+  height: 1.05rem !important;
+  width: 1.05rem !important;
+}
+
+.mdl-slider-background-flex::before,
+.mdl-slider-background-flex::after,
+.MuiSlider-rail::before,
+.MuiSlider-rail::after,
+.MuiSlider-track::before,
+.MuiSlider-track::after,
+.playbackProgress::before,
+.playbackProgress::after,
+.progressbar::before,
+.progressbar::after,
+.progressBar::before,
+.progressBar::after,
+.itemProgressBar::before,
+.itemProgressBar::after,
+input[type="range"]::before,
+input[type="range"]::after {
+  animation: none !important;
+  background: none !important;
+  background-image: none !important;
+  content: none !important;
+}
+/* Codex desktop player progress normalization v5.1 end */
+
+/* Codex shape loaders v7.4 */
+:root {
+  --codex-loader-path: color-mix(in srgb, var(--my-primary) 28%, var(--my-surface-4));
+  --codex-loader-dot: var(--my-primary);
+  --codex-loader-shadow: color-mix(in srgb, var(--my-primary) 44%, transparent);
+  --codex-loader-duration: 3s;
+  --codex-loader-ease: cubic-bezier(.785, .135, .15, .86);
+  --codex-loader-circle-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='32' fill='none' stroke='black' stroke-width='10' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E");
+  --codex-loader-rect-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect x='8' y='8' width='64' height='64' fill='none' stroke='black' stroke-width='10' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E");
+  --codex-loader-triangle-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 86 80'%3E%3Cpolygon points='43 8 79 72 7 72' fill='none' stroke='black' stroke-width='10' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+@keyframes codexLoaderPathSpin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes codexLoaderDotCircle {
+  to {
+    transform: rotate(1turn) translateX(18px);
+  }
+}
+
+@keyframes codexLoaderDotRect {
+  25% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(18px, -18px);
+  }
+
+  75% {
+    transform: translate(0, -36px);
+  }
+
+  100% {
+    transform: translate(-18px, -18px);
+  }
+}
+
+@keyframes codexLoaderDotTriangle {
+  33% {
+    transform: translate(0, 0);
+  }
+
+  66% {
+    transform: translate(10px, -18px);
+  }
+
+  100% {
+    transform: translate(-10px, -18px);
+  }
+}
+
+.splashLogo,
+.loadingSpinner,
+.busyIndicator,
+.docspinner,
+.mdlSpinnerActive,
+.mdl-spinner.mdlSpinnerActive,
+.MuiCircularProgress-root[role="progressbar"] {
+  --codex-loader-mask: var(--codex-loader-circle-mask);
+  --codex-loader-height: 44px;
+  --codex-loader-width: 44px;
+  animation: none !important;
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--codex-loader-dot) !important;
+  display: inline-block !important;
+  filter: none !important;
+  height: var(--codex-loader-height) !important;
+  min-height: var(--codex-loader-height) !important;
+  min-width: var(--codex-loader-width) !important;
+  overflow: visible !important;
+  position: relative !important;
+  width: var(--codex-loader-width) !important;
+}
+
+.splashLogo,
+.busyIndicator {
+  --codex-loader-mask: var(--codex-loader-triangle-mask);
+  --codex-loader-width: 48px;
+}
+
+.docspinner,
+.mdlSpinnerActive,
+.mdl-spinner.mdlSpinnerActive {
+  --codex-loader-mask: var(--codex-loader-rect-mask);
+}
+
+.splashLogo::before,
+.loadingSpinner::before,
+.busyIndicator::before,
+.docspinner::before,
+.mdlSpinnerActive::before,
+.mdl-spinner.mdlSpinnerActive::before,
+.MuiCircularProgress-root[role="progressbar"]::before {
+  -webkit-mask: var(--codex-loader-mask) center / 100% 100% no-repeat !important;
+  animation: codexLoaderPathSpin var(--codex-loader-duration) var(--codex-loader-ease) infinite !important;
+  background: conic-gradient(from -90deg, var(--codex-loader-path) 0 74%, transparent 74% 100%) !important;
+  background-color: transparent !important;
+  background-image: conic-gradient(from -90deg, var(--codex-loader-path) 0 74%, transparent 74% 100%) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  content: "" !important;
+  display: block !important;
+  height: 100% !important;
+  inset: 0 !important;
+  margin: 0 !important;
+  mask: var(--codex-loader-mask) center / 100% 100% no-repeat !important;
+  opacity: 1 !important;
+  position: absolute !important;
+  transform-origin: center !important;
+  width: 100% !important;
+}
+
+.splashLogo::after,
+.loadingSpinner::after,
+.busyIndicator::after,
+.docspinner::after,
+.mdlSpinnerActive::after,
+.mdl-spinner.mdlSpinnerActive::after,
+.MuiCircularProgress-root[role="progressbar"]::after {
+  animation: codexLoaderDotCircle var(--codex-loader-duration) var(--codex-loader-ease) infinite !important;
+  background: var(--codex-loader-dot) !important;
+  background-color: var(--codex-loader-dot) !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  box-shadow: 0 0 .55rem var(--codex-loader-shadow) !important;
+  content: "" !important;
+  display: block !important;
+  height: 6px !important;
+  bottom: auto !important;
+  inset: auto !important;
+  left: 19px !important;
+  margin: 0 !important;
+  opacity: 1 !important;
+  position: absolute !important;
+  right: auto !important;
+  top: 19px !important;
+  transform: rotate(0deg) translateX(18px);
+  transform-origin: 3px 3px !important;
+  width: 6px !important;
+  z-index: 1 !important;
+}
+
+.splashLogo::after,
+.busyIndicator::after {
+  animation-name: codexLoaderDotTriangle !important;
+  left: 21px !important;
+  top: 37px !important;
+  transform: translate(-10px, -18px);
+}
+
+.docspinner::after,
+.mdlSpinnerActive::after,
+.mdl-spinner.mdlSpinnerActive::after {
+  animation-name: codexLoaderDotRect !important;
+  left: 19px !important;
+  top: 37px !important;
+  transform: translate(-18px, -18px);
+}
+
+.MuiCircularProgress-root[role="progressbar"] svg,
+.docspinner svg,
+.mdlSpinnerActive svg,
+.mdl-spinner.mdlSpinnerActive svg,
+.MuiCircularProgress-root[role="progressbar"] .MuiCircularProgress-circle,
+.docspinner circle,
+.mdlSpinnerActive circle,
+.mdl-spinner.mdlSpinnerActive circle,
+.mdlSpinnerActive .mdl-spinner__circle,
+.mdlSpinnerActive .mdl-spinner__layer,
+.mdlSpinnerActive .mdl-spinner__layer-1,
+.mdlSpinnerActive .mdl-spinner__layer-2,
+.mdlSpinnerActive .mdl-spinner__layer-3,
+.mdlSpinnerActive .mdl-spinner__layer-4 {
+  animation: none !important;
+  opacity: 0 !important;
+  stroke: transparent !important;
+}
+
+.homePage .card .spinner,
+.homePage .card .progressring,
+.homePage .card .paper-spinner,
+.homePage .card .mdl-spinner:not(.mdlSpinnerActive),
+.homePage .card .MuiCircularProgress-root:not([role="progressbar"]) {
+  animation: none !important;
+  background-image: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+  min-width: 0 !important;
+  width: auto !important;
+}
+
+.homePage .card .progressring:not(.mdlSpinnerActive),
+.homePage .card .paper-spinner:not(.mdlSpinnerActive) {
+  display: none !important;
+}
+
+.homePage .card .spinner::before,
+.homePage .card .spinner::after,
+.homePage .card .progressring::before,
+.homePage .card .progressring::after,
+.homePage .card .paper-spinner::before,
+.homePage .card .paper-spinner::after,
+.homePage .card .mdl-spinner:not(.mdlSpinnerActive)::before,
+.homePage .card .mdl-spinner:not(.mdlSpinnerActive)::after,
+.homePage .card .MuiCircularProgress-root:not([role="progressbar"])::before,
+.homePage .card .MuiCircularProgress-root:not([role="progressbar"])::after {
+  animation: none !important;
+  background: none !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  content: none !important;
+}
+/* Codex shape loaders v7.4 end */
+
+/* Codex contained card hover panel v7.3 */
+.homePage .itemsContainer .card,
+.homePage .verticalSection .card {
+  background: transparent !important;
+  background-image: none !important;
+  border-radius: .9rem !important;
+  box-shadow: none !important;
+  isolation: isolate !important;
+  overflow: visible !important;
+  position: relative !important;
+  transition:
+    color .16s ease !important;
+}
+
+.homePage .itemsContainer .card::before,
+.homePage .verticalSection .card::before {
+  background-color: color-mix(in srgb, var(--my-primary) 15%, rgba(7, 20, 23, .96)) !important;
+  background-image: none !important;
+  border-radius: .86rem .86rem .9rem .9rem !important;
+  bottom: 0 !important;
+  box-shadow: 0 .58rem 1rem rgba(0, 0, 0, .34) !important;
+  content: "" !important;
+  height: 5.85rem !important;
+  left: .6em !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  right: .6em !important;
+  transition:
+    opacity .16s ease,
+    color .16s ease !important;
+  z-index: -1 !important;
+}
+
+.homePage #codex-marvel-home-section .codex-marvel-card::before {
+  left: 0 !important;
+  right: 0 !important;
+}
+
+.homePage .itemsContainer .card:not(.codex-marvel-card) > .cardBox,
+.homePage .itemsContainer .card:not(.codex-marvel-card) > .visualCardBox,
+.homePage .verticalSection .card:not(.codex-marvel-card) > .cardBox,
+.homePage .verticalSection .card:not(.codex-marvel-card) > .visualCardBox {
+  margin: .6em .6em 0 !important;
+}
+
+.homePage .itemsContainer .card-hoverable:hover,
+.homePage .itemsContainer .card:hover,
+.homePage .itemsContainer .card:focus-within,
+.homePage .verticalSection .card-hoverable:hover,
+.homePage .verticalSection .card:hover,
+.homePage .verticalSection .card:focus-within {
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.homePage .itemsContainer .card-hoverable:hover::before,
+.homePage .itemsContainer .card:hover::before,
+.homePage .itemsContainer .card:focus-within::before,
+.homePage .verticalSection .card-hoverable:hover::before,
+.homePage .verticalSection .card:hover::before,
+.homePage .verticalSection .card:focus-within::before {
+  opacity: 1 !important;
+}
+
+.homePage .itemsContainer .cardText-first,
+.homePage .itemsContainer .cardText-secondary,
+.homePage .verticalSection .cardText-first,
+.homePage .verticalSection .cardText-secondary {
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  max-width: 100% !important;
+  position: relative !important;
+  text-shadow: none !important;
+  transition:
+    background-color .16s ease,
+    box-shadow .16s ease,
+    color .16s ease !important;
+  width: 100% !important;
+}
+
+.homePage .itemsContainer .card:not(.codex-marvel-card) .cardText-first,
+.homePage .itemsContainer .card:not(.codex-marvel-card) .cardText-secondary,
+.homePage .verticalSection .card:not(.codex-marvel-card) .cardText-first,
+.homePage .verticalSection .card:not(.codex-marvel-card) .cardText-secondary {
+  margin-left: .6em !important;
+  margin-right: .6em !important;
+  max-width: calc(100% - 1.2em) !important;
+  width: auto !important;
+}
+
+.homePage .itemsContainer .cardText-first,
+.homePage .verticalSection .cardText-first {
+  border-radius: 0 !important;
+  margin-top: 0 !important;
+  padding: .42rem .62rem .18rem !important;
+  z-index: 2 !important;
+}
+
+.homePage .itemsContainer .cardText-secondary,
+.homePage .verticalSection .cardText-secondary {
+  border-radius: 0 0 .9rem .9rem !important;
+  margin-top: 0 !important;
+  padding: .08rem .62rem .54rem !important;
+  z-index: 2 !important;
+}
+
+.homePage .itemsContainer .cardText-first:last-child,
+.homePage .verticalSection .cardText-first:last-child {
+  border-radius: 0 0 .9rem .9rem !important;
+  padding-bottom: .54rem !important;
+}
+
+.homePage .itemsContainer .card-hoverable:hover .cardText-first,
+.homePage .itemsContainer .card:hover .cardText-first,
+.homePage .itemsContainer .card:focus-within .cardText-first,
+.homePage .verticalSection .card-hoverable:hover .cardText-first,
+.homePage .verticalSection .card:hover .cardText-first,
+.homePage .verticalSection .card:focus-within .cardText-first,
+.homePage .itemsContainer .card-hoverable:hover .cardText-secondary,
+.homePage .itemsContainer .card:hover .cardText-secondary,
+.homePage .itemsContainer .card:focus-within .cardText-secondary,
+.homePage .verticalSection .card-hoverable:hover .cardText-secondary,
+.homePage .verticalSection .card:hover .cardText-secondary,
+.homePage .verticalSection .card:focus-within .cardText-secondary {
+  background: transparent !important;
+  background-image: none !important;
+  color: var(--my-primary-2) !important;
+  text-shadow: none !important;
+}
+
+.homePage .itemsContainer .card-hoverable:hover .cardText-first,
+.homePage .itemsContainer .card:hover .cardText-first,
+.homePage .itemsContainer .card:focus-within .cardText-first,
+.homePage .verticalSection .card-hoverable:hover .cardText-first,
+.homePage .verticalSection .card:hover .cardText-first,
+.homePage .verticalSection .card:focus-within .cardText-first {
+  box-shadow: none !important;
+}
+
+.homePage .itemsContainer .card-hoverable:hover .cardText-secondary,
+.homePage .itemsContainer .card:hover .cardText-secondary,
+.homePage .itemsContainer .card:focus-within .cardText-secondary,
+.homePage .verticalSection .card-hoverable:hover .cardText-secondary,
+.homePage .verticalSection .card:hover .cardText-secondary,
+.homePage .verticalSection .card:focus-within .cardText-secondary {
+  box-shadow: none !important;
+}
+
+.homePage .itemsContainer .card-hoverable:hover .cardText-first:last-child,
+.homePage .itemsContainer .card:hover .cardText-first:last-child,
+.homePage .itemsContainer .card:focus-within .cardText-first:last-child,
+.homePage .verticalSection .card-hoverable:hover .cardText-first:last-child,
+.homePage .verticalSection .card:hover .cardText-first:last-child,
+.homePage .verticalSection .card:focus-within .cardText-first:last-child {
+  box-shadow: none !important;
+}
+/* Codex contained card hover panel v7.3 end */
+
+/* Codex native action menu cleanup v5.10 */
+.dialog.actionSheet {
+  background: var(--my-bg-raised) !important;
+  background-image: none !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 18%, transparent) !important;
+  border-radius: 1.35rem !important;
+  box-shadow: 0 .85rem 2rem rgba(0, 0, 0, .42) !important;
+  color: var(--my-text) !important;
+  overflow: visible !important;
+  pointer-events: auto !important;
+}
+
+.dialog.actionSheet .actionSheetContent,
+.dialog.actionSheet .actionSheetScroller {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+.dialog.actionSheet .actionSheetScroller {
+  padding: .35rem !important;
+  pointer-events: auto !important;
+}
+
+.dialog.actionSheet .actionSheetMenuItem {
+  align-items: center !important;
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  color: var(--my-text) !important;
+  gap: .65rem !important;
+  margin: .1rem 0 !important;
+  min-height: 2.9rem !important;
+  padding: .55rem .85rem !important;
+  pointer-events: auto !important;
+  transition:
+    background-color .14s ease,
+    color .14s ease !important;
+}
+
+.dialog.actionSheet .actionSheetMenuItem:hover,
+.dialog.actionSheet .actionSheetMenuItem:focus-visible {
+  background: var(--my-state-hover) !important;
+  color: var(--my-primary-2) !important;
+}
+
+.dialog.actionSheet .listItemIcon,
+.dialog.actionSheet .material-icons,
+.dialog.actionSheet .actionSheetItemText,
+.dialog.actionSheet .listItemBodyText {
+  color: currentColor !important;
+}
+
+.dialog.actionSheet .listItemBody {
+  padding: 0 !important;
+}
+/* Codex native action menu cleanup v5.10 end */
+
+/* Codex accent-synced Jellyfin logo v6.2 */
+:root {
+  --codex-logo-accent-fill: var(--theme-accent-color, var(--my-primary));
+}
+
+.skinHeader img[src*="icon-transparent"],
+.skinHeader img[src*="touchicon"],
+.skinHeader img[src*="banner-dark"],
+.skinHeader img[src*="banner-light"],
+.skinHeader .imgLogoIcon,
+.skinHeader .headerLogoIcon,
+.skinHeader .logoIcon,
+.skinHeader .jellyfinLogoIcon,
+.skinHeader .imgLogo,
+.skinHeader .headerLogo,
+.skinHeader .jellyfinLogo,
+.skinHeader .pageTitleWithDefaultLogo::before,
+.skinHeader .pageTitleWithLogo::before,
+.skinHeader .pageTitle.pageTitleWithDefaultLogo::before,
+.skinHeader .pageTitle.pageTitleWithLogo::before,
+.skinHeader h3.pageTitleWithDefaultLogo::before,
+.skinHeader h3.pageTitleWithLogo::before,
+.skinHeader .headerTitle::before,
+.skinHeader .appName::before {
+  background: var(--codex-logo-accent-fill) !important;
+  background-color: var(--codex-logo-accent-fill) !important;
+  background-image: none !important;
+  filter: none !important;
+}
+
+.skinHeader .pageTitleWithDefaultLogo,
+.skinHeader .pageTitleWithLogo,
+.skinHeader .pageTitle,
+.skinHeader .headerTitle,
+.skinHeader .appName,
+.skinHeader [class*="Logo"] + .pageTitle,
+.skinHeader [class*="logo"] + .pageTitle {
+  color: var(--codex-logo-accent-fill) !important;
+  text-shadow: none !important;
+}
+/* Codex accent-synced Jellyfin logo v6.2 end */
+
+/* Codex light-accent home section headings v6.6 */
+.homePage .sectionTitle,
+.homePage .sectionTitleText,
+.homePage .sectionTitleContainer .sectionTitle,
+.homePage .sectionTitleContainer h1,
+.homePage .sectionTitleContainer h2,
+.homePage .sectionTitleContainer h3,
+.homePage .sectionTitleContainer h4,
+.homePage .verticalSection .sectionTitle,
+.homePage .homePageSection .sectionTitle,
+.homePage .latestItemsSection .sectionTitle,
+.homePage .resumeSection .sectionTitle,
+.homePage .nextUpSection .sectionTitle {
+  color: var(--my-primary-2) !important;
+  text-shadow: none !important;
+}
+/* Codex light-accent home section headings v6.6 end */
+
+/* Codex Material 3 drawer item states v6.5 */
+.mainDrawer .navMenuOption,
+.mainDrawer button.navMenuOption,
+.MuiDrawer-paper .MuiListItemButton-root {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  color: var(--my-primary-2) !important;
+  margin: .12rem .72rem !important;
+  min-height: 3rem !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  transition:
+    background-color .15s ease,
+    color .15s ease !important;
+}
+
+.mainDrawer .navMenuOption .material-icons,
+.mainDrawer .navMenuOption .navMenuOptionIcon,
+.mainDrawer .navMenuOption .navMenuOptionText,
+.MuiDrawer-paper .MuiListItemButton-root .material-icons,
+.MuiDrawer-paper .MuiListItemIcon-root,
+.MuiDrawer-paper .MuiListItemText-root {
+  color: currentColor !important;
+}
+
+.mainDrawer .navMenuOption:not(.navMenuOption-selected):hover,
+.mainDrawer .navMenuOption:not(.navMenuOption-selected):focus-visible,
+.MuiDrawer-paper .MuiListItemButton-root:not(.Mui-selected):hover,
+.MuiDrawer-paper .MuiListItemButton-root:not(.Mui-selected):focus-visible {
+  background: var(--my-state-hover) !important;
+  background-color: var(--my-state-hover) !important;
+  color: var(--my-primary) !important;
+}
+
+.mainDrawer .navMenuOption-selected,
+.mainDrawer .navMenuOption.navMenuOption-selected,
+.MuiDrawer-paper .MuiListItemButton-root.Mui-selected {
+  background: color-mix(in srgb, var(--my-primary) 18%, transparent) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 18%, transparent) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: var(--my-primary) !important;
+}
+
+.mainDrawer .navMenuOption-selected:hover,
+.mainDrawer .navMenuOption.navMenuOption-selected:hover,
+.MuiDrawer-paper .MuiListItemButton-root.Mui-selected:hover {
+  background: color-mix(in srgb, var(--my-primary) 24%, transparent) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 24%, transparent) !important;
+  color: var(--my-primary) !important;
+}
+/* Codex Material 3 drawer item states v6.5 end */
+
+/* Codex click focus ring cleanup v7.5 */
+.emby-button:focus,
+.emby-button:focus-visible,
+.paper-icon-button-light:focus,
+.paper-icon-button-light:focus-visible,
+.navMenuOption:focus,
+.navMenuOption:focus-visible,
+.card:focus,
+.card:focus-visible,
+.card:focus-within,
+.listItem:focus,
+.listItem:focus-visible,
+.emby-tab-button:focus,
+.emby-tab-button:focus-visible,
+.detailButton:focus,
+.detailButton:focus-visible,
+.cardOverlayButton:focus,
+.cardOverlayButton:focus-visible,
+.btnCardOptions:focus,
+.btnCardOptions:focus-visible,
+.MuiButton-root:focus,
+.MuiButton-root:focus-visible,
+.MuiIconButton-root:focus,
+.MuiIconButton-root:focus-visible,
+.MuiButtonBase-root:focus,
+.MuiButtonBase-root:focus-visible,
+.Mui-focusVisible,
+.MuiButtonBase-root.Mui-focusVisible,
+a:focus,
+a:focus-visible,
+button:focus,
+button:focus-visible {
+  outline: 0 !important;
+  outline-color: transparent !important;
+  outline-offset: 0 !important;
+}
+
+.emby-button:focus-visible,
+.paper-icon-button-light:focus-visible,
+.navMenuOption:focus-visible,
+.listItem:focus-visible,
+.emby-tab-button:focus-visible,
+.detailButton:focus-visible,
+.cardOverlayButton:focus-visible,
+.btnCardOptions:focus-visible,
+.MuiButton-root:focus-visible,
+.MuiIconButton-root:focus-visible,
+.MuiButtonBase-root:focus-visible,
+.Mui-focusVisible,
+.MuiButtonBase-root.Mui-focusVisible {
+  box-shadow: none !important;
+}
+
+.card:focus-visible .cardBox,
+.card:focus-visible .visualCardBox,
+.card:focus-within .cardBox,
+.card:focus-within .visualCardBox,
+.card.show-focus:focus .cardBox,
+.card.show-focus:focus .visualCardBox,
+.card.show-focus:focus-within .cardBox,
+.card.show-focus:focus-within .visualCardBox {
+  outline: 0 !important;
+  outline-color: transparent !important;
+  outline-offset: 0 !important;
+}
+
+.card:focus-within:not(:hover) .cardBox,
+.card:focus-within:not(:hover) .visualCardBox {
+  box-shadow: none !important;
+}
+
+.emby-button.show-focus:focus,
+.paper-icon-button-light.show-focus:focus,
+.listItem-focusscale:focus,
+.card.show-focus:focus {
+  transform: none !important;
+}
+
+.MuiTouchRipple-root,
+.MuiTouchRipple-ripple,
+.MuiTouchRipple-child,
+.ripple,
+.paper-ripple {
+  animation: none !important;
+  display: none !important;
+  opacity: 0 !important;
+}
+
+button::-moz-focus-inner {
+  border: 0 !important;
+}
+/* Codex click focus ring cleanup v7.5 end */
+
+/* Codex native loader restore v7.6 */
+.splashLogo::before,
+.splashLogo::after,
+.loadingSpinner::before,
+.loadingSpinner::after,
+.busyIndicator::before,
+.busyIndicator::after,
+.spinner::before,
+.spinner::after,
+.progressring::before,
+.progressring::after,
+.paper-spinner::before,
+.paper-spinner::after,
+.mdl-spinner::before,
+.mdl-spinner::after,
+.docspinner::before,
+.docspinner::after,
+.mdlSpinnerActive::before,
+.mdlSpinnerActive::after,
+.MuiCircularProgress-root::before,
+.MuiCircularProgress-root::after {
+  -webkit-mask: none !important;
+  animation: none !important;
+  background: none !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  content: none !important;
+  display: none !important;
+  mask: none !important;
+  opacity: 0 !important;
+}
+
+.loadingSpinner,
+.busyIndicator,
+.spinner,
+.progressring,
+.paper-spinner,
+.mdl-spinner,
+.docspinner,
+.mdlSpinnerActive,
+.MuiCircularProgress-root {
+  background-image: none !important;
+  color: var(--my-primary) !important;
+}
+
+.MuiCircularProgress-root svg,
+.progressring svg,
+.paper-spinner svg,
+.mdl-spinner svg,
+.docspinner svg,
+.MuiCircularProgress-circle,
+.progressring circle,
+.paper-spinner circle,
+.mdl-spinner circle,
+.docspinner circle,
+.mdl-spinner__circle {
+  opacity: 1 !important;
+  stroke: currentColor !important;
+}
+
+.mdlSpinnerActive,
+.mdlSpinnerActive .mdl-spinner__layer,
+.mdlSpinnerActive .mdl-spinner__layer-1,
+.mdlSpinnerActive .mdl-spinner__layer-2,
+.mdlSpinnerActive .mdl-spinner__layer-3,
+.mdlSpinnerActive .mdl-spinner__layer-4,
+.mdlSpinnerActive .mdl-spinner__circleLeft,
+.mdlSpinnerActive .mdl-spinner__circleRight {
+  animation: revert !important;
+}
+/* Codex native loader restore v7.6 end */
+
+/* Codex dynamic accent backgrounds v7.7 */
+:root {
+  --my-state-hover: color-mix(in srgb, var(--my-primary) 14%, transparent) !important;
+  --my-state-focus: color-mix(in srgb, var(--my-primary) 24%, transparent) !important;
+  --my-state-pressed: color-mix(in srgb, var(--my-primary) 30%, transparent) !important;
+  --my-state-selected: color-mix(in srgb, var(--my-primary) 20%, transparent) !important;
+  --my-primary-container-soft: color-mix(in srgb, var(--my-primary) 28%, transparent) !important;
+  --my-accent-soft: color-mix(in srgb, var(--my-primary) 28%, transparent) !important;
+  --my-accent-hover: var(--my-state-hover) !important;
+  --my-accent-focus: var(--my-state-focus) !important;
+  --my-accent-pressed: var(--my-state-pressed) !important;
+  --my-accent-selected: var(--my-state-selected) !important;
+  --my-accent-outline: color-mix(in srgb, var(--my-primary) 62%, transparent) !important;
+  --my-accent-shadow-soft: color-mix(in srgb, var(--my-primary) 14%, transparent) !important;
+  --my-accent-shadow-strong: color-mix(in srgb, var(--my-primary) 24%, transparent) !important;
+  --codex-accent-bg-faint: color-mix(in srgb, var(--my-primary) 8%, transparent);
+  --codex-accent-bg-soft: color-mix(in srgb, var(--my-primary) 12%, transparent);
+  --codex-accent-bg-medium: color-mix(in srgb, var(--my-primary) 18%, transparent);
+  --codex-accent-bg-strong: color-mix(in srgb, var(--my-primary) 26%, transparent);
+  --codex-accent-surface: color-mix(in srgb, var(--my-primary) 11%, var(--my-bg-raised));
+  --codex-accent-surface-2: color-mix(in srgb, var(--my-primary) 15%, var(--my-surface));
+  --codex-accent-outline: color-mix(in srgb, var(--my-primary) 24%, transparent);
+  --codex-accent-outline-strong: color-mix(in srgb, var(--my-primary) 44%, transparent);
+  --codex-accent-shadow: color-mix(in srgb, var(--my-primary) 18%, transparent);
+  --codex-m3-state-hover: color-mix(in srgb, var(--my-primary-2) 8%, transparent) !important;
+  --codex-m3-state-focus: color-mix(in srgb, var(--my-primary-2) 16%, transparent) !important;
+  --codex-m3-outline-soft: color-mix(in srgb, var(--my-primary-2) 16%, transparent) !important;
+  --codex-m3-outline-focus: color-mix(in srgb, var(--my-primary) 62%, transparent) !important;
+  --my-glow-soft: 0 .85rem 2.4rem rgba(0, 0, 0, .22), 0 .2rem .8rem var(--codex-accent-bg-faint) !important;
+  --my-glow-hover: 0 1.1rem 2.7rem rgba(0, 0, 0, .25), 0 .35rem 1.2rem var(--codex-accent-shadow) !important;
+  --my-glow-selected: 0 .95rem 2.3rem rgba(0, 0, 0, .24), 0 .38rem 1.35rem var(--my-state-selected) !important;
+}
+
+.emby-button:hover,
+.emby-button:focus-visible,
+.button-flat:hover,
+.button-flat:focus-visible,
+.button-link:hover,
+.paper-icon-button-light:hover,
+.paper-icon-button-light:focus-visible,
+.headerButton:hover,
+.headerButton:focus-visible,
+.detailButton:hover,
+.detailButton:focus-visible,
+.cardOverlayButton:hover,
+.cardOverlayButton:focus-visible,
+.btnCardOptions:hover,
+.btnCardOptions:focus-visible,
+.sectionTitleButton:hover,
+.btnMoreFrom:hover,
+.btnMoreItems:hover,
+.listItem:hover,
+.listItem:focus-visible,
+.alphaPickerButton:hover,
+.genreButton:hover,
+.tagButton:hover,
+.filterButton:hover,
+.emby-select-withcolor:hover,
+.inputContainer:hover,
+.textareaContainer:hover,
+.MuiButtonBase-root:hover,
+.MuiIconButton-root:hover,
+.MuiListItemButton-root:hover,
+.MuiChip-root:hover,
+.MuiMenuItem-root:hover,
+.MuiTab-root:hover,
+.codex-color-button:hover,
+.codex-color-button[aria-expanded="true"],
+.codex-color-option:hover,
+.codex-color-option:focus-visible {
+  background: var(--my-state-hover) !important;
+  background-color: var(--my-state-hover) !important;
+  background-image: none !important;
+  border-color: var(--codex-accent-outline) !important;
+  box-shadow: 0 .35rem 1rem var(--codex-accent-shadow) !important;
+  color: var(--my-primary-2) !important;
+}
+
+.emby-tab-button-active,
+.emby-tab-button.emby-tab-button-active,
+.headerTabs .emby-button-active,
+.headerTabs button[aria-selected="true"],
+.libraryViewNav .emby-button-active,
+.libraryViewNav button[aria-selected="true"],
+.paper-icon-button-light[aria-pressed="true"],
+.detailButton[aria-pressed="true"],
+.btnUserItemRatingOn,
+.navMenuOption-selected,
+.navMenuOption.navMenuOption-selected,
+.mainDrawer .navMenuOption-selected,
+.MuiListItemButton-root.Mui-selected,
+.Mui-selected,
+.MuiChip-root.Mui-selected,
+.alphaPickerButton.selected,
+.button-submit,
+.button-submit:hover,
+.raised,
+.fab,
+.btnPlay,
+.mediaInfoCriticRatingFresh {
+  background: var(--my-primary) !important;
+  background-color: var(--my-primary) !important;
+  background-image: none !important;
+  border-color: var(--my-primary) !important;
+  box-shadow: 0 .55rem 1.45rem var(--my-state-focus) !important;
+  color: var(--my-on-primary) !important;
+}
+
+.countIndicator,
+.playedIndicator,
+.mediaSourceIndicator,
+.newIndicator,
+.itemProgressBarForeground,
+.transcodingProgress > div,
+.progressbar > .progressbarInner,
+.mdl-slider__background-lower,
+.mdl-slider.is-upgraded::-webkit-slider-thumb,
+.mdl-slider.is-upgraded::-moz-range-thumb,
+.emby-slider::-webkit-slider-thumb,
+.emby-slider::-moz-range-thumb {
+  background: var(--my-primary) !important;
+  background-color: var(--my-primary) !important;
+  border-color: var(--my-primary) !important;
+  color: var(--my-on-primary) !important;
+}
+
+.itemProgressBar,
+.progressbar,
+.mdl-slider__background-upper,
+.emby-slider::-webkit-slider-runnable-track,
+.emby-slider::-moz-range-track {
+  background: var(--my-state-hover) !important;
+  background-color: var(--my-state-hover) !important;
+}
+
+.dialog,
+.formDialogHeader,
+.formDialogFooter,
+.actionSheet,
+.dialog.actionSheet,
+.dialog.actionSheet .actionSheetScroller,
+.paperList,
+.visualCardBox,
+.cardBox,
+.listItem,
+.nowPlayingBar,
+.skinHeader-withBackground,
+.skinHeader.semiTransparent,
+.mainDrawer,
+.MuiDrawer-paper,
+.MuiPopover-paper,
+.MuiMenu-paper,
+.MuiDialog-paper,
+.MuiPaper-root {
+  border-color: var(--codex-accent-outline) !important;
+}
+
+.dialog.actionSheet .actionSheetMenuItem:hover,
+.dialog.actionSheet .actionSheetMenuItem:focus-visible,
+.mainDrawer .navMenuOption:not(.navMenuOption-selected):hover,
+.mainDrawer .navMenuOption:not(.navMenuOption-selected):focus-visible,
+.MuiDrawer-paper .MuiListItemButton-root:not(.Mui-selected):hover,
+.MuiDrawer-paper .MuiListItemButton-root:not(.Mui-selected):focus-visible {
+  background: var(--codex-m3-state-hover) !important;
+  background-color: var(--codex-m3-state-hover) !important;
+  box-shadow: none !important;
+  color: var(--my-primary-2) !important;
+}
+
+.mainDrawer .navMenuOption-selected,
+.mainDrawer .navMenuOption.navMenuOption-selected,
+.MuiDrawer-paper .MuiListItemButton-root.Mui-selected,
+.dialog.actionSheet .actionSheetMenuItem:active,
+.codex-color-option.is-selected {
+  background: var(--my-state-selected) !important;
+  background-color: var(--my-state-selected) !important;
+  border-color: var(--codex-accent-outline-strong) !important;
+  box-shadow: none !important;
+  color: var(--my-primary) !important;
+}
+
+.card:hover > .cardBox,
+.card:focus-visible > .cardBox,
+.card:hover > .visualCardBox,
+.card:focus-visible > .visualCardBox {
+  border-color: var(--codex-accent-outline) !important;
+  box-shadow: var(--my-glow-hover) !important;
+}
+
+.cardIndicator,
+.selectionCommandsPanel,
+.selectionCommandsPanel .emby-button,
+.toast,
+.paper-icon-button-light.detailButton,
+.detailPagePrimaryContainer,
+.detailPageSecondaryContainer,
+.metadataEditorInfo {
+  border-color: var(--codex-accent-outline) !important;
+}
+
+.cardIndicator,
+.selectionCommandsPanel,
+.toast {
+  background: var(--codex-accent-surface) !important;
+  background-color: var(--codex-accent-surface) !important;
+  color: var(--my-primary-2) !important;
+}
+
+/* Codex card overlay accent hover repair v7.8 */
+.card .playedIndicator,
+.card .countIndicator,
+.card .mediaSourceIndicator,
+.card .videoIndicator,
+.card .indicator,
+.card .cardIndicator,
+.card .cardIndicators .playedIndicator,
+.card .cardIndicators .countIndicator {
+  background: color-mix(in srgb, var(--my-primary) 62%, var(--my-bg-raised)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 62%, var(--my-bg-raised)) !important;
+  background-image: none !important;
+  border-color: var(--codex-accent-outline) !important;
+  box-shadow: 0 .35rem .9rem rgba(0, 0, 0, .24) !important;
+  color: var(--my-on-primary) !important;
+}
+
+.card .playedIndicator:hover,
+.card .countIndicator:hover,
+.card .mediaSourceIndicator:hover,
+.card .videoIndicator:hover,
+.card .indicator:hover,
+.card .cardIndicator:hover,
+.card .cardIndicators .playedIndicator:hover,
+.card .cardIndicators .countIndicator:hover,
+.cardOverlayButton-hover:hover,
+.cardOverlayButton-hover:focus-visible,
+.cardOverlayContainer .cardOverlayButton-hover:hover,
+.cardOverlayContainer .cardOverlayButton-hover:focus-visible,
+.cardOverlayContainer .paper-icon-button-light:hover,
+.cardOverlayContainer .paper-icon-button-light:focus-visible,
+.cardOverlayContainer .emby-button:hover,
+.cardOverlayContainer .emby-button:focus-visible,
+.cardOverlayContainer .detailButton:hover,
+.cardOverlayContainer .detailButton:focus-visible {
+  background: var(--my-state-focus) !important;
+  background-color: var(--my-state-focus) !important;
+  background-image: none !important;
+  border-color: var(--codex-accent-outline-strong) !important;
+  box-shadow: 0 .35rem .9rem rgba(0, 0, 0, .26) !important;
+  color: var(--my-primary-2) !important;
+}
+
+.cardOverlayButton-hover .material-icons,
+.cardOverlayButton-hover .material-symbols-rounded,
+.cardOverlayButton-hover svg,
+.cardOverlayContainer .paper-icon-button-light .material-icons,
+.cardOverlayContainer .paper-icon-button-light .material-symbols-rounded,
+.cardOverlayContainer .paper-icon-button-light svg,
+.cardOverlayContainer .detailButton .material-icons,
+.cardOverlayContainer .detailButton .material-symbols-rounded,
+.cardOverlayContainer .detailButton svg {
+  color: currentColor !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+/* Codex card overlay accent hover repair v7.8 end */
+
+/* Codex Next Up secondary text repair v7.9 */
+.homePage .nextUpSection .cardText-secondary,
+.homePage .nextUpSection .card .cardText-secondary,
+.homePage .nextUpSection .card-hoverable:hover .cardText-secondary,
+.homePage .nextUpSection .card:hover .cardText-secondary,
+.homePage .nextUpSection .card:focus-within .cardText-secondary,
+.homePage .nextUpSection .cardText-secondary a,
+.homePage .nextUpSection .card:hover .cardText-secondary a {
+  color: var(--my-text) !important;
+  text-shadow: none !important;
+}
+/* Codex Next Up secondary text repair v7.9 end */
+
+/* Codex top controls shadow cleanup v8.0 */
+.skinHeader .headerButton,
+.skinHeader .paper-icon-button-light,
+.skinHeader .MuiIconButton-root,
+.skinHeader button[is="emby-button"],
+.skinHeader button[aria-label],
+.skinHeader button[title],
+.skinHeader .headerUserButton,
+.skinHeader .btnUser,
+.skinHeader .userMenuButton,
+.skinHeader .emby-tab-button,
+.skinHeader .MuiTab-root,
+.skinHeader .headerTabs .emby-button,
+.skinHeader .headerTabs button,
+.skinHeader .libraryViewNav .emby-button,
+.skinHeader .libraryViewNav button,
+.codex-color-button,
+.emby-tabs .emby-tab-button,
+.emby-tabs .emby-tab-button-active,
+.viewTabs .emby-tab-button,
+.viewTabs .emby-tab-button-active,
+.homePage .emby-tab-button,
+.homePage .emby-tab-button-active,
+.homePage .headerTabs .emby-button,
+.homePage .headerTabs button,
+.homePage .libraryViewNav .emby-button,
+.homePage .libraryViewNav button {
+  box-shadow: none !important;
+  filter: none !important;
+  text-shadow: none !important;
+}
+
+.skinHeader .headerButton:hover,
+.skinHeader .paper-icon-button-light:hover,
+.skinHeader .MuiIconButton-root:hover,
+.skinHeader button[is="emby-button"]:hover,
+.skinHeader button[aria-label]:hover,
+.skinHeader button[title]:hover,
+.skinHeader .headerUserButton:hover,
+.skinHeader .btnUser:hover,
+.skinHeader .userMenuButton:hover,
+.skinHeader .emby-tab-button:hover,
+.skinHeader .MuiTab-root:hover,
+.skinHeader .headerTabs .emby-button:hover,
+.skinHeader .headerTabs button:hover,
+.skinHeader .libraryViewNav .emby-button:hover,
+.skinHeader .libraryViewNav button:hover,
+.codex-color-button:hover,
+.codex-color-button[aria-expanded="true"],
+.emby-tabs .emby-tab-button:hover,
+.emby-tabs .emby-tab-button-active,
+.viewTabs .emby-tab-button:hover,
+.viewTabs .emby-tab-button-active,
+.homePage .emby-tab-button:hover,
+.homePage .emby-tab-button-active,
+.homePage .headerTabs .emby-button:hover,
+.homePage .headerTabs button:hover,
+.homePage .libraryViewNav .emby-button:hover,
+.homePage .libraryViewNav button:hover {
+  box-shadow: none !important;
+  filter: none !important;
+  text-shadow: none !important;
+}
+
+.skinHeader .headerButton::before,
+.skinHeader .headerButton::after,
+.skinHeader .paper-icon-button-light::before,
+.skinHeader .paper-icon-button-light::after,
+.skinHeader .MuiIconButton-root::before,
+.skinHeader .MuiIconButton-root::after,
+.skinHeader button[is="emby-button"]::before,
+.skinHeader button[is="emby-button"]::after,
+.skinHeader button[aria-label]::before,
+.skinHeader button[aria-label]::after,
+.skinHeader button[title]::before,
+.skinHeader button[title]::after,
+.skinHeader .headerUserButton::before,
+.skinHeader .headerUserButton::after,
+.skinHeader .btnUser::before,
+.skinHeader .btnUser::after,
+.skinHeader .userMenuButton::before,
+.skinHeader .userMenuButton::after,
+.skinHeader .emby-tab-button::before,
+.skinHeader .emby-tab-button::after,
+.codex-color-button::before,
+.codex-color-button::after,
+.emby-tabs .emby-tab-button::before,
+.emby-tabs .emby-tab-button::after,
+.viewTabs .emby-tab-button::before,
+.viewTabs .emby-tab-button::after,
+.homePage .emby-tab-button::before,
+.homePage .emby-tab-button::after {
+  box-shadow: none !important;
+  filter: none !important;
+  text-shadow: none !important;
+}
+/* Codex top controls shadow cleanup v8.0 end */
+
+/* Codex animated scallop header wave v8.5 */
+@keyframes codexHeaderScallopWave {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 2.15rem 0;
+  }
+}
+
+:root {
+  --codex-header-wave-bg: #071014;
+  --codex-header-wave-shadow: rgba(0, 0, 0, .5);
+  --codex-header-wave-step: 2.15rem;
+  --codex-header-wave-depth: 1.18rem;
+}
+
+.skinHeader,
+.skinHeader-withBackground {
+  background: var(--codex-header-wave-bg) !important;
+  background-color: var(--codex-header-wave-bg) !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  contain: layout style !important;
+  overflow: visible !important;
+}
+
+.skinHeader > * {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.skinHeader::before {
+  animation: codexHeaderScallopWave 5.8s linear infinite !important;
+  background-color: transparent !important;
+  background-image: radial-gradient(
+    circle at 1.075rem 0,
+    var(--codex-header-wave-bg) 0 1.12rem,
+    transparent 1.15rem
+  ) !important;
+  background-repeat: repeat-x !important;
+  background-size: var(--codex-header-wave-step) var(--codex-header-wave-depth) !important;
+  bottom: calc(-1 * var(--codex-header-wave-depth)) !important;
+  box-shadow: none !important;
+  content: "" !important;
+  display: block !important;
+  filter: drop-shadow(0 .48rem .55rem var(--codex-header-wave-shadow)) !important;
+  height: var(--codex-header-wave-depth) !important;
+  left: 0 !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  right: 0 !important;
+  top: auto !important;
+  transform: none !important;
+  width: 100% !important;
+  will-change: background-position !important;
+  z-index: 1 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skinHeader::before {
+    animation: none !important;
+  }
+}
+/* Codex animated scallop header wave v8.5 end */
+
+/* Codex home top wave clearance v8.6 */
+:root {
+  --codex-header-wave-clearance: calc(var(--codex-header-wave-depth, 1.18rem) + .85rem);
+}
+
+.homePage .pageTabContent.is-active > .sections,
+.homePage .tabContent.is-active > .sections,
+.homePage #homeTab > .sections,
+.homePage #favoritesTab > .sections {
+  padding-top: var(--codex-header-wave-clearance) !important;
+}
+
+.homePage .sections > .verticalSection:first-child,
+.homePage .sections > .homePageSection:first-child,
+.homePage .sections > .homeSection:first-child,
+.homePage .sections > [class*="Section"]:first-child,
+.homePage .sections > [class*="section"]:first-child {
+  margin-top: 0 !important;
+}
+
+.homePage .sections > .verticalSection:first-child .emby-scrollbuttons,
+.homePage .sections > .homePageSection:first-child .emby-scrollbuttons,
+.homePage .sections > .homeSection:first-child .emby-scrollbuttons,
+.homePage .sections > [class*="Section"]:first-child .emby-scrollbuttons,
+.homePage .sections > [class*="section"]:first-child .emby-scrollbuttons {
+  top: auto !important;
+}
+/* Codex home top wave clearance v8.6 end */
+
+/* Codex theme-linked main backgrounds v8.7 */
+:root {
+  --codex-theme-bg: color-mix(in srgb, #030607 87%, var(--my-primary) 13%) !important;
+  --codex-theme-bg-raised: color-mix(in srgb, #060d11 83%, var(--my-primary) 17%) !important;
+  --codex-theme-surface: color-mix(in srgb, #0a1217 79%, var(--my-primary) 21%) !important;
+  --codex-theme-surface-2: color-mix(in srgb, #0e181f 75%, var(--my-primary) 25%) !important;
+  --codex-theme-surface-3: color-mix(in srgb, #14232b 71%, var(--my-primary) 29%) !important;
+  --codex-theme-surface-4: color-mix(in srgb, #1a2d37 67%, var(--my-primary) 33%) !important;
+  --codex-theme-card-flat: color-mix(in srgb, #0e1b21 76%, var(--my-primary) 24%) !important;
+  --codex-theme-card-hover: color-mix(in srgb, #14252d 68%, var(--my-primary) 32%) !important;
+  --my-bg: var(--codex-theme-bg) !important;
+  --my-bg-raised: var(--codex-theme-bg-raised) !important;
+  --my-surface: var(--codex-theme-surface) !important;
+  --my-surface-2: var(--codex-theme-surface-2) !important;
+  --my-surface-3: var(--codex-theme-surface-3) !important;
+  --my-surface-4: var(--codex-theme-surface-4) !important;
+  --my-surface-soft: color-mix(in srgb, var(--codex-theme-surface-2) 90%, transparent) !important;
+  --my-card-flat: var(--codex-theme-card-flat) !important;
+  --my-card-flat-alt: color-mix(in srgb, var(--codex-theme-card-flat) 84%, var(--my-primary) 16%) !important;
+  --my-card-flat-hover: var(--codex-theme-card-hover) !important;
+  --codex-header-wave-bg: var(--codex-theme-bg-raised) !important;
+  --codex-m3-surface-container-high: var(--codex-theme-surface-2) !important;
+  --md-sys-color-background: var(--codex-theme-bg) !important;
+  --md-sys-color-surface: var(--codex-theme-surface) !important;
+  --md-sys-color-surface-container: var(--codex-theme-surface-2) !important;
+  --mui-palette-background-default: var(--codex-theme-bg) !important;
+  --mui-palette-background-paper: var(--codex-theme-surface) !important;
+}
+
+html,
+body,
+.skinBody,
+.skinBody-withBackground,
+.backgroundContainer,
+.backgroundContainer.withBackdrop,
+.backgroundContainer-transparent,
+.backdropContainer,
+.page,
+.libraryPage,
+.mainAnimatedPage,
+.homePage,
+.homePage .pageTabContent,
+.homePage .tabContent {
+  background: var(--my-bg) !important;
+  background-color: var(--my-bg) !important;
+}
+
+.skinHeader,
+.skinHeader-withBackground,
+.skinHeader.semiTransparent,
+.nowPlayingBar,
+.appfooter {
+  background: var(--codex-header-wave-bg) !important;
+  background-color: var(--codex-header-wave-bg) !important;
+}
+
+.mainDrawer,
+.MuiDrawer-paper,
+.dialog,
+.MuiDialog-paper,
+.paperList,
+.formDialogHeader,
+.formDialogFooter,
+.actionSheet,
+.dialog.actionSheet,
+.MuiPopover-paper,
+.MuiMenu-paper,
+.toast,
+.snackbar {
+  background: var(--my-surface) !important;
+  background-color: var(--my-surface) !important;
+}
+
+.cardBox:not(.visualCardBox) .cardPadder,
+.visualCardBox,
+.listItem,
+.emby-input,
+.emby-textarea,
+.emby-select-withcolor,
+.metadataEditorInfo {
+  background: var(--my-surface-2) !important;
+  background-color: var(--my-surface-2) !important;
+}
+
+.homePage .verticalSection,
+.homePage .homePageSection,
+.homePage .latestItemsSection,
+.homePage .resumeSection,
+.homePage .nextUpSection,
+.homePage .homeSection,
+.homePage .sectionTitleContainer,
+.homePage .itemsContainer,
+.homePage .emby-scroller,
+.homePage .scrollSlider,
+.homePage .contentScrollSlider {
+  background-color: transparent !important;
+}
+/* Codex theme-linked main backgrounds v8.7 end */
+
+/* Codex header wave seamless blend v8.8 */
+.skinHeader,
+.skinHeader-withBackground {
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+  overflow: visible !important;
+}
+
+.skinHeader::before {
+  background-image: radial-gradient(
+    circle at 1.075rem 2px,
+    var(--codex-header-wave-bg) 0 1.12rem,
+    transparent 1.15rem
+  ) !important;
+  background-position: 0 0 !important;
+  bottom: calc(-1 * var(--codex-header-wave-depth)) !important;
+  filter: none !important;
+  height: calc(var(--codex-header-wave-depth) + 2px) !important;
+  z-index: 2 !important;
+}
+
+.skinHeader::after {
+  animation: codexHeaderScallopWave 5.8s linear infinite !important;
+  background-color: transparent !important;
+  background-image: radial-gradient(
+    circle at 1.075rem 2px,
+    var(--codex-header-wave-shadow) 0 1.08rem,
+    transparent 1.14rem
+  ) !important;
+  background-repeat: repeat-x !important;
+  background-size: var(--codex-header-wave-step) var(--codex-header-wave-depth) !important;
+  bottom: calc(-1 * var(--codex-header-wave-depth) - .16rem) !important;
+  box-shadow: none !important;
+  content: "" !important;
+  display: block !important;
+  filter: blur(.18rem) !important;
+  height: var(--codex-header-wave-depth) !important;
+  left: 0 !important;
+  opacity: .58 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  right: 0 !important;
+  top: auto !important;
+  transform: none !important;
+  width: 100% !important;
+  will-change: background-position !important;
+  z-index: 1 !important;
+}
+
+.skinHeader > * {
+  position: relative !important;
+  z-index: 3 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skinHeader::after {
+    animation: none !important;
+  }
+}
+/* Codex header wave seamless blend v8.8 end */
+
+/* Codex static header wave v8.9 */
+.skinHeader::before,
+.skinHeader::after {
+  animation: none !important;
+  background-position: 0 0 !important;
+  will-change: auto !important;
+}
+/* Codex static header wave v8.9 end */
+
+/* Codex header wave full curve depth v9.0 */
+:root {
+  --codex-header-wave-depth: 1.42rem !important;
+  --codex-header-wave-clearance: calc(var(--codex-header-wave-depth, 1.42rem) + .95rem) !important;
+}
+
+.skinHeader::before {
+  background-image: radial-gradient(
+    circle at 1.075rem 2px,
+    var(--codex-header-wave-bg) 0 1.12rem,
+    transparent 1.15rem
+  ) !important;
+  background-size: var(--codex-header-wave-step) var(--codex-header-wave-depth) !important;
+  bottom: calc(-1 * var(--codex-header-wave-depth)) !important;
+  height: calc(var(--codex-header-wave-depth) + 2px) !important;
+}
+
+.skinHeader::after {
+  background-size: var(--codex-header-wave-step) var(--codex-header-wave-depth) !important;
+  bottom: calc(-1 * var(--codex-header-wave-depth) - .16rem) !important;
+  height: var(--codex-header-wave-depth) !important;
+}
+/* Codex header wave full curve depth v9.0 end */
+
+/* Codex detail page background and action buttons v9.1 */
+.itemDetailPage,
+.itemDetailPage .detailPageWrapperContainer,
+.itemDetailPage .detailRibbon,
+.itemDetailPage .detailPagePrimaryContainer,
+.itemDetailPage .detailPagePrimaryContent,
+.itemDetailPage .detailPageSecondaryContainer,
+.itemDetailPage .detailPageContent,
+.itemDetailPage .infoWrapper,
+.itemDetailPage .nameContainer,
+.itemDetailPage .mainDetailButtons {
+  background: var(--my-bg) !important;
+  background-color: var(--my-bg) !important;
+  background-image: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.itemDetailPage .detailRibbon::before,
+.itemDetailPage .detailRibbon::after,
+.itemDetailPage .detailPagePrimaryContainer::before,
+.itemDetailPage .detailPagePrimaryContainer::after,
+.itemDetailPage .detailPagePrimaryContent::before,
+.itemDetailPage .detailPagePrimaryContent::after {
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  content: none !important;
+}
+
+.itemDetailPage .mainDetailButtons {
+  align-items: center !important;
+  gap: .58rem !important;
+}
+
+.itemDetailPage .detailButton,
+.itemDetailPage .paper-icon-button-light.detailButton,
+.itemDetailPage .mainDetailButtons .detailButton,
+.detailPagePrimaryContainer .detailButton,
+.itemDetailPage .mainDetailButtons .paper-icon-button-light,
+.itemDetailPage .mainDetailButtons .emby-button:not(.btnPlay):not(.btnResume):not(.btnShuffle),
+.itemDetailPage .mainDetailButtons .MuiIconButton-root {
+  align-items: center !important;
+  aspect-ratio: 1 / 1 !important;
+  background: color-mix(in srgb, var(--my-primary) 10%, var(--my-bg-raised)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 10%, var(--my-bg-raised)) !important;
+  background-image: none !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 16%, transparent) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  color: var(--my-primary-2) !important;
+  display: inline-flex !important;
+  height: 3.05rem !important;
+  justify-content: center !important;
+  min-height: 3.05rem !important;
+  min-width: 3.05rem !important;
+  padding: 0 !important;
+  width: 3.05rem !important;
+}
+
+.itemDetailPage .detailButton:hover,
+.itemDetailPage .paper-icon-button-light.detailButton:hover,
+.itemDetailPage .mainDetailButtons .detailButton:hover,
+.detailPagePrimaryContainer .detailButton:hover,
+.itemDetailPage .mainDetailButtons .paper-icon-button-light:hover,
+.itemDetailPage .mainDetailButtons .emby-button:not(.btnPlay):not(.btnResume):not(.btnShuffle):hover,
+.itemDetailPage .mainDetailButtons .MuiIconButton-root:hover {
+  background: var(--my-state-hover) !important;
+  background-color: var(--my-state-hover) !important;
+  border-color: var(--codex-accent-outline) !important;
+  box-shadow: none !important;
+  color: var(--my-primary-2) !important;
+  transform: none !important;
+}
+
+.itemDetailPage .detailButton .material-icons,
+.itemDetailPage .detailButton .material-symbols-rounded,
+.itemDetailPage .detailButton svg,
+.itemDetailPage .mainDetailButtons .paper-icon-button-light .material-icons,
+.itemDetailPage .mainDetailButtons .paper-icon-button-light .material-symbols-rounded,
+.itemDetailPage .mainDetailButtons .paper-icon-button-light svg,
+.itemDetailPage .mainDetailButtons .emby-button .material-icons,
+.itemDetailPage .mainDetailButtons .emby-button .material-symbols-rounded,
+.itemDetailPage .mainDetailButtons .emby-button svg {
+  color: currentColor !important;
+  fill: currentColor !important;
+  font-size: 1.45rem !important;
+  stroke: currentColor !important;
+}
+
+.itemDetailPage .btnPlay,
+.itemDetailPage .btnResume,
+.itemDetailPage .btnShuffle,
+.detailPagePrimaryContainer .btnPlay,
+.detailPagePrimaryContainer .btnResume,
+.detailPagePrimaryContainer .btnShuffle {
+  align-items: center !important;
+  aspect-ratio: 1 / 1 !important;
+  background: var(--my-primary) !important;
+  background-color: var(--my-primary) !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  color: var(--my-on-primary) !important;
+  display: inline-flex !important;
+  height: 3.8rem !important;
+  justify-content: center !important;
+  min-height: 3.8rem !important;
+  min-width: 3.8rem !important;
+  padding: 0 !important;
+  width: 3.8rem !important;
+}
+
+.itemDetailPage .btnPlay:hover,
+.itemDetailPage .btnResume:hover,
+.itemDetailPage .btnShuffle:hover,
+.detailPagePrimaryContainer .btnPlay:hover,
+.detailPagePrimaryContainer .btnResume:hover,
+.detailPagePrimaryContainer .btnShuffle:hover {
+  background: var(--my-primary-2) !important;
+  background-color: var(--my-primary-2) !important;
+  box-shadow: none !important;
+  color: var(--my-on-primary) !important;
+  transform: none !important;
+}
+
+.itemDetailPage .mediaInfoText,
+.itemDetailPage .mediaInfoItem,
+.itemDetailPage .mediaStream,
+.itemDetailPage .streamInfo {
+  background: color-mix(in srgb, var(--my-primary) 6%, var(--my-bg-raised)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 6%, var(--my-bg-raised)) !important;
+  border-color: transparent !important;
+  color: var(--my-text) !important;
+}
+/* Codex detail page background and action buttons v9.1 end */
+
+/* Codex settings list hover cleanup v9.2 */
+.userSettingsPage .listItem:not(.actionSheetMenuItem),
+.userProfilePage .listItem:not(.actionSheetMenuItem),
+.settingsPage .listItem:not(.actionSheetMenuItem),
+.mainAnimatedPage .paperList .listItem:not(.actionSheetMenuItem),
+.page .paperList .listItem:not(.actionSheetMenuItem) {
+  background: color-mix(in srgb, var(--my-primary) 4%, var(--my-bg-raised)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 4%, var(--my-bg-raised)) !important;
+  background-image: none !important;
+  border: 1px solid transparent !important;
+  border-radius: .8rem !important;
+  box-shadow: none !important;
+  filter: none !important;
+  outline: 0 !important;
+  transform: none !important;
+}
+
+.userSettingsPage .listItem:not(.actionSheetMenuItem):hover,
+.userSettingsPage .listItem:not(.actionSheetMenuItem):focus,
+.userSettingsPage .listItem:not(.actionSheetMenuItem):focus-visible,
+.userSettingsPage .listItem:not(.actionSheetMenuItem):focus-within,
+.userProfilePage .listItem:not(.actionSheetMenuItem):hover,
+.userProfilePage .listItem:not(.actionSheetMenuItem):focus,
+.userProfilePage .listItem:not(.actionSheetMenuItem):focus-visible,
+.userProfilePage .listItem:not(.actionSheetMenuItem):focus-within,
+.settingsPage .listItem:not(.actionSheetMenuItem):hover,
+.settingsPage .listItem:not(.actionSheetMenuItem):focus,
+.settingsPage .listItem:not(.actionSheetMenuItem):focus-visible,
+.settingsPage .listItem:not(.actionSheetMenuItem):focus-within,
+.mainAnimatedPage .paperList .listItem:not(.actionSheetMenuItem):hover,
+.mainAnimatedPage .paperList .listItem:not(.actionSheetMenuItem):focus,
+.mainAnimatedPage .paperList .listItem:not(.actionSheetMenuItem):focus-visible,
+.mainAnimatedPage .paperList .listItem:not(.actionSheetMenuItem):focus-within,
+.page .paperList .listItem:not(.actionSheetMenuItem):hover,
+.page .paperList .listItem:not(.actionSheetMenuItem):focus,
+.page .paperList .listItem:not(.actionSheetMenuItem):focus-visible,
+.page .paperList .listItem:not(.actionSheetMenuItem):focus-within {
+  background: color-mix(in srgb, var(--my-primary) 11%, var(--my-bg-raised)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 11%, var(--my-bg-raised)) !important;
+  background-image: none !important;
+  border-color: color-mix(in srgb, var(--my-primary) 16%, transparent) !important;
+  box-shadow: none !important;
+  filter: none !important;
+  outline: 0 !important;
+  transform: none !important;
+}
+
+.userSettingsPage .listItem:not(.actionSheetMenuItem)::before,
+.userSettingsPage .listItem:not(.actionSheetMenuItem)::after,
+.userProfilePage .listItem:not(.actionSheetMenuItem)::before,
+.userProfilePage .listItem:not(.actionSheetMenuItem)::after,
+.settingsPage .listItem:not(.actionSheetMenuItem)::before,
+.settingsPage .listItem:not(.actionSheetMenuItem)::after,
+.mainAnimatedPage .paperList .listItem:not(.actionSheetMenuItem)::before,
+.mainAnimatedPage .paperList .listItem:not(.actionSheetMenuItem)::after,
+.page .paperList .listItem:not(.actionSheetMenuItem)::before,
+.page .paperList .listItem:not(.actionSheetMenuItem)::after {
+  box-shadow: none !important;
+  filter: none !important;
+  text-shadow: none !important;
+}
+/* Codex settings list hover cleanup v9.2 end */
+
+/* Codex home card footer match v9.3 */
+.homePage .itemsContainer .card:not(.codex-marvel-card):not(:has(.itemProgressBar)),
+.homePage .verticalSection .card:not(.codex-marvel-card):not(:has(.itemProgressBar)) {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border-radius: .9rem !important;
+  box-shadow: none !important;
+  isolation: isolate !important;
+  overflow: visible !important;
+  position: relative !important;
+}
+
+.homePage .itemsContainer .card:not(.codex-marvel-card):not(:has(.itemProgressBar))::before,
+.homePage .verticalSection .card:not(.codex-marvel-card):not(:has(.itemProgressBar))::before {
+  background: color-mix(in srgb, var(--my-primary) 15%, var(--my-bg-raised)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 15%, var(--my-bg-raised)) !important;
+  background-image: none !important;
+  border-radius: 0 0 .9rem .9rem !important;
+  bottom: 0 !important;
+  box-shadow: 0 .58rem 1rem rgba(0, 0, 0, .34) !important;
+  content: "" !important;
+  height: 4.85rem !important;
+  left: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  right: 0 !important;
+  transition: opacity .16s ease !important;
+  z-index: -1 !important;
+}
+
+.homePage .itemsContainer .card:not(.codex-marvel-card):not(:has(.itemProgressBar)):has(.cardText-first:last-child)::before,
+.homePage .verticalSection .card:not(.codex-marvel-card):not(:has(.itemProgressBar)):has(.cardText-first:last-child)::before {
+  height: 3.6rem !important;
+}
+
+.homePage .itemsContainer .card-hoverable:not(.codex-marvel-card):not(:has(.itemProgressBar)):hover::before,
+.homePage .itemsContainer .card:not(.codex-marvel-card):not(:has(.itemProgressBar)):hover::before,
+.homePage .itemsContainer .card:not(.codex-marvel-card):not(:has(.itemProgressBar)):focus-within::before,
+.homePage .verticalSection .card-hoverable:not(.codex-marvel-card):not(:has(.itemProgressBar)):hover::before,
+.homePage .verticalSection .card:not(.codex-marvel-card):not(:has(.itemProgressBar)):hover::before,
+.homePage .verticalSection .card:not(.codex-marvel-card):not(:has(.itemProgressBar)):focus-within::before {
+  opacity: 1 !important;
+}
+
+.homePage .itemsContainer .card:not(.codex-marvel-card):not(:has(.itemProgressBar)) .cardBox,
+.homePage .itemsContainer .card:not(.codex-marvel-card):not(:has(.itemProgressBar)) .visualCardBox,
+.homePage .verticalSection .card:not(.codex-marvel-card):not(:has(.itemProgressBar)) .cardBox,
+.homePage .verticalSection .card:not(.codex-marvel-card):not(:has(.itemProgressBar)) .visualCardBox {
+  margin: 0 !important;
+  max-width: none !important;
+  min-width: 100% !important;
+  width: 100% !important;
+}
+
+.homePage .itemsContainer .card:not(.codex-marvel-card):not(:has(.itemProgressBar)) .cardText-first,
+.homePage .itemsContainer .card:not(.codex-marvel-card):not(:has(.itemProgressBar)) .cardText-secondary,
+.homePage .verticalSection .card:not(.codex-marvel-card):not(:has(.itemProgressBar)) .cardText-first,
+.homePage .verticalSection .card:not(.codex-marvel-card):not(:has(.itemProgressBar)) .cardText-secondary {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  max-width: 100% !important;
+  position: relative !important;
+  text-shadow: none !important;
+  width: 100% !important;
+  z-index: 2 !important;
+}
+
+.homePage .itemsContainer .card:not(.codex-marvel-card):not(:has(.itemProgressBar)) .cardText-first,
+.homePage .verticalSection .card:not(.codex-marvel-card):not(:has(.itemProgressBar)) .cardText-first {
+  border-radius: 0 !important;
+  padding: .42rem .62rem .18rem !important;
+}
+
+.homePage .itemsContainer .card:not(.codex-marvel-card):not(:has(.itemProgressBar)) .cardText-first:last-child,
+.homePage .verticalSection .card:not(.codex-marvel-card):not(:has(.itemProgressBar)) .cardText-first:last-child {
+  border-radius: 0 0 .9rem .9rem !important;
+  padding-bottom: .54rem !important;
+}
+
+.homePage .itemsContainer .card:not(.codex-marvel-card):not(:has(.itemProgressBar)) .cardText-secondary,
+.homePage .verticalSection .card:not(.codex-marvel-card):not(:has(.itemProgressBar)) .cardText-secondary {
+  border-radius: 0 0 .9rem .9rem !important;
+  color: var(--my-text) !important;
+  padding: .08rem .62rem .54rem !important;
+}
+
+.homePage .itemsContainer .card-hoverable:not(.codex-marvel-card):not(:has(.itemProgressBar)):hover .cardText-first,
+.homePage .itemsContainer .card-hoverable:not(.codex-marvel-card):not(:has(.itemProgressBar)):hover .cardText-secondary,
+.homePage .itemsContainer .card:not(.codex-marvel-card):not(:has(.itemProgressBar)):hover .cardText-first,
+.homePage .itemsContainer .card:not(.codex-marvel-card):not(:has(.itemProgressBar)):hover .cardText-secondary,
+.homePage .itemsContainer .card:not(.codex-marvel-card):not(:has(.itemProgressBar)):focus-within .cardText-first,
+.homePage .itemsContainer .card:not(.codex-marvel-card):not(:has(.itemProgressBar)):focus-within .cardText-secondary,
+.homePage .verticalSection .card-hoverable:not(.codex-marvel-card):not(:has(.itemProgressBar)):hover .cardText-first,
+.homePage .verticalSection .card-hoverable:not(.codex-marvel-card):not(:has(.itemProgressBar)):hover .cardText-secondary,
+.homePage .verticalSection .card:not(.codex-marvel-card):not(:has(.itemProgressBar)):hover .cardText-first,
+.homePage .verticalSection .card:not(.codex-marvel-card):not(:has(.itemProgressBar)):hover .cardText-secondary,
+.homePage .verticalSection .card:not(.codex-marvel-card):not(:has(.itemProgressBar)):focus-within .cardText-first,
+.homePage .verticalSection .card:not(.codex-marvel-card):not(:has(.itemProgressBar)):focus-within .cardText-secondary {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  color: var(--my-primary-2) !important;
+  text-shadow: none !important;
+}
+
+.homePage .nextUpSection .card:not(:has(.itemProgressBar)) .cardText-secondary,
+.homePage .nextUpSection .card:not(:has(.itemProgressBar)):hover .cardText-secondary,
+.homePage .nextUpSection .card:not(:has(.itemProgressBar)):focus-within .cardText-secondary {
+  color: var(--my-text) !important;
+}
+/* Codex home card footer match v9.3 end */
+
+/* Codex home card accent color unification v9.4 */
+:root {
+  --codex-home-footer-bg: color-mix(in srgb, var(--my-primary) 15%, var(--my-bg-raised)) !important;
+  --codex-home-footer-bg-hover: color-mix(in srgb, var(--my-primary) 18%, var(--my-bg-raised)) !important;
+  --codex-home-footer-border: color-mix(in srgb, var(--my-primary) 18%, transparent) !important;
+  --codex-home-card-title: var(--my-primary) !important;
+  --codex-home-card-subtitle: var(--my-text) !important;
+  --codex-home-card-action-bg: var(--my-primary) !important;
+  --codex-home-card-action-fg: var(--my-on-primary) !important;
+  --codex-home-card-pill-bg: color-mix(in srgb, var(--my-primary) 56%, var(--my-bg-raised)) !important;
+  --codex-home-progress-track: color-mix(in srgb, var(--my-primary) 16%, rgba(7, 16, 20, .7)) !important;
+  --codex-home-progress-border: color-mix(in srgb, var(--my-primary) 22%, transparent) !important;
+  --codex-home-progress-shadow: 0 0 .55rem color-mix(in srgb, var(--my-primary) 45%, transparent) !important;
+  --codex-home-row-button-bg: color-mix(in srgb, var(--my-primary) 10%, transparent) !important;
+  --codex-home-row-button-hover-bg: color-mix(in srgb, var(--my-primary) 18%, transparent) !important;
+}
+
+.homePage .itemsContainer .card::before,
+.homePage .verticalSection .card::before {
+  background: var(--codex-home-footer-bg) !important;
+  background-color: var(--codex-home-footer-bg) !important;
+  background-image: none !important;
+  border-color: var(--codex-home-footer-border) !important;
+}
+
+.homePage .itemsContainer .card-hoverable:hover::before,
+.homePage .itemsContainer .card:hover::before,
+.homePage .itemsContainer .card:focus-within::before,
+.homePage .verticalSection .card-hoverable:hover::before,
+.homePage .verticalSection .card:hover::before,
+.homePage .verticalSection .card:focus-within::before {
+  background: var(--codex-home-footer-bg-hover) !important;
+  background-color: var(--codex-home-footer-bg-hover) !important;
+}
+
+.homePage .card .cardText-first,
+.homePage .card .itemName,
+.homePage .card-hoverable:hover .cardText-first,
+.homePage .card:hover .cardText-first,
+.homePage .card:focus-within .cardText-first,
+.homePage .card-hoverable:hover .itemName,
+.homePage .card:hover .itemName,
+.homePage .card:focus-within .itemName,
+.homePage #codex-marvel-home-section .codex-marvel-card .cardText-first {
+  color: var(--codex-home-card-title) !important;
+  text-shadow: none !important;
+}
+
+.homePage .card .cardText-secondary,
+.homePage .card-hoverable:hover .cardText-secondary,
+.homePage .card:hover .cardText-secondary,
+.homePage .card:focus-within .cardText-secondary,
+.homePage .card .cardText-secondary a,
+.homePage .card:hover .cardText-secondary a,
+.homePage #codex-marvel-home-section .codex-marvel-card .cardText-secondary {
+  color: var(--codex-home-card-subtitle) !important;
+  text-shadow: none !important;
+}
+
+.homePage .cardOverlayContainer > .cardOverlayFab-primary,
+.homePage .cardOverlayContainer .cardOverlayFab-primary,
+.homePage .cardOverlayButton-centered,
+.homePage .cardOverlayButton-hover,
+.homePage .cardOverlayContainer .paper-icon-button-light,
+.homePage .cardOverlayContainer .emby-button,
+.homePage .cardOverlayContainer .detailButton {
+  background: var(--codex-home-card-action-bg) !important;
+  background-color: var(--codex-home-card-action-bg) !important;
+  background-image: none !important;
+  border-color: var(--codex-home-card-action-bg) !important;
+  color: var(--codex-home-card-action-fg) !important;
+}
+
+.homePage .cardOverlayContainer > .cardOverlayFab-primary:hover,
+.homePage .cardOverlayContainer .cardOverlayFab-primary:hover,
+.homePage .cardOverlayButton-centered:hover,
+.homePage .cardOverlayButton-hover:hover,
+.homePage .cardOverlayButton-hover:focus-visible,
+.homePage .cardOverlayContainer .paper-icon-button-light:hover,
+.homePage .cardOverlayContainer .paper-icon-button-light:focus-visible,
+.homePage .cardOverlayContainer .emby-button:hover,
+.homePage .cardOverlayContainer .emby-button:focus-visible,
+.homePage .cardOverlayContainer .detailButton:hover,
+.homePage .cardOverlayContainer .detailButton:focus-visible {
+  background: var(--my-primary-2) !important;
+  background-color: var(--my-primary-2) !important;
+  border-color: var(--my-primary-2) !important;
+  color: var(--my-on-primary) !important;
+}
+
+.homePage .card .playedIndicator,
+.homePage .card .countIndicator,
+.homePage .card .mediaSourceIndicator,
+.homePage .card .videoIndicator,
+.homePage .card .indicator,
+.homePage .card .cardIndicator,
+.homePage .card .cardIndicators .playedIndicator,
+.homePage .card .cardIndicators .countIndicator {
+  background: var(--codex-home-card-pill-bg) !important;
+  background-color: var(--codex-home-card-pill-bg) !important;
+  background-image: none !important;
+  border-color: var(--codex-home-footer-border) !important;
+  color: var(--my-on-primary) !important;
+}
+
+.homePage .itemProgressBar,
+.homePage .card:has(.itemProgressBar) .innerCardFooter:has(.itemProgressBar) > .itemProgressBar,
+.homePage .card:has(.itemProgressBar) .innerCardFooter:has(.itemProgressBar) .itemProgressBar .itemProgressBar,
+.homePage .card:has(.itemProgressBar) .cardScalable > .itemProgressBar,
+.homePage .card:has(.itemProgressBar) .cardImageContainer > .itemProgressBar {
+  background: var(--codex-home-progress-track) !important;
+  background-color: var(--codex-home-progress-track) !important;
+  background-image: none !important;
+  border-color: var(--codex-home-progress-border) !important;
+}
+
+.homePage .itemProgressBarForeground,
+.homePage .card:has(.itemProgressBar) .itemProgressBarForeground {
+  background: var(--my-primary) !important;
+  background-color: var(--my-primary) !important;
+  background-image: none !important;
+  box-shadow: var(--codex-home-progress-shadow) !important;
+}
+
+.homePage .btnNextPage,
+.homePage .btnPreviousPage,
+.homePage .emby-scrollbuttons-button,
+.verticalSection:has(.emby-scrollbuttons) .btnNextPage,
+.verticalSection:has(.emby-scrollbuttons) .btnPreviousPage,
+.verticalSection:has(.emby-scrollbuttons) .emby-scrollbuttons-button {
+  background: var(--codex-home-row-button-bg) !important;
+  background-color: var(--codex-home-row-button-bg) !important;
+  background-image: none !important;
+  color: var(--my-primary-2) !important;
+}
+
+.homePage .btnNextPage:hover,
+.homePage .btnPreviousPage:hover,
+.homePage .emby-scrollbuttons-button:hover,
+.verticalSection:has(.emby-scrollbuttons) .btnNextPage:hover,
+.verticalSection:has(.emby-scrollbuttons) .btnPreviousPage:hover,
+.verticalSection:has(.emby-scrollbuttons) .emby-scrollbuttons-button:hover {
+  background: var(--codex-home-row-button-hover-bg) !important;
+  background-color: var(--codex-home-row-button-hover-bg) !important;
+  color: var(--my-primary) !important;
+}
+/* Codex home card accent color unification v9.4 end */
+
+/* Codex home card row spacing repair v9.6 */
+:root {
+  --codex-home-card-gap: clamp(.72rem, 1vw, 1rem) !important;
+}
+
+.homePage .itemsContainer > .card:not(.codex-marvel-card),
+.homePage .scrollSliderItems > .card:not(.codex-marvel-card),
+.homePage .verticalSection .itemsContainer > .card:not(.codex-marvel-card),
+.homePage .homePageSection .itemsContainer > .card:not(.codex-marvel-card) {
+  margin-inline-end: var(--codex-home-card-gap) !important;
+  margin-right: var(--codex-home-card-gap) !important;
+}
+
+.homePage .itemsContainer > .card:not(.codex-marvel-card):last-child,
+.homePage .scrollSliderItems > .card:not(.codex-marvel-card):last-child,
+.homePage .verticalSection .itemsContainer > .card:not(.codex-marvel-card):last-child,
+.homePage .homePageSection .itemsContainer > .card:not(.codex-marvel-card):last-child {
+  margin-inline-end: 0 !important;
+  margin-right: 0 !important;
+}
+
+.homePage #codex-marvel-home-section .codex-marvel-card {
+  margin-inline-end: 0 !important;
+  margin-right: 0 !important;
+}
+/* Codex home card row spacing repair v9.6 end */
+
+/* Codex dynamic accent backgrounds v7.7 end */

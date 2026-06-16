@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.2.0
+
+- Synced `theme.css` with the current live Spookyfin Jellyfin theme.
+- Synced `spookyfin-helper.js` with the current header color switcher, MARVEL row, and image rehydration helper.
+- Added the accent-linked home card footer, badge, row arrow, and progress color repairs.
+- Added the static scalloped top bar and theme-linked page backgrounds.
+- Added settings-list hover cleanup, detail page background cleanup, and home card spacing repair.
+- Confirmed the bundled library image pack includes the 3D Movies artwork.
+
 ## 1.1.0
 
 - Added Android/Material You card state-layer polish.

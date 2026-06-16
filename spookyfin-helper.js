@@ -5,6 +5,8 @@
   const NEXT_UP_RE = /next up/i;
   const RECENT_RE = /recently added|latest/i;
   const THEME_KEY = "codex-jellyfin-theme-color";
+  const MARVEL_COLLECTION_ID = "f7855f569b4a8751e9329d441ecfbabc";
+  const MARVEL_SECTION_ID = "codex-marvel-home-section";
   const THEMES = {
     blue: {
       label: "Blue",
@@ -58,6 +60,11 @@
     return hash.includes("/home") || hash === "" || document.querySelector(".homePage, .homeTabContent, [data-role='page'] .sectionTitle");
   };
 
+  const isMarvelHomeTarget = () => {
+    const hash = decodeURIComponent(window.location.hash || "").replace(/^#!/, "#");
+    return /^#\/?(home|home\.html)([/?&]|$)/i.test(hash) || Boolean(document.querySelector(".homePage, .homeTabContent"));
+  };
+
   const cleanText = (node) => (node?.textContent || "").replace(/\s+/g, " ").trim();
 
   const getThemeName = () => {
@@ -67,6 +74,29 @@
 
   const setRootVar = (name, value) => {
     document.documentElement.style.setProperty(name, value);
+  };
+
+  const svgVarUrl = (svg) => `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
+
+  const applyAccentAssets = (theme) => {
+    setRootVar(
+      "--codex-wave-line",
+      svgVarUrl(
+        `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="14" viewBox="0 0 48 14"><path d="M0 7 Q6 1 12 7 T24 7 T36 7 T48 7" fill="none" stroke="${theme.primary}" stroke-width="4.2" stroke-linecap="round"/></svg>`
+      )
+    );
+    setRootVar(
+      "--codex-wave-line-soft",
+      svgVarUrl(
+        `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="14" viewBox="0 0 48 14"><path d="M0 7 Q6 1 12 7 T24 7 T36 7 T48 7" fill="none" stroke="${theme.primary}" stroke-opacity=".22" stroke-width="4.2" stroke-linecap="round"/></svg>`
+      )
+    );
+    setRootVar(
+      "--codex-wave-ring",
+      svgVarUrl(
+        `<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96"><path d="M48 10 C54 10 56 17 61 19 C66 21 73 17 77 21 C81 25 77 32 79 37 C81 42 88 44 88 50 C88 56 80 58 78 63 C76 68 80 75 76 79 C72 83 65 79 60 81 C55 83 53 90 47 90 C41 90 39 83 34 81 C29 79 22 83 18 79 C14 75 18 68 16 63 C14 58 8 56 8 50 C8 44 15 42 17 37 C19 32 15 25 19 21 C23 17 30 21 35 19 C40 17 42 10 48 10 Z" fill="none" stroke="${theme.primary}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M48 10 C54 10 56 17 61 19 C66 21 73 17 77 21" fill="none" stroke="${theme.primary2}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+      )
+    );
   };
 
   const applyTheme = (name) => {
@@ -82,6 +112,15 @@
     setRootVar("--my-state-focus", theme.focus);
     setRootVar("--my-state-pressed", theme.pressed);
     setRootVar("--my-state-selected", theme.selected);
+    setRootVar("--my-accent-soft", theme.soft);
+    setRootVar("--my-accent-hover", theme.hover);
+    setRootVar("--my-accent-focus", theme.focus);
+    setRootVar("--my-accent-pressed", theme.pressed);
+    setRootVar("--my-accent-selected", theme.selected);
+    setRootVar("--my-accent-outline", theme.outline);
+    setRootVar("--my-accent-shadow-soft", theme.hover);
+    setRootVar("--my-accent-shadow-strong", theme.focus);
+    setRootVar("--codex-m3-outline-soft", theme.m3Focus);
     setRootVar("--codex-m3-outline-focus", theme.outline);
     setRootVar("--codex-m3-state-hover", theme.m3Hover);
     setRootVar("--codex-m3-state-focus", theme.m3Focus);
@@ -94,6 +133,7 @@
     setRootVar("--mui-palette-action-selected", theme.soft);
     setRootVar("--md-sys-color-primary", theme.primary);
     setRootVar("--md-sys-color-primary-container", theme.container);
+    applyAccentAssets(theme);
 
     document.documentElement.dataset.codexThemeColor = key;
     window.localStorage?.setItem(THEME_KEY, key);
@@ -227,6 +267,488 @@
 
   const cssUrl = (src) => `url("${String(src).replace(/["\\]/g, "\\$&")}")`;
 
+  let marvelItemsCache = null;
+  let marvelLoadPromise = null;
+
+  const parseJson = (value) => {
+    try {
+      return JSON.parse(value);
+    } catch {
+      return null;
+    }
+  };
+
+  const readClientValue = (client, names) => {
+    if (!client) return null;
+
+    for (const name of names) {
+      try {
+        const value = typeof client[name] === "function" ? client[name]() : client[name];
+        if (value) return value;
+      } catch {
+        // Keep trying other Jellyfin client shapes.
+      }
+    }
+
+    return null;
+  };
+
+  const collectCredentials = (value, results, depth = 0) => {
+    if (!value || typeof value !== "object" || depth > 6) return;
+
+    if (value.AccessToken && value.UserId) {
+      results.push({
+        token: value.AccessToken,
+        userId: value.UserId,
+        serverId: value.Id || value.ServerId || value.ServerInfo?.Id || ""
+      });
+    }
+
+    if (Array.isArray(value)) {
+      value.forEach((entry) => collectCredentials(entry, results, depth + 1));
+      return;
+    }
+
+    Object.values(value).forEach((entry) => collectCredentials(entry, results, depth + 1));
+  };
+
+  const getStoredCredentials = () => {
+    const results = [];
+
+    for (let index = 0; index < window.localStorage.length; index += 1) {
+      const key = window.localStorage.key(index);
+      const parsed = parseJson(window.localStorage.getItem(key));
+      collectCredentials(parsed, results);
+    }
+
+    return results.find((entry) => entry.token && entry.userId) || null;
+  };
+
+  const getJellyfinApiInfo = () => {
+    const client =
+      window.ApiClient ||
+      window.apiClient ||
+      window.connectionManager?.getApiClient?.() ||
+      window.ConnectionManager?.getApiClient?.();
+
+    const serverInfo =
+      readClientValue(client, ["serverInfo", "_serverInfo", "getServerInfo"]) ||
+      client?._serverInfo ||
+      client?.serverInfo;
+
+    const token =
+      readClientValue(client, ["accessToken", "getAccessToken", "_accessToken"]) ||
+      serverInfo?.AccessToken;
+
+    const userId =
+      readClientValue(client, ["getCurrentUserId", "currentUserId", "_currentUserId"]) ||
+      serverInfo?.UserId;
+
+    if (token && userId) {
+      return { token, userId };
+    }
+
+    return getStoredCredentials();
+  };
+
+  const fetchJson = async (url) => {
+    const apiInfo = getJellyfinApiInfo();
+    if (!apiInfo?.token || !apiInfo?.userId) return null;
+
+    const response = await fetch(url, {
+      credentials: "same-origin",
+      headers: {
+        Accept: "application/json",
+        "X-Emby-Token": apiInfo.token
+      }
+    });
+
+    if (!response.ok) throw new Error(`Jellyfin request failed: ${response.status}`);
+    return response.json();
+  };
+
+  const getMarvelImageUrl = (item) => {
+    const hasPrimary = Boolean(item.ImageTags?.Primary);
+    const type = hasPrimary ? "Primary" : item.BackdropImageTags?.length ? "Backdrop/0" : "Primary";
+    const params = new URLSearchParams({
+      fillHeight: "520",
+      fillWidth: "350",
+      quality: "92"
+    });
+
+    if (hasPrimary) {
+      params.set("tag", item.ImageTags.Primary);
+    } else if (item.BackdropImageTags?.[0]) {
+      params.set("tag", item.BackdropImageTags[0]);
+    }
+
+    return `/Items/${item.Id}/Images/${type}?${params.toString()}`;
+  };
+
+  const getMarvelSubtitle = (item) => {
+    if (item.Type === "Series" && item.ProductionYear) {
+      return `${item.ProductionYear}${item.EndDate ? ` - ${new Date(item.EndDate).getFullYear()}` : " - Present"}`;
+    }
+
+    return item.ProductionYear ? String(item.ProductionYear) : item.Type || "";
+  };
+
+  const getMarvelReleaseSortValue = (item) => {
+    if (item.PremiereDate) {
+      const time = Date.parse(item.PremiereDate);
+      if (Number.isFinite(time)) return time;
+    }
+
+    if (item.ProductionYear) {
+      return Date.UTC(Number(item.ProductionYear), 0, 1);
+    }
+
+    return Number.MAX_SAFE_INTEGER;
+  };
+
+  const sortMarvelByReleaseDate = (items) => {
+    return [...items].sort((a, b) => {
+      const dateDiff = getMarvelReleaseSortValue(a) - getMarvelReleaseSortValue(b);
+      if (dateDiff) return dateDiff;
+
+      const yearDiff = (a.ProductionYear || 9999) - (b.ProductionYear || 9999);
+      if (yearDiff) return yearDiff;
+
+      return String(a.SortName || a.Name || "").localeCompare(String(b.SortName || b.Name || ""));
+    });
+  };
+
+  const getMarvelItems = async () => {
+    const apiInfo = getJellyfinApiInfo();
+    if (!apiInfo?.userId) return null;
+
+    const params = new URLSearchParams({
+      ParentId: MARVEL_COLLECTION_ID,
+      Fields: "BackdropImageTags,EndDate,ImageTags,PremiereDate,PrimaryImageAspectRatio,ProductionYear,SortName",
+      SortBy: "PremiereDate,ProductionYear,SortName",
+      SortOrder: "Ascending",
+      ImageTypeLimit: "1",
+      EnableImageTypes: "Primary,Backdrop",
+      Limit: "100"
+    });
+
+    const data = await fetchJson(`/Users/${apiInfo.userId}/Items?${params.toString()}`);
+    return sortMarvelByReleaseDate(data?.Items || []);
+  };
+
+  const ensureMarvelStyles = () => {
+    if (document.getElementById("codex-marvel-home-styles")) return;
+
+    const style = document.createElement("style");
+    style.id = "codex-marvel-home-styles";
+    style.textContent = `
+      #${MARVEL_SECTION_ID} {
+        margin: .85em 0 1.25em !important;
+      }
+
+      #${MARVEL_SECTION_ID} .sectionTitleContainer {
+        margin-bottom: .35rem !important;
+      }
+
+      #${MARVEL_SECTION_ID} .sectionTitleButton,
+      #${MARVEL_SECTION_ID} .sectionTitleButton:hover,
+      #${MARVEL_SECTION_ID} .sectionTitleButton:focus-visible {
+        background: transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        color: var(--my-primary-2, #a9f7ff) !important;
+        min-height: 0 !important;
+        padding: 0 !important;
+        text-decoration: none !important;
+      }
+
+      #${MARVEL_SECTION_ID} .sectionTitle {
+        color: var(--my-primary-2, #a9f7ff) !important;
+        text-decoration: none !important;
+      }
+
+      #${MARVEL_SECTION_ID} .codex-marvel-scroller {
+        overflow-x: auto !important;
+        overflow-y: visible !important;
+        position: static !important;
+        scroll-behavior: smooth;
+      }
+
+      #${MARVEL_SECTION_ID} .codex-marvel-items {
+        display: flex;
+        gap: .95rem;
+        min-height: 21.5rem;
+        padding-bottom: 1.15rem;
+        padding-top: .1rem;
+      }
+
+      #${MARVEL_SECTION_ID} .codex-marvel-card {
+        flex: 0 0 auto;
+        max-width: none !important;
+        text-decoration: none !important;
+        width: clamp(11.2rem, 14.5vw, 13.2rem);
+      }
+
+      #${MARVEL_SECTION_ID} .codex-marvel-card .cardText-first {
+        color: var(--my-primary, #00e5ff) !important;
+      }
+
+      #${MARVEL_SECTION_ID} .codex-marvel-card .cardText-secondary {
+        color: var(--my-text, #d5f3f7) !important;
+      }
+
+      #${MARVEL_SECTION_ID} .codex-marvel-card .cardBox,
+      #${MARVEL_SECTION_ID} .codex-marvel-card .visualCardBox {
+        margin: 0 !important;
+        max-width: none !important;
+        min-width: 100% !important;
+        width: 100% !important;
+      }
+
+      #${MARVEL_SECTION_ID} .codex-marvel-card .cardScalable {
+        aspect-ratio: 2 / 3 !important;
+        display: block !important;
+        height: auto !important;
+        max-width: none !important;
+        min-width: 100% !important;
+        overflow: hidden !important;
+        position: relative !important;
+        width: 100% !important;
+      }
+
+      #${MARVEL_SECTION_ID} .codex-marvel-card .cardPadder {
+        display: block !important;
+        height: 0 !important;
+        padding-bottom: 150% !important;
+        width: 100% !important;
+      }
+
+      #${MARVEL_SECTION_ID} .codex-marvel-card .cardContent {
+        bottom: 0 !important;
+        height: 100% !important;
+        left: 0 !important;
+        margin: 0 !important;
+        max-height: none !important;
+        max-width: none !important;
+        min-height: 100% !important;
+        min-width: 100% !important;
+        position: absolute !important;
+        right: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+      }
+
+      #${MARVEL_SECTION_ID} .codex-marvel-card .cardImageContainer {
+        background-position: 50% 50% !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+        border-radius: inherit !important;
+        height: 100% !important;
+        margin: 0 !important;
+        max-height: none !important;
+        max-width: none !important;
+        min-height: 100% !important;
+        min-width: 100% !important;
+        width: 100% !important;
+      }
+
+      #${MARVEL_SECTION_ID} .codex-marvel-loading {
+        color: var(--my-primary-2, #a9f7ff);
+        font-weight: 800;
+        padding: 1rem 0;
+      }
+
+      #${MARVEL_SECTION_ID} .codex-marvel-scroll-button {
+        pointer-events: auto !important;
+      }
+
+      @media (max-width: 47.99em) {
+        #${MARVEL_SECTION_ID} {
+          margin-top: 1.7em !important;
+        }
+
+        #${MARVEL_SECTION_ID} .codex-marvel-card {
+          width: clamp(10.6rem, 40vw, 11.8rem);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  };
+
+  const scrollMarvelRow = (section, direction) => {
+    const scroller = section.querySelector(".codex-marvel-scroller");
+    if (!scroller) return;
+
+    const distance = Math.max(420, scroller.clientWidth * .84);
+    scroller.scrollBy?.({ left: direction * distance, behavior: "smooth" });
+    if (!scroller.scrollBy) {
+      scroller.scrollLeft += direction * distance;
+    }
+  };
+
+  const wireMarvelScroller = (section) => {
+    if (section.getAttribute("data-codex-scroller-wired") === "true") return;
+    section.setAttribute("data-codex-scroller-wired", "true");
+
+    section.querySelector(".codex-marvel-prev")?.addEventListener("click", (event) => {
+      event.preventDefault();
+      scrollMarvelRow(section, -1);
+    });
+
+    section.querySelector(".codex-marvel-next")?.addEventListener("click", (event) => {
+      event.preventDefault();
+      scrollMarvelRow(section, 1);
+    });
+  };
+
+  const createMarvelCard = (item) => {
+    const card = document.createElement("a");
+    card.className = "card overflowPortraitCard card-hoverable codex-marvel-card";
+    card.href = `#/details?id=${item.Id}`;
+    card.title = item.Name || "MARVEL item";
+    card.setAttribute("data-id", item.Id);
+    card.setAttribute("data-type", item.Type || "");
+
+    const box = document.createElement("div");
+    box.className = "cardBox visualCardBox";
+
+    const scalable = document.createElement("div");
+    scalable.className = "cardScalable";
+
+    const padder = document.createElement("div");
+    padder.className = "cardPadder cardPadder-overflowPortrait";
+
+    const content = document.createElement("div");
+    content.className = "cardContent";
+
+    const image = document.createElement("div");
+    image.className = "cardImageContainer coveredImage cardImageContainer-covered lazyloaded";
+    image.setAttribute("data-codex-image-hydrated", "true");
+    image.style.backgroundImage = cssUrl(getMarvelImageUrl(item));
+
+    content.appendChild(image);
+    scalable.append(padder, content);
+    box.appendChild(scalable);
+
+    const title = document.createElement("div");
+    title.className = "cardText cardTextCentered cardText-first";
+    title.textContent = item.Name || "Untitled";
+
+    const subtitleText = getMarvelSubtitle(item);
+    const subtitle = document.createElement("div");
+    subtitle.className = "cardText cardTextCentered cardText-secondary";
+    subtitle.textContent = subtitleText;
+
+    card.append(box, title);
+    if (subtitleText) card.appendChild(subtitle);
+    return card;
+  };
+
+  const renderMarvelItems = (section, items) => {
+    const container = section.querySelector(".codex-marvel-items");
+    if (!container) return;
+
+    const signature = items.map((item) => item.Id).join("|");
+    if (container.getAttribute("data-codex-signature") === signature) return;
+
+    container.replaceChildren(...items.map(createMarvelCard));
+    container.setAttribute("data-codex-signature", signature);
+  };
+
+  const loadMarvelItems = (section) => {
+    if (marvelItemsCache) {
+      renderMarvelItems(section, marvelItemsCache);
+      return;
+    }
+
+    if (!marvelLoadPromise) {
+      marvelLoadPromise = getMarvelItems()
+        .then((items) => {
+          if (!items) return null;
+          marvelItemsCache = items;
+          return items;
+        })
+        .catch(() => null)
+        .finally(() => {
+          marvelLoadPromise = null;
+        });
+    }
+
+    marvelLoadPromise.then((items) => {
+      if (items && document.contains(section)) {
+        renderMarvelItems(section, items);
+      }
+    });
+  };
+
+  const createMarvelHomeSection = () => {
+    ensureMarvelStyles();
+
+    const section = document.createElement("section");
+    section.id = MARVEL_SECTION_ID;
+    section.className = "verticalSection codex-marvel-home-section";
+    section.setAttribute("data-codex-managed", "true");
+
+    section.innerHTML = `
+      <div class="sectionTitleContainer sectionTitleContainer-cards padded-left">
+        <a class="sectionTitleButton sectionTitleTextButton" href="#/details?id=${MARVEL_COLLECTION_ID}">
+          <h2 class="sectionTitle sectionTitle-cards">MARVEL</h2>
+        </a>
+      </div>
+      <div class="emby-scroller scrollX hiddenScrollX codex-marvel-scroller">
+        <div class="scrollSlider">
+          <div class="itemsContainer scrollSliderItems codex-marvel-items">
+            <div class="codex-marvel-loading">Loading MARVEL...</div>
+          </div>
+        </div>
+        <div class="emby-scrollbuttons">
+          <button type="button" class="paper-icon-button-light btnPreviousPage emby-scrollbuttons-button codex-marvel-scroll-button codex-marvel-prev" title="Previous">
+            <span class="material-icons chevron_left" aria-hidden="true"></span>
+          </button>
+          <button type="button" class="paper-icon-button-light btnNextPage emby-scrollbuttons-button codex-marvel-scroll-button codex-marvel-next" title="Next">
+            <span class="material-icons chevron_right" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    `;
+
+    wireMarvelScroller(section);
+    loadMarvelItems(section);
+    return section;
+  };
+
+  const getHomeSectionHost = (sections) => {
+    for (const entry of sections.values()) {
+      if (entry.parent) return entry.parent;
+    }
+
+    return (
+      document.querySelector(".homePage .sections") ||
+      document.querySelector(".homePage .verticalSections") ||
+      document.querySelector(".homePage") ||
+      document.querySelector(".page.homePage") ||
+      document.querySelector("[data-role='page']")
+    );
+  };
+
+  const ensureMarvelHomeSection = (sections = findSections()) => {
+    if (!isMarvelHomeTarget()) {
+      document.getElementById(MARVEL_SECTION_ID)?.remove();
+      return;
+    }
+
+    const host = getHomeSectionHost(sections);
+    if (!host) return;
+
+    const section = document.getElementById(MARVEL_SECTION_ID) || createMarvelHomeSection();
+    if (section.parentElement !== host || host.lastElementChild !== section) {
+      host.appendChild(section);
+    }
+
+    wireMarvelScroller(section);
+    loadMarvelItems(section);
+  };
+
   const hydrateLazyImage = (node) => {
     const src = node?.getAttribute?.("data-src");
     if (!src) return false;
@@ -316,6 +838,8 @@
           recent.parent.insertBefore(nextUp.section, recent.section);
         }
       }
+
+      ensureMarvelHomeSection(sections);
     } finally {
       applyingOrder = false;
     }
