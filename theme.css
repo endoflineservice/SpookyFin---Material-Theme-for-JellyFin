@@ -6473,4 +6473,80 @@ body,
 }
 /* Codex home card row spacing repair v9.6 end */
 
+/* Codex home row header icons v9.7 */
+.homePage .sectionTitle[data-codex-section-kind],
+.homePage .sectionTitle-cards[data-codex-section-kind] {
+  align-items: center !important;
+  display: inline-flex !important;
+  gap: .46rem !important;
+}
+
+.homePage .sectionTitle[data-codex-section-kind]::before,
+.homePage .sectionTitle-cards[data-codex-section-kind]::before {
+  align-items: center !important;
+  background: color-mix(in srgb, var(--my-primary) 12%, transparent) !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 18%, transparent) !important;
+  border-radius: 999px !important;
+  color: var(--my-primary) !important;
+  content: "grid_view" !important;
+  display: inline-flex !important;
+  flex: 0 0 1.45em !important;
+  font-family: "Material Icons", "Material Icons Round", sans-serif !important;
+  font-size: .82em !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  height: 1.45em !important;
+  justify-content: center !important;
+  letter-spacing: normal !important;
+  line-height: 1 !important;
+  text-transform: none !important;
+  width: 1.45em !important;
+}
+
+.homePage .sectionTitle[data-codex-section-kind="media"]::before,
+.homePage .sectionTitle-cards[data-codex-section-kind="media"]::before {
+  content: "apps" !important;
+}
+
+.homePage .sectionTitle[data-codex-section-kind="continue"]::before,
+.homePage .sectionTitle-cards[data-codex-section-kind="continue"]::before {
+  content: "play_circle" !important;
+}
+
+.homePage .sectionTitle[data-codex-section-kind="nextup"]::before,
+.homePage .sectionTitle-cards[data-codex-section-kind="nextup"]::before {
+  content: "skip_next" !important;
+}
+
+.homePage .sectionTitle[data-codex-section-kind="recent"]::before,
+.homePage .sectionTitle-cards[data-codex-section-kind="recent"]::before {
+  content: "schedule" !important;
+}
+
+.homePage .sectionTitle[data-codex-section-kind="marvel"]::before,
+.homePage .sectionTitle-cards[data-codex-section-kind="marvel"]::before {
+  content: "auto_awesome" !important;
+}
+
+.homePage .sectionTitle[data-codex-section-kind="favorite"]::before,
+.homePage .sectionTitle-cards[data-codex-section-kind="favorite"]::before {
+  content: "favorite" !important;
+}
+
+.homePage .sectionTitle[data-codex-section-kind="movie"]::before,
+.homePage .sectionTitle-cards[data-codex-section-kind="movie"]::before {
+  content: "movie" !important;
+}
+
+.homePage .sectionTitle[data-codex-section-kind="show"]::before,
+.homePage .sectionTitle-cards[data-codex-section-kind="show"]::before {
+  content: "live_tv" !important;
+}
+
+.homePage .sectionTitle[data-codex-section-kind="music"]::before,
+.homePage .sectionTitle-cards[data-codex-section-kind="music"]::before {
+  content: "music_note" !important;
+}
+/* Codex home row header icons v9.7 end */
+
 /* Codex dynamic accent backgrounds v7.7 end */

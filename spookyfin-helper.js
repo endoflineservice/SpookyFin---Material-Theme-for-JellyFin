@@ -788,6 +788,46 @@
     }
   };
 
+  const getSectionIconKind = (text) => {
+    if (/^marvel$/i.test(text)) return "marvel";
+    if (/my media|libraries/i.test(text)) return "media";
+    if (CONTINUE_RE.test(text)) return "continue";
+    if (NEXT_UP_RE.test(text)) return "nextup";
+    if (RECENT_RE.test(text)) return "recent";
+    if (/favorite/i.test(text)) return "favorite";
+    if (/movie/i.test(text)) return "movie";
+    if (/show|episode|series/i.test(text)) return "show";
+    if (/music|album|song/i.test(text)) return "music";
+    return "default";
+  };
+
+  const decorateHomeSectionIcons = () => {
+    if (!isHomePage()) return;
+
+    const headings = [
+      ...document.querySelectorAll(
+        ".homePage .sectionTitle, .homePage .sectionTitleButton, .homePage h2, .homePage h3, .homeTabContent .sectionTitle, .homeTabContent .sectionTitleButton, .homeTabContent h2, .homeTabContent h3"
+      )
+    ];
+
+    for (const heading of headings) {
+      const text = cleanText(heading);
+      if (!text) continue;
+
+      const kind = getSectionIconKind(text);
+      const title = heading.matches?.(".sectionTitle, h2, h3")
+        ? heading
+        : heading.querySelector?.(".sectionTitle, h2, h3") || heading;
+
+      title.setAttribute("data-codex-section-kind", kind);
+
+      const section = sectionForHeading(heading);
+      if (section) {
+        section.setAttribute("data-codex-section-kind", kind);
+      }
+    }
+  };
+
   const findSections = () => {
     const candidates = [
       ...document.querySelectorAll(
@@ -810,6 +850,8 @@
 
       const section = sectionForHeading(heading);
       if (!section?.parentElement) continue;
+      section.setAttribute("data-codex-section-kind", type);
+      heading.setAttribute("data-codex-section-kind", type);
       sections.set(type, { section, parent: section.parentElement, text });
     }
 
@@ -826,6 +868,7 @@
     const recent = sections.get("recent");
     const watching = sections.get("continue");
     const nextUp = sections.get("nextup");
+    decorateHomeSectionIcons();
 
     applyingOrder = true;
     try {
