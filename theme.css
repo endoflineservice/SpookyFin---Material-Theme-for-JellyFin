@@ -6475,23 +6475,25 @@ body,
 
 /* Codex home row header icons v9.7 */
 :root {
-  --codex-row-header-icon-size: 1.38rem;
-  --codex-row-header-icon-font: .86rem;
+  --codex-row-header-icon-size: 1.12rem;
+  --codex-row-header-icon-font: 1.05rem;
 }
 
 .homePage .sectionTitle[data-codex-section-kind],
 .homePage .sectionTitle-cards[data-codex-section-kind] {
   align-items: center !important;
   display: inline-flex !important;
-  gap: .46rem !important;
+  gap: .38rem !important;
 }
 
 .homePage .sectionTitle[data-codex-section-kind]::before,
 .homePage .sectionTitle-cards[data-codex-section-kind]::before {
   align-items: center !important;
-  background: color-mix(in srgb, var(--my-primary) 12%, transparent) !important;
-  border: 1px solid color-mix(in srgb, var(--my-primary) 18%, transparent) !important;
-  border-radius: 999px !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
   box-sizing: border-box !important;
   color: var(--my-primary) !important;
   content: "grid_view" !important;
@@ -6508,7 +6510,7 @@ body,
   line-height: 1 !important;
   min-height: var(--codex-row-header-icon-size) !important;
   min-width: var(--codex-row-header-icon-size) !important;
-  padding: .03rem 0 0 !important;
+  padding: 0 !important;
   position: relative !important;
   text-align: center !important;
   text-transform: none !important;
@@ -6629,8 +6631,11 @@ body,
 .homePage .sectionTitleButton:focus-visible .sectionTitle[data-codex-section-kind]::before,
 .homePage .sectionTitleTextButton:hover .sectionTitle[data-codex-section-kind]::before,
 .homePage .sectionTitleTextButton:focus-visible .sectionTitle[data-codex-section-kind]::before {
-  background: color-mix(in srgb, var(--my-primary) 18%, transparent) !important;
-  border-color: color-mix(in srgb, var(--my-primary) 24%, transparent) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border-color: transparent !important;
+  color: var(--my-primary-2) !important;
 }
 /* Codex row header hover cleanup v9.9 end */
 
