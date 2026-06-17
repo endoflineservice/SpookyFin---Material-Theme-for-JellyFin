@@ -6597,4 +6597,41 @@ body,
 }
 /* Codex My Media row arrows restore v9.8 end */
 
+/* Codex row header hover cleanup v9.9 */
+.homePage .sectionTitleButton,
+.homePage .sectionTitleTextButton,
+.homePage .sectionTitleContainer .emby-button {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+.homePage .sectionTitleButton:hover,
+.homePage .sectionTitleButton:focus-visible,
+.homePage .sectionTitleTextButton:hover,
+.homePage .sectionTitleTextButton:focus-visible,
+.homePage .sectionTitleContainer .emby-button:hover,
+.homePage .sectionTitleContainer .emby-button:focus-visible {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  color: var(--my-primary-2) !important;
+  filter: none !important;
+  outline: none !important;
+}
+
+.homePage .sectionTitleButton:hover .sectionTitle[data-codex-section-kind]::before,
+.homePage .sectionTitleButton:focus-visible .sectionTitle[data-codex-section-kind]::before,
+.homePage .sectionTitleTextButton:hover .sectionTitle[data-codex-section-kind]::before,
+.homePage .sectionTitleTextButton:focus-visible .sectionTitle[data-codex-section-kind]::before {
+  background: color-mix(in srgb, var(--my-primary) 18%, transparent) !important;
+  border-color: color-mix(in srgb, var(--my-primary) 24%, transparent) !important;
+}
+/* Codex row header hover cleanup v9.9 end */
+
 /* Codex dynamic accent backgrounds v7.7 end */
