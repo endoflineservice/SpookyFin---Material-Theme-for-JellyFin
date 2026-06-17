@@ -6639,4 +6639,248 @@ body,
 }
 /* Codex row header hover cleanup v9.9 end */
 
+/* Codex image picker polish v10.0 */
+.dialog:has(.availableImagesList) {
+  background: var(--codex-theme-surface-2, var(--my-surface-2)) !important;
+  background-color: var(--codex-theme-surface-2, var(--my-surface-2)) !important;
+  background-image: none !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 22%, transparent) !important;
+  border-radius: 1.65rem !important;
+  box-shadow: 0 1.25rem 3rem rgba(0, 0, 0, .42) !important;
+  overflow: hidden !important;
+}
+
+.dialog-small:has(.availableImagesList) {
+  height: min(86vh, 52rem) !important;
+  max-height: calc(100vh - 1rem) !important;
+  max-width: min(96vw, 76rem) !important;
+  width: min(94vw, 74rem) !important;
+}
+
+.dialog:has(.availableImagesList) .formDialogHeader,
+.dialog:has(.availableImagesList) .dialogHeader {
+  align-items: center !important;
+  background: var(--codex-theme-surface-3, var(--my-surface-3)) !important;
+  background-color: var(--codex-theme-surface-3, var(--my-surface-3)) !important;
+  background-image: none !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--my-primary) 12%, transparent) !important;
+  border-radius: 1.65rem 1.65rem 0 0 !important;
+  min-height: 4.75rem !important;
+  padding: .75rem 1rem !important;
+}
+
+.dialog:has(.availableImagesList) .formDialogHeaderTitle,
+.dialog:has(.availableImagesList) .dialogHeaderTitle {
+  color: var(--my-primary-2) !important;
+  font-size: 1.25rem !important;
+  font-weight: 800 !important;
+}
+
+.dialog:has(.availableImagesList) .btnCancel,
+.dialog:has(.availableImagesList) .btnHeaderBack,
+.dialog:has(.availableImagesList) .formDialogHeader .paper-icon-button-light {
+  background: color-mix(in srgb, var(--my-primary) 10%, transparent) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 10%, transparent) !important;
+  background-image: none !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 13%, transparent) !important;
+  box-shadow: none !important;
+  color: var(--my-primary-2) !important;
+}
+
+.dialog:has(.availableImagesList) .dialogContentInner,
+.dialog:has(.availableImagesList) .formDialogContent {
+  background: var(--codex-theme-bg-raised, var(--my-bg-raised)) !important;
+  background-color: var(--codex-theme-bg-raised, var(--my-bg-raised)) !important;
+  background-image: none !important;
+}
+
+.dialog:has(.availableImagesList) .dialogContentInner {
+  padding: 1.25rem clamp(1rem, 2.4vw, 2rem) 2rem !important;
+}
+
+.dialog:has(.availableImagesList) .flex.align-items-center.justify-content-center {
+  align-items: end !important;
+  background: color-mix(in srgb, var(--my-primary) 7%, var(--my-bg-raised)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 7%, var(--my-bg-raised)) !important;
+  background-image: none !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 12%, transparent) !important;
+  border-radius: 1.2rem !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: .8rem 1rem !important;
+  justify-content: flex-start !important;
+  margin: 0 0 1.2rem !important;
+  padding: .95rem 1rem !important;
+}
+
+.dialog:has(.availableImagesList) .selectLabel {
+  color: var(--my-primary-2) !important;
+  font-size: .82rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0 !important;
+  margin-bottom: .35rem !important;
+}
+
+.dialog:has(.availableImagesList) .selectContainer {
+  min-width: clamp(10rem, 18vw, 14rem) !important;
+}
+
+.dialog:has(.availableImagesList) .emby-select,
+.dialog:has(.availableImagesList) .selectContainer select {
+  background: color-mix(in srgb, var(--my-primary) 10%, var(--my-surface)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 10%, var(--my-surface)) !important;
+  background-image: none !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 38%, transparent) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  color: var(--my-text) !important;
+  min-height: 2.7rem !important;
+  padding-inline: 1rem 2.35rem !important;
+}
+
+.dialog:has(.availableImagesList) .availableImagesPaging {
+  align-items: center !important;
+  color: var(--my-text) !important;
+  display: inline-flex !important;
+  font-weight: 700 !important;
+  gap: .45rem !important;
+  min-height: 2.75rem !important;
+}
+
+.dialog:has(.availableImagesList) .availableImagesPaging .paper-icon-button-light {
+  background: color-mix(in srgb, var(--my-primary) 12%, transparent) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 12%, transparent) !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 14%, transparent) !important;
+  box-shadow: none !important;
+}
+
+.dialog:has(.availableImagesList) .availableImagesPaging .paper-icon-button-light:not(:disabled):hover {
+  background: color-mix(in srgb, var(--my-primary) 20%, transparent) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 20%, transparent) !important;
+}
+
+.dialog:has(.availableImagesList) .availableImagesList {
+  display: grid !important;
+  gap: 1.15rem !important;
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)) !important;
+  justify-items: stretch !important;
+  padding: .15rem .15rem 1rem !important;
+}
+
+.dialog:has(.availableImagesList) .availableImagesList .imageEditorCard {
+  align-items: stretch !important;
+  background: color-mix(in srgb, var(--my-primary) 8%, var(--my-surface)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 8%, var(--my-surface)) !important;
+  background-image: none !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 11%, transparent) !important;
+  border-radius: 1.1rem !important;
+  box-shadow: 0 .7rem 1.45rem rgba(0, 0, 0, .18) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  margin: 0 !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  padding: .65rem !important;
+  width: 100% !important;
+}
+
+.dialog:has(.availableImagesList) .availableImagesList .imageEditorCard:hover,
+.dialog:has(.availableImagesList) .availableImagesList .imageEditorCard:focus-within {
+  background: color-mix(in srgb, var(--my-primary) 13%, var(--my-surface)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 13%, var(--my-surface)) !important;
+  border-color: color-mix(in srgb, var(--my-primary) 22%, transparent) !important;
+  transform: translateY(-1px) !important;
+}
+
+.dialog:has(.availableImagesList) .imageEditorCard .cardBox,
+.dialog:has(.availableImagesList) .imageEditorCard .visualCardBox {
+  margin: 0 auto .65rem !important;
+  max-width: 7rem !important;
+  width: min(100%, 7rem) !important;
+}
+
+.dialog:has(.availableImagesList) .imageEditorCard .cardScalable {
+  aspect-ratio: 2 / 3 !important;
+  border-radius: .85rem !important;
+  box-shadow: 0 .45rem 1rem rgba(0, 0, 0, .28) !important;
+  overflow: hidden !important;
+}
+
+.dialog:has(.availableImagesList) .imageEditorCard .cardContent,
+.dialog:has(.availableImagesList) .imageEditorCard .cardImageContainer,
+.dialog:has(.availableImagesList) .imageEditorCard img {
+  border-radius: inherit !important;
+}
+
+.dialog:has(.availableImagesList) .imageEditorCard .cardImageContainer {
+  background-size: cover !important;
+}
+
+.dialog:has(.availableImagesList) .imageEditorCard .cardText {
+  color: var(--my-text) !important;
+  font-size: .82rem !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  max-width: 100% !important;
+  min-height: 0 !important;
+  overflow-wrap: anywhere !important;
+  text-align: center !important;
+  white-space: normal !important;
+}
+
+.dialog:has(.availableImagesList) .imageEditorCard .cardText-secondary,
+.dialog:has(.availableImagesList) .imageEditorCard .secondaryText {
+  color: var(--my-muted) !important;
+  font-size: .76rem !important;
+  font-weight: 650 !important;
+}
+
+.dialog:has(.availableImagesList) .btnDownloadRemoteImage {
+  align-items: center !important;
+  align-self: center !important;
+  background: color-mix(in srgb, var(--my-primary) 14%, transparent) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 14%, transparent) !important;
+  background-image: none !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 14%, transparent) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  color: var(--my-primary-2) !important;
+  display: inline-flex !important;
+  height: 2.25rem !important;
+  justify-content: center !important;
+  margin-top: auto !important;
+  min-height: 2.25rem !important;
+  min-width: 2.25rem !important;
+  width: 2.25rem !important;
+}
+
+.dialog:has(.availableImagesList) .btnDownloadRemoteImage:hover,
+.dialog:has(.availableImagesList) .btnDownloadRemoteImage:focus-visible {
+  background: var(--my-primary) !important;
+  background-color: var(--my-primary) !important;
+  border-color: var(--my-primary) !important;
+  color: var(--my-on-primary) !important;
+}
+
+@media (max-width: 48em) {
+  .dialog-small:has(.availableImagesList) {
+    height: calc(100vh - .75rem) !important;
+    max-width: calc(100vw - .75rem) !important;
+    width: calc(100vw - .75rem) !important;
+  }
+
+  .dialog:has(.availableImagesList) .availableImagesList {
+    gap: .8rem !important;
+    grid-template-columns: repeat(auto-fill, minmax(7.6rem, 1fr)) !important;
+  }
+
+  .dialog:has(.availableImagesList) .imageEditorCard .cardBox,
+  .dialog:has(.availableImagesList) .imageEditorCard .visualCardBox {
+    max-width: 5.8rem !important;
+    width: min(100%, 5.8rem) !important;
+  }
+}
+/* Codex image picker polish v10.0 end */
+
 /* Codex dynamic accent backgrounds v7.7 end */
