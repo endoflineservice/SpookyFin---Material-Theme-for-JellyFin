@@ -6489,17 +6489,23 @@ body,
   border-radius: 999px !important;
   color: var(--my-primary) !important;
   content: "grid_view" !important;
-  display: inline-flex !important;
+  display: inline-grid !important;
   flex: 0 0 1.45em !important;
   font-family: "Material Icons", "Material Icons Round", sans-serif !important;
   font-size: .82em !important;
+  font-feature-settings: "liga" !important;
   font-style: normal !important;
   font-weight: 400 !important;
   height: 1.45em !important;
   justify-content: center !important;
   letter-spacing: normal !important;
   line-height: 1 !important;
+  place-items: center !important;
+  position: relative !important;
+  text-align: center !important;
   text-transform: none !important;
+  top: .02em !important;
+  -webkit-font-smoothing: antialiased !important;
   width: 1.45em !important;
 }
 
