@@ -7,6 +7,8 @@
   const THEME_KEY = "codex-jellyfin-theme-color";
   const MARVEL_COLLECTION_ID = "11a2559a067baa4ecce54c609664e070";
   const MARVEL_SECTION_ID = "codex-marvel-home-section";
+  const WIZARDING_COLLECTION_ID = "f356014e0bd58bb53436e8a640032e82";
+  const WIZARDING_SECTION_ID = "codex-wizarding-home-section";
   const THEMES = {
     blue: {
       label: "Blue",
@@ -269,6 +271,8 @@
 
   let marvelItemsCache = null;
   let marvelLoadPromise = null;
+  let wizardingItemsCache = null;
+  let wizardingLoadPromise = null;
 
   const parseJson = (value) => {
     try {
@@ -436,23 +440,41 @@
     return sortMarvelByReleaseDate(data?.Items || []);
   };
 
+  const getWizardingItems = async () => {
+    const apiInfo = getJellyfinApiInfo();
+    if (!apiInfo?.userId) return null;
+
+    const params = new URLSearchParams({
+      ParentId: WIZARDING_COLLECTION_ID,
+      Fields: "BackdropImageTags,EndDate,ImageTags,PremiereDate,PrimaryImageAspectRatio,ProductionYear,SortName",
+      SortBy: "PremiereDate,ProductionYear,SortName",
+      SortOrder: "Ascending",
+      ImageTypeLimit: "1",
+      EnableImageTypes: "Primary,Backdrop",
+      Limit: "100"
+    });
+
+    const data = await fetchJson(`/Users/${apiInfo.userId}/Items?${params.toString()}`);
+    return sortMarvelByReleaseDate(data?.Items || []);
+  };
+
   const ensureMarvelStyles = () => {
     if (document.getElementById("codex-marvel-home-styles")) return;
 
     const style = document.createElement("style");
     style.id = "codex-marvel-home-styles";
     style.textContent = `
-      #${MARVEL_SECTION_ID} {
+      .codex-collection-home-section {
         margin: .85em 0 1.25em !important;
       }
 
-      #${MARVEL_SECTION_ID} .sectionTitleContainer {
+      .codex-collection-home-section .sectionTitleContainer {
         margin-bottom: .35rem !important;
       }
 
-      #${MARVEL_SECTION_ID} .sectionTitleButton,
-      #${MARVEL_SECTION_ID} .sectionTitleButton:hover,
-      #${MARVEL_SECTION_ID} .sectionTitleButton:focus-visible {
+      .codex-collection-home-section .sectionTitleButton,
+      .codex-collection-home-section .sectionTitleButton:hover,
+      .codex-collection-home-section .sectionTitleButton:focus-visible {
         background: transparent !important;
         border: 0 !important;
         box-shadow: none !important;
@@ -462,19 +484,19 @@
         text-decoration: none !important;
       }
 
-      #${MARVEL_SECTION_ID} .sectionTitle {
+      .codex-collection-home-section .sectionTitle {
         color: var(--my-primary-2, #a9f7ff) !important;
         text-decoration: none !important;
       }
 
-      #${MARVEL_SECTION_ID} .codex-marvel-scroller {
+      .codex-collection-home-section .codex-marvel-scroller {
         overflow-x: auto !important;
         overflow-y: visible !important;
         position: static !important;
         scroll-behavior: smooth;
       }
 
-      #${MARVEL_SECTION_ID} .codex-marvel-items {
+      .codex-collection-home-section .codex-marvel-items {
         display: flex;
         gap: .95rem;
         min-height: 21.5rem;
@@ -482,30 +504,30 @@
         padding-top: .1rem;
       }
 
-      #${MARVEL_SECTION_ID} .codex-marvel-card {
+      .codex-collection-home-section .codex-marvel-card {
         flex: 0 0 auto;
         max-width: none !important;
         text-decoration: none !important;
         width: clamp(11.2rem, 14.5vw, 13.2rem);
       }
 
-      #${MARVEL_SECTION_ID} .codex-marvel-card .cardText-first {
+      .codex-collection-home-section .codex-marvel-card .cardText-first {
         color: var(--my-primary, #00e5ff) !important;
       }
 
-      #${MARVEL_SECTION_ID} .codex-marvel-card .cardText-secondary {
+      .codex-collection-home-section .codex-marvel-card .cardText-secondary {
         color: var(--my-text, #d5f3f7) !important;
       }
 
-      #${MARVEL_SECTION_ID} .codex-marvel-card .cardBox,
-      #${MARVEL_SECTION_ID} .codex-marvel-card .visualCardBox {
+      .codex-collection-home-section .codex-marvel-card .cardBox,
+      .codex-collection-home-section .codex-marvel-card .visualCardBox {
         margin: 0 !important;
         max-width: none !important;
         min-width: 100% !important;
         width: 100% !important;
       }
 
-      #${MARVEL_SECTION_ID} .codex-marvel-card .cardScalable {
+      .codex-collection-home-section .codex-marvel-card .cardScalable {
         aspect-ratio: 2 / 3 !important;
         display: block !important;
         height: auto !important;
@@ -516,14 +538,14 @@
         width: 100% !important;
       }
 
-      #${MARVEL_SECTION_ID} .codex-marvel-card .cardPadder {
+      .codex-collection-home-section .codex-marvel-card .cardPadder {
         display: block !important;
         height: 0 !important;
         padding-bottom: 150% !important;
         width: 100% !important;
       }
 
-      #${MARVEL_SECTION_ID} .codex-marvel-card .cardContent {
+      .codex-collection-home-section .codex-marvel-card .cardContent {
         bottom: 0 !important;
         height: 100% !important;
         left: 0 !important;
@@ -538,7 +560,7 @@
         width: 100% !important;
       }
 
-      #${MARVEL_SECTION_ID} .codex-marvel-card .cardImageContainer {
+      .codex-collection-home-section .codex-marvel-card .cardImageContainer {
         background-position: 50% 50% !important;
         background-repeat: no-repeat !important;
         background-size: cover !important;
@@ -552,22 +574,22 @@
         width: 100% !important;
       }
 
-      #${MARVEL_SECTION_ID} .codex-marvel-loading {
+      .codex-collection-home-section .codex-marvel-loading {
         color: var(--my-primary-2, #a9f7ff);
         font-weight: 800;
         padding: 1rem 0;
       }
 
-      #${MARVEL_SECTION_ID} .codex-marvel-scroll-button {
+      .codex-collection-home-section .codex-marvel-scroll-button {
         pointer-events: auto !important;
       }
 
       @media (max-width: 47.99em) {
-        #${MARVEL_SECTION_ID} {
+        .codex-collection-home-section {
           margin-top: 1.7em !important;
         }
 
-        #${MARVEL_SECTION_ID} .codex-marvel-card {
+        .codex-collection-home-section .codex-marvel-card {
           width: clamp(10.6rem, 40vw, 11.8rem);
         }
       }
@@ -681,12 +703,38 @@
     });
   };
 
+  const loadWizardingItems = (section) => {
+    if (wizardingItemsCache) {
+      renderMarvelItems(section, wizardingItemsCache);
+      return;
+    }
+
+    if (!wizardingLoadPromise) {
+      wizardingLoadPromise = getWizardingItems()
+        .then((items) => {
+          if (!items) return null;
+          wizardingItemsCache = items;
+          return items;
+        })
+        .catch(() => null)
+        .finally(() => {
+          wizardingLoadPromise = null;
+        });
+    }
+
+    wizardingLoadPromise.then((items) => {
+      if (items && document.contains(section)) {
+        renderMarvelItems(section, items);
+      }
+    });
+  };
+
   const createMarvelHomeSection = () => {
     ensureMarvelStyles();
 
     const section = document.createElement("section");
     section.id = MARVEL_SECTION_ID;
-    section.className = "verticalSection codex-marvel-home-section";
+    section.className = "verticalSection codex-collection-home-section codex-marvel-home-section";
     section.setAttribute("data-codex-managed", "true");
 
     section.innerHTML = `
@@ -717,6 +765,42 @@
     return section;
   };
 
+  const createWizardingHomeSection = () => {
+    ensureMarvelStyles();
+
+    const section = document.createElement("section");
+    section.id = WIZARDING_SECTION_ID;
+    section.className = "verticalSection codex-collection-home-section codex-wizarding-home-section";
+    section.setAttribute("data-codex-managed", "true");
+
+    section.innerHTML = `
+      <div class="sectionTitleContainer sectionTitleContainer-cards padded-left">
+        <a class="sectionTitleButton sectionTitleTextButton" href="#/details?id=${WIZARDING_COLLECTION_ID}">
+          <h2 class="sectionTitle sectionTitle-cards">WIZARDING WORLD</h2>
+        </a>
+      </div>
+      <div class="emby-scroller scrollX hiddenScrollX codex-marvel-scroller">
+        <div class="scrollSlider">
+          <div class="itemsContainer scrollSliderItems codex-marvel-items">
+            <div class="codex-marvel-loading">Loading Wizarding World...</div>
+          </div>
+        </div>
+        <div class="emby-scrollbuttons">
+          <button type="button" class="paper-icon-button-light btnPreviousPage emby-scrollbuttons-button codex-marvel-scroll-button codex-marvel-prev" title="Previous">
+            <span class="material-icons chevron_left" aria-hidden="true"></span>
+          </button>
+          <button type="button" class="paper-icon-button-light btnNextPage emby-scrollbuttons-button codex-marvel-scroll-button codex-marvel-next" title="Next">
+            <span class="material-icons chevron_right" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    `;
+
+    wireMarvelScroller(section);
+    loadWizardingItems(section);
+    return section;
+  };
+
   const getHomeSectionHost = (sections) => {
     for (const entry of sections.values()) {
       if (entry.parent) return entry.parent;
@@ -734,19 +818,26 @@
   const ensureMarvelHomeSection = (sections = findSections()) => {
     if (!isMarvelHomeTarget()) {
       document.getElementById(MARVEL_SECTION_ID)?.remove();
+      document.getElementById(WIZARDING_SECTION_ID)?.remove();
       return;
     }
 
     const host = getHomeSectionHost(sections);
     if (!host) return;
 
-    const section = document.getElementById(MARVEL_SECTION_ID) || createMarvelHomeSection();
-    if (section.parentElement !== host || host.lastElementChild !== section) {
-      host.appendChild(section);
+    const marvelSection = document.getElementById(MARVEL_SECTION_ID) || createMarvelHomeSection();
+    const wizardingSection = document.getElementById(WIZARDING_SECTION_ID) || createWizardingHomeSection();
+
+    if (marvelSection.parentElement !== host || wizardingSection.parentElement !== host || host.lastElementChild !== wizardingSection) {
+      host.append(marvelSection, wizardingSection);
+    } else if (wizardingSection.previousElementSibling !== marvelSection) {
+      host.insertBefore(wizardingSection, marvelSection.nextSibling);
     }
 
-    wireMarvelScroller(section);
-    loadMarvelItems(section);
+    wireMarvelScroller(marvelSection);
+    wireMarvelScroller(wizardingSection);
+    loadMarvelItems(marvelSection);
+    loadWizardingItems(wizardingSection);
   };
 
   const hydrateLazyImage = (node) => {
@@ -790,6 +881,7 @@
 
   const getSectionIconKind = (text) => {
     if (/^marvel$/i.test(text)) return "marvel";
+    if (/wizarding world/i.test(text)) return "movie";
     if (/my media|libraries/i.test(text)) return "media";
     if (CONTINUE_RE.test(text)) return "continue";
     if (NEXT_UP_RE.test(text)) return "nextup";
