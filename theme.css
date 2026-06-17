@@ -6884,3 +6884,136 @@ body,
 /* Codex image picker polish v10.0 end */
 
 /* Codex dynamic accent backgrounds v7.7 end */
+
+/* Codex MediaBar spotlight polish v10.1 */
+body:has(#slides-container) .homeSectionsContainer {
+  top: 72vh !important;
+}
+
+#slides-container .button-container {
+  align-items: center !important;
+  gap: .72rem !important;
+}
+
+#slides-container .button-container .detailButton.play-button.btnPlay,
+#slides-container .button-container .detailButton.play-button.btnPlay:hover,
+#slides-container .button-container .detailButton.play-button.btnPlay:focus-visible {
+  align-items: center !important;
+  aspect-ratio: auto !important;
+  background: var(--my-primary) !important;
+  background-color: var(--my-primary) !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  color: var(--my-on-primary) !important;
+  display: inline-flex !important;
+  flex-direction: row !important;
+  font-size: .98rem !important;
+  font-weight: 800 !important;
+  gap: .42rem !important;
+  height: 3rem !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  min-height: 3rem !important;
+  min-width: 0 !important;
+  overflow: visible !important;
+  padding: 0 1.05rem !important;
+  transform: none !important;
+  width: auto !important;
+}
+
+#slides-container .button-container .detailButton.play-button.btnPlay:hover,
+#slides-container .button-container .detailButton.play-button.btnPlay:focus-visible {
+  background: var(--my-primary-2) !important;
+  background-color: var(--my-primary-2) !important;
+  color: var(--my-on-primary) !important;
+}
+
+#slides-container .button-container .play-button.btnPlay::before {
+  color: currentColor !important;
+  flex: 0 0 auto !important;
+  font-size: 1.28rem !important;
+  height: 1.28rem !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  max-height: 1.28rem !important;
+  max-width: 1.28rem !important;
+  width: 1.28rem !important;
+}
+
+#slides-container .button-container .play-button .play-text {
+  color: currentColor !important;
+  display: inline-block !important;
+  font-size: inherit !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  white-space: nowrap !important;
+}
+
+#slides-container .button-container .detail-button,
+#slides-container .button-container .favorite-button,
+#slides-container .button-container .detail-button:hover,
+#slides-container .button-container .favorite-button:hover,
+#slides-container .button-container .detail-button:focus-visible,
+#slides-container .button-container .favorite-button:focus-visible {
+  align-items: center !important;
+  aspect-ratio: 1 / 1 !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  display: inline-flex !important;
+  height: 3rem !important;
+  justify-content: center !important;
+  min-height: 3rem !important;
+  min-width: 3rem !important;
+  padding: 0 !important;
+  transform: none !important;
+  width: 3rem !important;
+}
+
+#slides-container .button-container .favorite-button,
+#slides-container .button-container .favorite-button.favorited,
+#slides-container .button-container .favorite-button:hover,
+#slides-container .button-container .favorite-button:focus-visible {
+  color: var(--my-primary) !important;
+}
+
+#slides-container .button-container .detail-button::before,
+#slides-container .button-container .favorite-button::before,
+#slides-container .button-container .favorite-button.favorited::before {
+  font-size: 1.28rem !important;
+  height: 1.28rem !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  max-height: 1.28rem !important;
+  max-width: 1.28rem !important;
+  width: 1.28rem !important;
+}
+
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+  body:has(#slides-container) .homeSectionsContainer {
+    top: 66vh !important;
+  }
+
+  #slides-container .button-container .detailButton.play-button.btnPlay {
+    font-size: .9rem !important;
+    height: 2.72rem !important;
+    min-height: 2.72rem !important;
+    padding-inline: .92rem !important;
+  }
+
+  #slides-container .button-container .detail-button,
+  #slides-container .button-container .favorite-button {
+    height: 2.72rem !important;
+    min-height: 2.72rem !important;
+    min-width: 2.72rem !important;
+    width: 2.72rem !important;
+  }
+}
+
+@media only screen and (max-height: 767px) and (orientation: landscape) {
+  body:has(#slides-container) .homeSectionsContainer {
+    top: 63vh !important;
+  }
+}
+/* Codex MediaBar spotlight polish v10.1 end */
