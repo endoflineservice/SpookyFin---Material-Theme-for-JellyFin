@@ -5,7 +5,7 @@
   const NEXT_UP_RE = /next up/i;
   const RECENT_RE = /recently added|latest/i;
   const THEME_KEY = "codex-jellyfin-theme-color";
-  const MARVEL_COLLECTION_ID = "f7855f569b4a8751e9329d441ecfbabc";
+  const MARVEL_COLLECTION_ID = "11a2559a067baa4ecce54c609664e070";
   const MARVEL_SECTION_ID = "codex-marvel-home-section";
   const THEMES = {
     blue: {
