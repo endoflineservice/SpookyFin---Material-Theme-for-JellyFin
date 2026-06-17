@@ -6474,6 +6474,11 @@ body,
 /* Codex home card row spacing repair v9.6 end */
 
 /* Codex home row header icons v9.7 */
+:root {
+  --codex-row-header-icon-size: 1.38rem;
+  --codex-row-header-icon-font: .86rem;
+}
+
 .homePage .sectionTitle[data-codex-section-kind],
 .homePage .sectionTitle-cards[data-codex-section-kind] {
   align-items: center !important;
@@ -6487,26 +6492,30 @@ body,
   background: color-mix(in srgb, var(--my-primary) 12%, transparent) !important;
   border: 1px solid color-mix(in srgb, var(--my-primary) 18%, transparent) !important;
   border-radius: 999px !important;
+  box-sizing: border-box !important;
   color: var(--my-primary) !important;
   content: "grid_view" !important;
-  display: inline-grid !important;
-  flex: 0 0 1.45em !important;
+  display: inline-flex !important;
+  flex: 0 0 var(--codex-row-header-icon-size) !important;
   font-family: "Material Icons", "Material Icons Round", sans-serif !important;
-  font-size: .82em !important;
+  font-size: var(--codex-row-header-icon-font) !important;
   font-feature-settings: "liga" !important;
   font-style: normal !important;
   font-weight: 400 !important;
-  height: 1.45em !important;
+  height: var(--codex-row-header-icon-size) !important;
   justify-content: center !important;
   letter-spacing: normal !important;
   line-height: 1 !important;
-  place-items: center !important;
+  min-height: var(--codex-row-header-icon-size) !important;
+  min-width: var(--codex-row-header-icon-size) !important;
+  padding: .03rem 0 0 !important;
   position: relative !important;
   text-align: center !important;
   text-transform: none !important;
-  top: .02em !important;
+  top: 0 !important;
+  vertical-align: middle !important;
   -webkit-font-smoothing: antialiased !important;
-  width: 1.45em !important;
+  width: var(--codex-row-header-icon-size) !important;
 }
 
 .homePage .sectionTitle[data-codex-section-kind="media"]::before,
@@ -6516,7 +6525,7 @@ body,
 
 .homePage .sectionTitle[data-codex-section-kind="continue"]::before,
 .homePage .sectionTitle-cards[data-codex-section-kind="continue"]::before {
-  content: "play_circle" !important;
+  content: "play_arrow" !important;
 }
 
 .homePage .sectionTitle[data-codex-section-kind="nextup"]::before,
