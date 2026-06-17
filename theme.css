@@ -6549,4 +6549,37 @@ body,
 }
 /* Codex home row header icons v9.7 end */
 
+/* Codex My Media row arrows restore v9.8 */
+.homePage .sections > .verticalSection:first-child .emby-scrollbuttons,
+.homePage .sections > .homePageSection:first-child .emby-scrollbuttons,
+.homePage .sections > .homeSection:first-child .emby-scrollbuttons,
+.homePage .sections > [class*="Section"]:first-child .emby-scrollbuttons,
+.homePage .sections > [class*="section"]:first-child .emby-scrollbuttons {
+  align-items: center !important;
+  display: flex !important;
+  height: var(--codex-home-row-arrow-size, 2.6rem) !important;
+  inset-block-start: .25rem !important;
+  inset-inline-end: max(1.25rem, env(safe-area-inset-right)) !important;
+  justify-content: flex-end !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  right: max(1.25rem, env(safe-area-inset-right)) !important;
+  top: .25rem !important;
+  transform: none !important;
+  visibility: visible !important;
+  z-index: 14 !important;
+}
+
+.homePage .sections > .verticalSection:first-child .emby-scrollbuttons-button,
+.homePage .sections > .homePageSection:first-child .emby-scrollbuttons-button,
+.homePage .sections > .homeSection:first-child .emby-scrollbuttons-button,
+.homePage .sections > [class*="Section"]:first-child .emby-scrollbuttons-button,
+.homePage .sections > [class*="section"]:first-child .emby-scrollbuttons-button {
+  display: inline-flex !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+}
+/* Codex My Media row arrows restore v9.8 end */
+
 /* Codex dynamic accent backgrounds v7.7 end */
