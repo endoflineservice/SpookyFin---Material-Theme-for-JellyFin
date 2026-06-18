@@ -7018,6 +7018,125 @@ body:has(#slides-container) .homeSectionsContainer {
 }
 /* Codex MediaBar spotlight polish v10.1 end */
 
+/* Codex MediaBar spotlight action buttons v10.6 */
+#slides-container .button-container .detailButton.play-button.btnPlay,
+#slides-container .button-container .detailButton.play-button.btnPlay:hover,
+#slides-container .button-container .detailButton.play-button.btnPlay:focus-visible {
+  border: 1px solid color-mix(in srgb, var(--my-primary) 72%, transparent) !important;
+  box-shadow: 0 10px 26px color-mix(in srgb, var(--my-primary) 22%, transparent) !important;
+  height: 2.76rem !important;
+  min-height: 2.76rem !important;
+  padding: 0 1.15rem !important;
+}
+
+#slides-container .button-container .detailButton.play-button.btnPlay:hover,
+#slides-container .button-container .detailButton.play-button.btnPlay:focus-visible {
+  background: var(--my-primary-2) !important;
+  background-color: var(--my-primary-2) !important;
+  box-shadow: 0 12px 30px color-mix(in srgb, var(--my-primary) 28%, transparent) !important;
+}
+
+#slides-container .button-container .detail-button,
+#slides-container .button-container .favorite-button {
+  background: color-mix(in srgb, var(--my-primary) 15%, var(--my-surface-soft)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 15%, var(--my-surface-soft)) !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 14%, transparent) !important;
+  color: var(--my-primary-2) !important;
+  height: 2.76rem !important;
+  min-height: 2.76rem !important;
+  min-width: 2.76rem !important;
+  width: 2.76rem !important;
+}
+
+#slides-container .button-container .detail-button:hover,
+#slides-container .button-container .favorite-button:hover,
+#slides-container .button-container .detail-button:focus-visible,
+#slides-container .button-container .favorite-button:focus-visible {
+  background: color-mix(in srgb, var(--my-primary) 24%, var(--my-surface-soft)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 24%, var(--my-surface-soft)) !important;
+  border-color: color-mix(in srgb, var(--my-primary) 26%, transparent) !important;
+  color: var(--my-primary-2) !important;
+  transform: translateY(-1px) !important;
+}
+
+#slides-container .button-container .favorite-button.favorited,
+#slides-container .button-container .favorite-button[aria-pressed="true"],
+#slides-container .button-container .favorite-button[aria-selected="true"],
+#slides-container .button-container .detail-button[aria-pressed="true"],
+#slides-container .button-container .detail-button[aria-selected="true"] {
+  background: color-mix(in srgb, var(--my-primary) 28%, var(--my-surface-soft)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 28%, var(--my-surface-soft)) !important;
+  border-color: color-mix(in srgb, var(--my-primary) 36%, transparent) !important;
+  color: var(--my-primary) !important;
+}
+
+#slides-container .button-container .detail-button::before,
+#slides-container .button-container .favorite-button::before,
+#slides-container .button-container .favorite-button.favorited::before {
+  color: currentColor !important;
+  font-size: 1.18rem !important;
+  height: 1.18rem !important;
+  max-height: 1.18rem !important;
+  max-width: 1.18rem !important;
+  width: 1.18rem !important;
+}
+
+#slides-container .button-container :is(.detailButton, .detail-button, .favorite-button) :is(svg, path, .material-icons, .material-symbols-rounded) {
+  color: currentColor !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+/* Codex MediaBar spotlight action buttons v10.6 end */
+
+/* Codex MediaBar spotlight secondary action catch-all v10.8 */
+#slides-container .button-container > *:not(.play-button):not(.btnPlay),
+#slides-container .button-container :is(.detail-button, .favorite-button, .watchlist-button, .bookmark-button, [class*="watchlist"], [class*="Watchlist"], [class*="bookmark"], [class*="Bookmark"]):not(.play-button):not(.btnPlay) {
+  align-items: center !important;
+  aspect-ratio: 1 / 1 !important;
+  background: color-mix(in srgb, var(--my-primary) 18%, var(--my-surface-soft)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 18%, var(--my-surface-soft)) !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 18%, transparent) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  color: var(--my-primary-2) !important;
+  display: inline-flex !important;
+  height: 2.76rem !important;
+  justify-content: center !important;
+  min-height: 2.76rem !important;
+  min-width: 2.76rem !important;
+  padding: 0 !important;
+  text-shadow: none !important;
+  transform: none !important;
+  width: 2.76rem !important;
+}
+
+#slides-container .button-container > *:not(.play-button):not(.btnPlay):hover,
+#slides-container .button-container > *:not(.play-button):not(.btnPlay):focus-visible,
+#slides-container .button-container :is(.detail-button, .favorite-button, .watchlist-button, .bookmark-button, [class*="watchlist"], [class*="Watchlist"], [class*="bookmark"], [class*="Bookmark"]):not(.play-button):not(.btnPlay):hover,
+#slides-container .button-container :is(.detail-button, .favorite-button, .watchlist-button, .bookmark-button, [class*="watchlist"], [class*="Watchlist"], [class*="bookmark"], [class*="Bookmark"]):not(.play-button):not(.btnPlay):focus-visible {
+  background: color-mix(in srgb, var(--my-primary) 28%, var(--my-surface-soft)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 28%, var(--my-surface-soft)) !important;
+  border-color: color-mix(in srgb, var(--my-primary) 32%, transparent) !important;
+  color: var(--my-primary-2) !important;
+  transform: translateY(-1px) !important;
+}
+
+#slides-container .button-container > *:not(.play-button):not(.btnPlay):is(.active, .is-active, .selected, .is-selected, [aria-pressed="true"], [aria-selected="true"]),
+#slides-container .button-container :is(.favorite-button, .watchlist-button, .bookmark-button, [class*="watchlist"], [class*="Watchlist"], [class*="bookmark"], [class*="Bookmark"]):is(.active, .is-active, .selected, .is-selected, .favorited, [aria-pressed="true"], [aria-selected="true"]) {
+  background: color-mix(in srgb, var(--my-primary) 32%, var(--my-surface-soft)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 32%, var(--my-surface-soft)) !important;
+  border-color: color-mix(in srgb, var(--my-primary) 42%, transparent) !important;
+  color: var(--my-primary) !important;
+}
+
+#slides-container .button-container > *:not(.play-button):not(.btnPlay) :is(svg, path, .material-icons, .material-symbols-rounded),
+#slides-container .button-container :is(.detail-button, .favorite-button, .watchlist-button, .bookmark-button, [class*="watchlist"], [class*="Watchlist"], [class*="bookmark"], [class*="Bookmark"]):not(.play-button):not(.btnPlay) :is(svg, path, .material-icons, .material-symbols-rounded) {
+  color: currentColor !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+/* Codex MediaBar spotlight secondary action catch-all v10.8 end */
+
 /* Codex Jellyfin Enhanced calendar colors v10.2 */
 .homePage .jellyfinenhanced.calendar,
 .homePage .je-calendar-page,
@@ -7349,3 +7468,334 @@ body:has(#slides-container) .homeSectionsContainer {
   padding-top: 0 !important;
 }
 /* Codex calendar custom-tab top spacing v10.4 end */
+
+/* Codex Jellyfin Enhanced calendar controls v10.5 */
+.homePage .jellyfinenhanced.calendar :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-nav-btn, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn),
+.homePage .je-calendar-page :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-nav-btn, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn),
+.jellyfinenhanced.calendar :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-nav-btn, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn),
+.je-calendar-page :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-nav-btn, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn) {
+  align-items: center !important;
+  background: color-mix(in srgb, var(--my-primary) 11%, var(--my-surface-soft)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 11%, var(--my-surface-soft)) !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 13%, transparent) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  color: var(--my-primary-2) !important;
+  display: inline-flex !important;
+  font-weight: 750 !important;
+  gap: .35rem !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  min-height: 2.15rem !important;
+  min-width: 2.15rem !important;
+  outline: 0 !important;
+  padding: 0 .9rem !important;
+  text-shadow: none !important;
+  transition: background-color .16s ease, color .16s ease, transform .16s ease !important;
+}
+
+.homePage .jellyfinenhanced.calendar :is(.je-calendar-nav-btn, .je-calendar-mode-btn, .je-calendar-icon-btn, .MuiToggleButton-root),
+.homePage .je-calendar-page :is(.je-calendar-nav-btn, .je-calendar-mode-btn, .je-calendar-icon-btn, .MuiToggleButton-root),
+.jellyfinenhanced.calendar :is(.je-calendar-nav-btn, .je-calendar-mode-btn, .je-calendar-icon-btn, .MuiToggleButton-root),
+.je-calendar-page :is(.je-calendar-nav-btn, .je-calendar-mode-btn, .je-calendar-icon-btn, .MuiToggleButton-root) {
+  padding-left: .65rem !important;
+  padding-right: .65rem !important;
+}
+
+.homePage .jellyfinenhanced.calendar :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-nav-btn, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn):hover,
+.homePage .je-calendar-page :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-nav-btn, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn):hover,
+.jellyfinenhanced.calendar :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-nav-btn, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn):hover,
+.je-calendar-page :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-nav-btn, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn):hover {
+  background: color-mix(in srgb, var(--my-primary) 20%, var(--my-surface-soft)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 20%, var(--my-surface-soft)) !important;
+  border-color: color-mix(in srgb, var(--my-primary) 22%, transparent) !important;
+  color: var(--my-primary-2) !important;
+  transform: translateY(-1px) !important;
+}
+
+.homePage .jellyfinenhanced.calendar :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn):is(.active, .is-active, .selected, .is-selected, .Mui-selected, [aria-selected="true"], [aria-pressed="true"], [data-active="true"]),
+.homePage .je-calendar-page :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn):is(.active, .is-active, .selected, .is-selected, .Mui-selected, [aria-selected="true"], [aria-pressed="true"], [data-active="true"]),
+.jellyfinenhanced.calendar :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn):is(.active, .is-active, .selected, .is-selected, .Mui-selected, [aria-selected="true"], [aria-pressed="true"], [data-active="true"]),
+.je-calendar-page :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn):is(.active, .is-active, .selected, .is-selected, .Mui-selected, [aria-selected="true"], [aria-pressed="true"], [data-active="true"]) {
+  background: var(--my-primary) !important;
+  background-color: var(--my-primary) !important;
+  border-color: var(--my-primary) !important;
+  color: var(--my-on-primary) !important;
+}
+
+.homePage .jellyfinenhanced.calendar :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn):is(.active, .is-active, .selected, .is-selected, .Mui-selected, [aria-selected="true"], [aria-pressed="true"], [data-active="true"]) :is(svg, path, .material-icons, .material-symbols-rounded),
+.homePage .je-calendar-page :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn):is(.active, .is-active, .selected, .is-selected, .Mui-selected, [aria-selected="true"], [aria-pressed="true"], [data-active="true"]) :is(svg, path, .material-icons, .material-symbols-rounded),
+.jellyfinenhanced.calendar :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn):is(.active, .is-active, .selected, .is-selected, .Mui-selected, [aria-selected="true"], [aria-pressed="true"], [data-active="true"]) :is(svg, path, .material-icons, .material-symbols-rounded),
+.je-calendar-page :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn):is(.active, .is-active, .selected, .is-selected, .Mui-selected, [aria-selected="true"], [aria-pressed="true"], [data-active="true"]) :is(svg, path, .material-icons, .material-symbols-rounded) {
+  color: var(--my-on-primary) !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+/* Codex Jellyfin Enhanced calendar controls v10.5 end */
+
+/* Codex Jellyfin Enhanced calendar filters v10.7 */
+.homePage .jellyfinenhanced.calendar :is(.je-calendar-legend, .je-calendar-filter-panel, .je-calendar-filters, [class*="calendar-legend"], [class*="CalendarLegend"], [class*="filter-panel"], [class*="FilterPanel"]),
+.homePage .je-calendar-page :is(.je-calendar-legend, .je-calendar-filter-panel, .je-calendar-filters, [class*="calendar-legend"], [class*="CalendarLegend"], [class*="filter-panel"], [class*="FilterPanel"]),
+.jellyfinenhanced.calendar :is(.je-calendar-legend, .je-calendar-filter-panel, .je-calendar-filters, [class*="calendar-legend"], [class*="CalendarLegend"], [class*="filter-panel"], [class*="FilterPanel"]),
+.je-calendar-page :is(.je-calendar-legend, .je-calendar-filter-panel, .je-calendar-filters, [class*="calendar-legend"], [class*="CalendarLegend"], [class*="filter-panel"], [class*="FilterPanel"]) {
+  align-items: center !important;
+  background: color-mix(in srgb, var(--my-primary) 7%, var(--my-bg-raised)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 7%, var(--my-bg-raised)) !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 10%, transparent) !important;
+  border-radius: 14px !important;
+  box-shadow: none !important;
+  color: var(--my-text) !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: .8rem 1.35rem !important;
+  justify-content: center !important;
+  margin: .75rem auto 1.15rem !important;
+  max-width: min(100%, 48rem) !important;
+  padding: .95rem 1.15rem !important;
+  width: max-content !important;
+}
+
+.homePage .jellyfinenhanced.calendar :is(.je-calendar-filter-controls, [class*="filter-controls"], [class*="FilterControls"]),
+.homePage .je-calendar-page :is(.je-calendar-filter-controls, [class*="filter-controls"], [class*="FilterControls"]),
+.jellyfinenhanced.calendar :is(.je-calendar-filter-controls, [class*="filter-controls"], [class*="FilterControls"]),
+.je-calendar-page :is(.je-calendar-filter-controls, [class*="filter-controls"], [class*="FilterControls"]) {
+  align-items: center !important;
+  background: color-mix(in srgb, var(--my-primary) 6%, var(--my-surface-soft)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 6%, var(--my-surface-soft)) !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 9%, transparent) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: .35rem !important;
+  justify-content: center !important;
+  margin: .55rem auto .2rem !important;
+  max-width: max-content !important;
+  padding: .28rem !important;
+  width: max-content !important;
+}
+
+.homePage .jellyfinenhanced.calendar :is(.je-calendar-legend-item, [class*="legend-item"], [class*="LegendItem"]),
+.homePage .je-calendar-page :is(.je-calendar-legend-item, [class*="legend-item"], [class*="LegendItem"]),
+.jellyfinenhanced.calendar :is(.je-calendar-legend-item, [class*="legend-item"], [class*="LegendItem"]),
+.je-calendar-page :is(.je-calendar-legend-item, [class*="legend-item"], [class*="LegendItem"]) {
+  align-items: center !important;
+  color: var(--my-text) !important;
+  display: inline-flex !important;
+  font-weight: 650 !important;
+  gap: .45rem !important;
+  min-height: 1.55rem !important;
+  opacity: .96 !important;
+  white-space: nowrap !important;
+}
+
+.homePage .jellyfinenhanced.calendar :is(button, [role="button"], .MuiButtonBase-root, .MuiAccordionSummary-root, [class*="AccordionSummary"], [class*="filter-toggle"], [class*="FilterToggle"], [class*="dropdown"], [class*="Dropdown"])[aria-expanded],
+.homePage .je-calendar-page :is(button, [role="button"], .MuiButtonBase-root, .MuiAccordionSummary-root, [class*="AccordionSummary"], [class*="filter-toggle"], [class*="FilterToggle"], [class*="dropdown"], [class*="Dropdown"])[aria-expanded],
+.jellyfinenhanced.calendar :is(button, [role="button"], .MuiButtonBase-root, .MuiAccordionSummary-root, [class*="AccordionSummary"], [class*="filter-toggle"], [class*="FilterToggle"], [class*="dropdown"], [class*="Dropdown"])[aria-expanded],
+.je-calendar-page :is(button, [role="button"], .MuiButtonBase-root, .MuiAccordionSummary-root, [class*="AccordionSummary"], [class*="filter-toggle"], [class*="FilterToggle"], [class*="dropdown"], [class*="Dropdown"])[aria-expanded] {
+  background: color-mix(in srgb, var(--my-primary) 12%, var(--my-surface-soft)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 12%, var(--my-surface-soft)) !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 15%, transparent) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  color: var(--my-primary-2) !important;
+  display: inline-flex !important;
+  font-size: 0 !important;
+  gap: .35rem !important;
+  height: 2.15rem !important;
+  justify-content: center !important;
+  margin: .65rem auto .35rem !important;
+  max-width: 8.8rem !important;
+  min-height: 2.15rem !important;
+  min-width: 0 !important;
+  padding: 0 .9rem !important;
+  width: auto !important;
+}
+
+.homePage .jellyfinenhanced.calendar :is(button, [role="button"], .MuiButtonBase-root, .MuiAccordionSummary-root, [class*="AccordionSummary"], [class*="filter-toggle"], [class*="FilterToggle"], [class*="dropdown"], [class*="Dropdown"])[aria-expanded]::before,
+.homePage .je-calendar-page :is(button, [role="button"], .MuiButtonBase-root, .MuiAccordionSummary-root, [class*="AccordionSummary"], [class*="filter-toggle"], [class*="FilterToggle"], [class*="dropdown"], [class*="Dropdown"])[aria-expanded]::before,
+.jellyfinenhanced.calendar :is(button, [role="button"], .MuiButtonBase-root, .MuiAccordionSummary-root, [class*="AccordionSummary"], [class*="filter-toggle"], [class*="FilterToggle"], [class*="dropdown"], [class*="Dropdown"])[aria-expanded]::before,
+.je-calendar-page :is(button, [role="button"], .MuiButtonBase-root, .MuiAccordionSummary-root, [class*="AccordionSummary"], [class*="filter-toggle"], [class*="FilterToggle"], [class*="dropdown"], [class*="Dropdown"])[aria-expanded]::before {
+  color: currentColor !important;
+  content: "Filters" !important;
+  font-size: .86rem !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+}
+
+.homePage .jellyfinenhanced.calendar :is(button, [role="button"], .MuiButtonBase-root, .MuiAccordionSummary-root, [class*="AccordionSummary"], [class*="filter-toggle"], [class*="FilterToggle"], [class*="dropdown"], [class*="Dropdown"])[aria-expanded] :is(svg, path, .material-icons, .material-symbols-rounded),
+.homePage .je-calendar-page :is(button, [role="button"], .MuiButtonBase-root, .MuiAccordionSummary-root, [class*="AccordionSummary"], [class*="filter-toggle"], [class*="FilterToggle"], [class*="dropdown"], [class*="Dropdown"])[aria-expanded] :is(svg, path, .material-icons, .material-symbols-rounded),
+.jellyfinenhanced.calendar :is(button, [role="button"], .MuiButtonBase-root, .MuiAccordionSummary-root, [class*="AccordionSummary"], [class*="filter-toggle"], [class*="FilterToggle"], [class*="dropdown"], [class*="Dropdown"])[aria-expanded] :is(svg, path, .material-icons, .material-symbols-rounded),
+.je-calendar-page :is(button, [role="button"], .MuiButtonBase-root, .MuiAccordionSummary-root, [class*="AccordionSummary"], [class*="filter-toggle"], [class*="FilterToggle"], [class*="dropdown"], [class*="Dropdown"])[aria-expanded] :is(svg, path, .material-icons, .material-symbols-rounded) {
+  color: currentColor !important;
+  fill: currentColor !important;
+  font-size: 1rem !important;
+  height: 1rem !important;
+  stroke: currentColor !important;
+  width: 1rem !important;
+}
+/* Codex Jellyfin Enhanced calendar filters v10.7 end */
+
+/* Codex remote music player polish v10.9 */
+.codex-remote-player-page {
+  --codex-remote-control-bg: color-mix(in srgb, var(--my-primary) 10%, var(--my-surface-soft));
+  --codex-remote-control-hover: color-mix(in srgb, var(--my-primary) 18%, var(--my-surface-soft));
+  --codex-remote-panel: color-mix(in srgb, var(--my-primary) 6%, var(--my-bg-raised));
+  --codex-remote-panel-hover: color-mix(in srgb, var(--my-primary) 11%, var(--my-bg-raised));
+  background: var(--my-bg) !important;
+  background-color: var(--my-bg) !important;
+  color: var(--my-text) !important;
+  min-height: calc(100vh - 7rem) !important;
+  padding-top: calc(var(--codex-header-wave-clearance, 2.4rem) + 1rem) !important;
+}
+
+.codex-remote-player-page :is(.content-primary, .padded-left, .padded-right, .remoteControlContent, .remoteControlPageContent, .sessionPlayerContent, .nowPlayingInfo) {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: min(100% - 3rem, 68rem) !important;
+}
+
+.codex-remote-player-page :is(.sliderContainer, .emby-slider-container, .mdl-slider-container, .progressContainer, .playbackProgressContainer) {
+  margin: 0 auto 1.1rem !important;
+  max-width: min(100% - 3rem, 62rem) !important;
+}
+
+.codex-remote-player-page :is(.mdl-slider-background-flex, .mdl-slider-background-upper, .playbackProgress, input[type="range"]::-webkit-slider-runnable-track, input[type="range"]::-moz-range-track) {
+  background: color-mix(in srgb, var(--my-primary) 15%, var(--my-bg-raised)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 15%, var(--my-bg-raised)) !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  height: .34rem !important;
+  min-height: .34rem !important;
+  overflow: hidden !important;
+}
+
+.codex-remote-player-page :is(.mdl-slider-background-lower, .playbackProgress > div, input[type="range"]::-moz-range-progress) {
+  background: var(--my-primary) !important;
+  background-color: var(--my-primary) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  height: .34rem !important;
+  min-height: .34rem !important;
+}
+
+.codex-remote-player-page input[type="range"] {
+  accent-color: var(--my-primary) !important;
+  height: 1rem !important;
+  min-height: 1rem !important;
+}
+
+.codex-remote-player-page input[type="range"]::-webkit-slider-thumb {
+  background: var(--my-primary) !important;
+  border: .16rem solid var(--my-bg) !important;
+  box-shadow: none !important;
+  height: 1rem !important;
+  margin-top: -.33rem !important;
+  width: 1rem !important;
+}
+
+.codex-remote-player-page input[type="range"]::-moz-range-thumb {
+  background: var(--my-primary) !important;
+  border: .16rem solid var(--my-bg) !important;
+  box-shadow: none !important;
+  height: 1rem !important;
+  width: 1rem !important;
+}
+
+.codex-remote-player-page :is(.remoteControlButtons, .nowPlayingBarControls, .playerControls, .playbackControls, .osdControls, .buttons, .buttonContainer, .controls) {
+  align-items: center !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: .45rem !important;
+  justify-content: center !important;
+}
+
+.codex-remote-player-page :is(paper-icon-button-light, .paper-icon-button-light, .btnCommand, .btnPlayPause, .btnPlay, .btnPause, .btnStop, .btnPreviousTrack, .btnNextTrack, .btnFastForward, .btnRewind, .btnToggleFullscreen, .btnAudioTracks, .btnSubtitles, .btnVolume, .btnMute, .btnShuffle, .btnRepeat, .btnQueue, .btnMoreCommands) {
+  align-items: center !important;
+  aspect-ratio: 1 / 1 !important;
+  background: var(--codex-remote-control-bg) !important;
+  background-color: var(--codex-remote-control-bg) !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 10%, transparent) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  color: var(--my-primary-2) !important;
+  display: inline-flex !important;
+  height: 2.55rem !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  min-height: 2.55rem !important;
+  min-width: 2.55rem !important;
+  padding: 0 !important;
+  text-shadow: none !important;
+  transition: background-color .16s ease, border-color .16s ease, color .16s ease, transform .16s ease !important;
+  width: 2.55rem !important;
+}
+
+.codex-remote-player-page :is(paper-icon-button-light, .paper-icon-button-light, .btnCommand, .btnPlayPause, .btnPlay, .btnPause, .btnStop, .btnPreviousTrack, .btnNextTrack, .btnFastForward, .btnRewind, .btnToggleFullscreen, .btnAudioTracks, .btnSubtitles, .btnVolume, .btnMute, .btnShuffle, .btnRepeat, .btnQueue, .btnMoreCommands):hover {
+  background: var(--codex-remote-control-hover) !important;
+  background-color: var(--codex-remote-control-hover) !important;
+  border-color: color-mix(in srgb, var(--my-primary) 18%, transparent) !important;
+  color: var(--my-primary-2) !important;
+  transform: translateY(-1px) !important;
+}
+
+.codex-remote-player-page :is(.btnPlayPause, .btnPlay, .btnPause, [title*="Play"], [aria-label*="Play"], [title*="Pause"], [aria-label*="Pause"]) {
+  background: var(--my-primary) !important;
+  background-color: var(--my-primary) !important;
+  border-color: var(--my-primary) !important;
+  color: var(--my-on-primary) !important;
+}
+
+.codex-remote-player-page :is(paper-icon-button-light, .paper-icon-button-light, .btnCommand, .btnPlayPause, .btnPlay, .btnPause, .btnStop, .btnPreviousTrack, .btnNextTrack, .btnFastForward, .btnRewind, .btnToggleFullscreen, .btnAudioTracks, .btnSubtitles, .btnVolume, .btnMute, .btnShuffle, .btnRepeat, .btnQueue, .btnMoreCommands) :is(svg, path, .material-icons, .material-symbols-rounded) {
+  color: currentColor !important;
+  fill: currentColor !important;
+  font-size: 1.16rem !important;
+  height: 1.16rem !important;
+  line-height: 1 !important;
+  stroke: currentColor !important;
+  width: 1.16rem !important;
+}
+
+.codex-remote-player-row {
+  align-items: center !important;
+  background: var(--codex-remote-panel) !important;
+  background-color: var(--codex-remote-panel) !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 9%, transparent) !important;
+  border-radius: 14px !important;
+  box-shadow: none !important;
+  color: var(--my-text) !important;
+  display: flex !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  justify-content: space-between !important;
+  margin: .55rem auto !important;
+  max-width: min(100% - 3rem, 68rem) !important;
+  min-height: 3.05rem !important;
+  padding: 0 1.05rem !important;
+  text-shadow: none !important;
+}
+
+.codex-remote-player-row:hover,
+.codex-remote-player-row:focus-visible {
+  background: var(--codex-remote-panel-hover) !important;
+  background-color: var(--codex-remote-panel-hover) !important;
+  border-color: color-mix(in srgb, var(--my-primary) 16%, transparent) !important;
+  color: var(--my-primary-2) !important;
+}
+
+.codex-remote-player-row :is(.material-icons, .material-symbols-rounded, svg, path) {
+  color: currentColor !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+.codex-remote-player-page :is(.sectionTitle, h1, h2, h3, .listItemBodyText, .listItemBodyText-secondary) {
+  color: var(--my-text) !important;
+  text-shadow: none !important;
+}
+
+.codex-remote-player-page :is(.sectionTitleContainer, .verticalSection, .formSection, .detailSection) {
+  max-width: min(100% - 3rem, 68rem) !important;
+}
+/* Codex remote music player polish v10.9 end */

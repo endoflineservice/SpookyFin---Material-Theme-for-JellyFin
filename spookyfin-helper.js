@@ -316,6 +316,147 @@
         border-color: var(--my-primary, #00e5ff) !important;
         color: var(--my-on-primary, #001f26) !important;
       }
+
+      .jellyfinenhanced.calendar :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-nav-btn, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn),
+      .je-calendar-page :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-nav-btn, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn) {
+        align-items: center !important;
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 11%, var(--my-surface-soft, rgba(21, 36, 42, .9))) !important;
+        background-color: color-mix(in srgb, var(--my-primary, #00e5ff) 11%, var(--my-surface-soft, rgba(21, 36, 42, .9))) !important;
+        border: 1px solid color-mix(in srgb, var(--my-primary, #00e5ff) 13%, transparent) !important;
+        border-radius: 999px !important;
+        box-shadow: none !important;
+        color: var(--my-primary-2, #a9f7ff) !important;
+        display: inline-flex !important;
+        font-weight: 750 !important;
+        gap: .35rem !important;
+        justify-content: center !important;
+        line-height: 1 !important;
+        min-height: 2.15rem !important;
+        min-width: 2.15rem !important;
+        outline: 0 !important;
+        padding: 0 .9rem !important;
+        text-shadow: none !important;
+        transition: background-color .16s ease, color .16s ease, transform .16s ease !important;
+      }
+
+      .jellyfinenhanced.calendar :is(.je-calendar-nav-btn, .je-calendar-mode-btn, .je-calendar-icon-btn, .MuiToggleButton-root),
+      .je-calendar-page :is(.je-calendar-nav-btn, .je-calendar-mode-btn, .je-calendar-icon-btn, .MuiToggleButton-root) {
+        padding-left: .65rem !important;
+        padding-right: .65rem !important;
+      }
+
+      .jellyfinenhanced.calendar :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-nav-btn, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn):hover,
+      .je-calendar-page :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-nav-btn, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn):hover {
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 20%, var(--my-surface-soft, rgba(21, 36, 42, .9))) !important;
+        background-color: color-mix(in srgb, var(--my-primary, #00e5ff) 20%, var(--my-surface-soft, rgba(21, 36, 42, .9))) !important;
+        border-color: color-mix(in srgb, var(--my-primary, #00e5ff) 22%, transparent) !important;
+        color: var(--my-primary-2, #a9f7ff) !important;
+        transform: translateY(-1px) !important;
+      }
+
+      .jellyfinenhanced.calendar :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn):is(.active, .is-active, .selected, .is-selected, .Mui-selected, [aria-selected="true"], [aria-pressed="true"], [data-active="true"]),
+      .je-calendar-page :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn):is(.active, .is-active, .selected, .is-selected, .Mui-selected, [aria-selected="true"], [aria-pressed="true"], [data-active="true"]) {
+        background: var(--my-primary, #00e5ff) !important;
+        background-color: var(--my-primary, #00e5ff) !important;
+        border-color: var(--my-primary, #00e5ff) !important;
+        color: var(--my-on-primary, #001f26) !important;
+      }
+
+      .jellyfinenhanced.calendar :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn):is(.active, .is-active, .selected, .is-selected, .Mui-selected, [aria-selected="true"], [aria-pressed="true"], [data-active="true"]) :is(svg, path, .material-icons, .material-symbols-rounded),
+      .je-calendar-page :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn):is(.active, .is-active, .selected, .is-selected, .Mui-selected, [aria-selected="true"], [aria-pressed="true"], [data-active="true"]) :is(svg, path, .material-icons, .material-symbols-rounded) {
+        color: var(--my-on-primary, #001f26) !important;
+        fill: currentColor !important;
+        stroke: currentColor !important;
+      }
+
+      .jellyfinenhanced.calendar :is(.je-calendar-legend, .je-calendar-filter-panel, .je-calendar-filters, [class*="calendar-legend"], [class*="CalendarLegend"], [class*="filter-panel"], [class*="FilterPanel"]),
+      .je-calendar-page :is(.je-calendar-legend, .je-calendar-filter-panel, .je-calendar-filters, [class*="calendar-legend"], [class*="CalendarLegend"], [class*="filter-panel"], [class*="FilterPanel"]) {
+        align-items: center !important;
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 7%, var(--my-bg-raised, #0b151a)) !important;
+        background-color: color-mix(in srgb, var(--my-primary, #00e5ff) 7%, var(--my-bg-raised, #0b151a)) !important;
+        border: 1px solid color-mix(in srgb, var(--my-primary, #00e5ff) 10%, transparent) !important;
+        border-radius: 14px !important;
+        box-shadow: none !important;
+        color: var(--my-text, #effcff) !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: .8rem 1.35rem !important;
+        justify-content: center !important;
+        margin: .75rem auto 1.15rem !important;
+        max-width: min(100%, 48rem) !important;
+        padding: .95rem 1.15rem !important;
+        width: max-content !important;
+      }
+
+      .jellyfinenhanced.calendar :is(.je-calendar-filter-controls, [class*="filter-controls"], [class*="FilterControls"]),
+      .je-calendar-page :is(.je-calendar-filter-controls, [class*="filter-controls"], [class*="FilterControls"]) {
+        align-items: center !important;
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 6%, var(--my-surface-soft, rgba(21, 36, 42, .9))) !important;
+        background-color: color-mix(in srgb, var(--my-primary, #00e5ff) 6%, var(--my-surface-soft, rgba(21, 36, 42, .9))) !important;
+        border: 1px solid color-mix(in srgb, var(--my-primary, #00e5ff) 9%, transparent) !important;
+        border-radius: 999px !important;
+        box-shadow: none !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: .35rem !important;
+        justify-content: center !important;
+        margin: .55rem auto .2rem !important;
+        max-width: max-content !important;
+        padding: .28rem !important;
+        width: max-content !important;
+      }
+
+      .jellyfinenhanced.calendar :is(.je-calendar-legend-item, [class*="legend-item"], [class*="LegendItem"]),
+      .je-calendar-page :is(.je-calendar-legend-item, [class*="legend-item"], [class*="LegendItem"]) {
+        align-items: center !important;
+        color: var(--my-text, #effcff) !important;
+        display: inline-flex !important;
+        font-weight: 650 !important;
+        gap: .45rem !important;
+        min-height: 1.55rem !important;
+        opacity: .96 !important;
+        white-space: nowrap !important;
+      }
+
+      .jellyfinenhanced.calendar :is(button, [role="button"], .MuiButtonBase-root, .MuiAccordionSummary-root, [class*="AccordionSummary"], [class*="filter-toggle"], [class*="FilterToggle"], [class*="dropdown"], [class*="Dropdown"])[aria-expanded],
+      .je-calendar-page :is(button, [role="button"], .MuiButtonBase-root, .MuiAccordionSummary-root, [class*="AccordionSummary"], [class*="filter-toggle"], [class*="FilterToggle"], [class*="dropdown"], [class*="Dropdown"])[aria-expanded] {
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 12%, var(--my-surface-soft, rgba(21, 36, 42, .9))) !important;
+        background-color: color-mix(in srgb, var(--my-primary, #00e5ff) 12%, var(--my-surface-soft, rgba(21, 36, 42, .9))) !important;
+        border: 1px solid color-mix(in srgb, var(--my-primary, #00e5ff) 15%, transparent) !important;
+        border-radius: 999px !important;
+        box-shadow: none !important;
+        color: var(--my-primary-2, #a9f7ff) !important;
+        display: inline-flex !important;
+        font-size: 0 !important;
+        gap: .35rem !important;
+        height: 2.15rem !important;
+        justify-content: center !important;
+        margin: .65rem auto .35rem !important;
+        max-width: 8.8rem !important;
+        min-height: 2.15rem !important;
+        min-width: 0 !important;
+        padding: 0 .9rem !important;
+        width: auto !important;
+      }
+
+      .jellyfinenhanced.calendar :is(button, [role="button"], .MuiButtonBase-root, .MuiAccordionSummary-root, [class*="AccordionSummary"], [class*="filter-toggle"], [class*="FilterToggle"], [class*="dropdown"], [class*="Dropdown"])[aria-expanded]::before,
+      .je-calendar-page :is(button, [role="button"], .MuiButtonBase-root, .MuiAccordionSummary-root, [class*="AccordionSummary"], [class*="filter-toggle"], [class*="FilterToggle"], [class*="dropdown"], [class*="Dropdown"])[aria-expanded]::before {
+        color: currentColor !important;
+        content: "Filters" !important;
+        font-size: .86rem !important;
+        font-weight: 800 !important;
+        line-height: 1 !important;
+      }
+
+      .jellyfinenhanced.calendar :is(button, [role="button"], .MuiButtonBase-root, .MuiAccordionSummary-root, [class*="AccordionSummary"], [class*="filter-toggle"], [class*="FilterToggle"], [class*="dropdown"], [class*="Dropdown"])[aria-expanded] :is(svg, path, .material-icons, .material-symbols-rounded),
+      .je-calendar-page :is(button, [role="button"], .MuiButtonBase-root, .MuiAccordionSummary-root, [class*="AccordionSummary"], [class*="filter-toggle"], [class*="FilterToggle"], [class*="dropdown"], [class*="Dropdown"])[aria-expanded] :is(svg, path, .material-icons, .material-symbols-rounded) {
+        color: currentColor !important;
+        fill: currentColor !important;
+        font-size: 1rem !important;
+        height: 1rem !important;
+        stroke: currentColor !important;
+        width: 1rem !important;
+      }
     `;
     document.head.appendChild(style);
   };
@@ -359,6 +500,167 @@
       }
     `;
     document.head.appendChild(style);
+  };
+
+  const ensureSpotlightActionStyles = () => {
+    if (document.getElementById("codex-spotlight-action-style")) return;
+
+    const style = document.createElement("style");
+    style.id = "codex-spotlight-action-style";
+    style.textContent = `
+      #slides-container .button-container .detailButton.play-button.btnPlay,
+      #slides-container .button-container .detailButton.play-button.btnPlay:hover,
+      #slides-container .button-container .detailButton.play-button.btnPlay:focus-visible {
+        border: 1px solid color-mix(in srgb, var(--my-primary, #00e5ff) 72%, transparent) !important;
+        box-shadow: 0 10px 26px color-mix(in srgb, var(--my-primary, #00e5ff) 22%, transparent) !important;
+        height: 2.76rem !important;
+        min-height: 2.76rem !important;
+        padding: 0 1.15rem !important;
+      }
+
+      #slides-container .button-container .detailButton.play-button.btnPlay:hover,
+      #slides-container .button-container .detailButton.play-button.btnPlay:focus-visible {
+        background: var(--my-primary-2, #a9f7ff) !important;
+        background-color: var(--my-primary-2, #a9f7ff) !important;
+        box-shadow: 0 12px 30px color-mix(in srgb, var(--my-primary, #00e5ff) 28%, transparent) !important;
+      }
+
+      #slides-container .button-container .detail-button,
+      #slides-container .button-container .favorite-button {
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 15%, var(--my-surface-soft, rgba(21, 36, 42, .9))) !important;
+        background-color: color-mix(in srgb, var(--my-primary, #00e5ff) 15%, var(--my-surface-soft, rgba(21, 36, 42, .9))) !important;
+        border: 1px solid color-mix(in srgb, var(--my-primary, #00e5ff) 14%, transparent) !important;
+        color: var(--my-primary-2, #a9f7ff) !important;
+        height: 2.76rem !important;
+        min-height: 2.76rem !important;
+        min-width: 2.76rem !important;
+        width: 2.76rem !important;
+      }
+
+      #slides-container .button-container .detail-button:hover,
+      #slides-container .button-container .favorite-button:hover,
+      #slides-container .button-container .detail-button:focus-visible,
+      #slides-container .button-container .favorite-button:focus-visible {
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 24%, var(--my-surface-soft, rgba(21, 36, 42, .9))) !important;
+        background-color: color-mix(in srgb, var(--my-primary, #00e5ff) 24%, var(--my-surface-soft, rgba(21, 36, 42, .9))) !important;
+        border-color: color-mix(in srgb, var(--my-primary, #00e5ff) 26%, transparent) !important;
+        color: var(--my-primary-2, #a9f7ff) !important;
+        transform: translateY(-1px) !important;
+      }
+
+      #slides-container .button-container .favorite-button.favorited,
+      #slides-container .button-container .favorite-button[aria-pressed="true"],
+      #slides-container .button-container .favorite-button[aria-selected="true"],
+      #slides-container .button-container .detail-button[aria-pressed="true"],
+      #slides-container .button-container .detail-button[aria-selected="true"] {
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 28%, var(--my-surface-soft, rgba(21, 36, 42, .9))) !important;
+        background-color: color-mix(in srgb, var(--my-primary, #00e5ff) 28%, var(--my-surface-soft, rgba(21, 36, 42, .9))) !important;
+        border-color: color-mix(in srgb, var(--my-primary, #00e5ff) 36%, transparent) !important;
+        color: var(--my-primary, #00e5ff) !important;
+      }
+
+      #slides-container .button-container .detail-button::before,
+      #slides-container .button-container .favorite-button::before,
+      #slides-container .button-container .favorite-button.favorited::before {
+        color: currentColor !important;
+        font-size: 1.18rem !important;
+        height: 1.18rem !important;
+        max-height: 1.18rem !important;
+        max-width: 1.18rem !important;
+        width: 1.18rem !important;
+      }
+
+      #slides-container .button-container :is(.detailButton, .detail-button, .favorite-button) :is(svg, path, .material-icons, .material-symbols-rounded) {
+        color: currentColor !important;
+        fill: currentColor !important;
+        stroke: currentColor !important;
+      }
+
+      #slides-container .button-container > *:not(.play-button):not(.btnPlay),
+      #slides-container .button-container :is(.detail-button, .favorite-button, .watchlist-button, .bookmark-button, [class*="watchlist"], [class*="Watchlist"], [class*="bookmark"], [class*="Bookmark"]):not(.play-button):not(.btnPlay) {
+        align-items: center !important;
+        aspect-ratio: 1 / 1 !important;
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 18%, var(--my-surface-soft, rgba(21, 36, 42, .9))) !important;
+        background-color: color-mix(in srgb, var(--my-primary, #00e5ff) 18%, var(--my-surface-soft, rgba(21, 36, 42, .9))) !important;
+        border: 1px solid color-mix(in srgb, var(--my-primary, #00e5ff) 18%, transparent) !important;
+        border-radius: 999px !important;
+        box-shadow: none !important;
+        color: var(--my-primary-2, #a9f7ff) !important;
+        display: inline-flex !important;
+        height: 2.76rem !important;
+        justify-content: center !important;
+        min-height: 2.76rem !important;
+        min-width: 2.76rem !important;
+        padding: 0 !important;
+        text-shadow: none !important;
+        transform: none !important;
+        width: 2.76rem !important;
+      }
+
+      #slides-container .button-container > *:not(.play-button):not(.btnPlay):hover,
+      #slides-container .button-container > *:not(.play-button):not(.btnPlay):focus-visible,
+      #slides-container .button-container :is(.detail-button, .favorite-button, .watchlist-button, .bookmark-button, [class*="watchlist"], [class*="Watchlist"], [class*="bookmark"], [class*="Bookmark"]):not(.play-button):not(.btnPlay):hover,
+      #slides-container .button-container :is(.detail-button, .favorite-button, .watchlist-button, .bookmark-button, [class*="watchlist"], [class*="Watchlist"], [class*="bookmark"], [class*="Bookmark"]):not(.play-button):not(.btnPlay):focus-visible {
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 28%, var(--my-surface-soft, rgba(21, 36, 42, .9))) !important;
+        background-color: color-mix(in srgb, var(--my-primary, #00e5ff) 28%, var(--my-surface-soft, rgba(21, 36, 42, .9))) !important;
+        border-color: color-mix(in srgb, var(--my-primary, #00e5ff) 32%, transparent) !important;
+        color: var(--my-primary-2, #a9f7ff) !important;
+        transform: translateY(-1px) !important;
+      }
+
+      #slides-container .button-container > *:not(.play-button):not(.btnPlay):is(.active, .is-active, .selected, .is-selected, [aria-pressed="true"], [aria-selected="true"]),
+      #slides-container .button-container :is(.favorite-button, .watchlist-button, .bookmark-button, [class*="watchlist"], [class*="Watchlist"], [class*="bookmark"], [class*="Bookmark"]):is(.active, .is-active, .selected, .is-selected, .favorited, [aria-pressed="true"], [aria-selected="true"]) {
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 32%, var(--my-surface-soft, rgba(21, 36, 42, .9))) !important;
+        background-color: color-mix(in srgb, var(--my-primary, #00e5ff) 32%, var(--my-surface-soft, rgba(21, 36, 42, .9))) !important;
+        border-color: color-mix(in srgb, var(--my-primary, #00e5ff) 42%, transparent) !important;
+        color: var(--my-primary, #00e5ff) !important;
+      }
+
+      #slides-container .button-container > *:not(.play-button):not(.btnPlay) :is(svg, path, .material-icons, .material-symbols-rounded),
+      #slides-container .button-container :is(.detail-button, .favorite-button, .watchlist-button, .bookmark-button, [class*="watchlist"], [class*="Watchlist"], [class*="bookmark"], [class*="Bookmark"]):not(.play-button):not(.btnPlay) :is(svg, path, .material-icons, .material-symbols-rounded) {
+        color: currentColor !important;
+        fill: currentColor !important;
+        stroke: currentColor !important;
+      }
+    `;
+    document.head.appendChild(style);
+  };
+
+  const markRemoteMusicPlayerPage = () => {
+    const pages = document.querySelectorAll(".page, .mainAnimatedPage, .libraryPage, .pageWithAbsoluteTabs, [data-role='page']");
+    let found = false;
+
+    pages.forEach((page) => {
+      const text = cleanText(page);
+      const hasRemoteSections = /(^| )Navigation( |$)/i.test(text)
+        && /(^| )Send Message( |$)/i.test(text)
+        && /(^| )Enter Text( |$)/i.test(text);
+      const hasPlaybackControls = Boolean(
+        page.querySelector(
+          "input[type='range'], .sliderContainer, .emby-slider, .mdl-slider, .playbackProgress, .paper-icon-button-light, paper-icon-button-light, .btnCommand, .btnPlayPause"
+        )
+      );
+      const shouldMark = hasRemoteSections && hasPlaybackControls;
+
+      page.classList.toggle("codex-remote-player-page", shouldMark);
+
+      page.querySelectorAll(".codex-remote-player-row").forEach((row) => {
+        row.classList.remove("codex-remote-player-row");
+      });
+
+      if (!shouldMark) return;
+      found = true;
+
+      page.querySelectorAll("button, [role='button'], .sectionTitle, .sectionTitleContainer, .listItem, h2, h3").forEach((node) => {
+        const label = cleanText(node);
+        if (label.length > 80 || !/(^| )(Navigation|Send Message|Enter Text)( |$)/i.test(label)) return;
+
+        const row = node.closest("button, [role='button'], .sectionTitleContainer, .listItem, .collapsible, .verticalSection, .formSection") || node;
+        row.classList.add("codex-remote-player-row");
+      });
+    });
+
+    document.body.classList.toggle("codex-remote-player-active", found);
   };
 
   const getThemeName = () => {
@@ -1273,6 +1575,7 @@
 
     ensureCalendarColorStyles();
     ensureDrawerColorStyles();
+    ensureSpotlightActionStyles();
     ensureCustomTabPanes();
     hydrateHomeImages();
   };
@@ -1285,6 +1588,8 @@
       queued = false;
       ensureCalendarColorStyles();
       ensureDrawerColorStyles();
+      ensureSpotlightActionStyles();
+      markRemoteMusicPlayerPage();
       reorderHome();
       ensureCustomTabPanes();
       hydrateHomeImages();
@@ -1308,6 +1613,8 @@
     ensureColorSwitcher();
     ensureCalendarColorStyles();
     ensureDrawerColorStyles();
+    ensureSpotlightActionStyles();
+    markRemoteMusicPlayerPage();
     ensureCustomTabPanes();
     queueReorder();
     observer.observe(document.body, { childList: true, subtree: true });
