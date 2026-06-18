@@ -461,6 +461,123 @@
     document.head.appendChild(style);
   };
 
+  const ensureCalendarResponsiveStyles = () => {
+    if (document.getElementById("codex-calendar-responsive-style")) return;
+
+    const style = document.createElement("style");
+    style.id = "codex-calendar-responsive-style";
+    style.textContent = `
+      .homePage .codex-custom-tabContent.is-active:has(.jellyfinenhanced.calendar),
+      .homePage .jellyfinenhanced.calendar,
+      .homePage .je-calendar-page,
+      .jellyfinenhanced.calendar,
+      .je-calendar-page {
+        box-sizing: border-box !important;
+        max-width: 100% !important;
+        overflow-x: clip !important;
+      }
+
+      .homePage .jellyfinenhanced.calendar :is(.je-calendar-header, .je-calendar-actions, [class*="calendar-header"], [class*="CalendarHeader"], [class*="calendar-toolbar"], [class*="CalendarToolbar"], [class*="view-controls"], [class*="ViewControls"]),
+      .homePage .je-calendar-page :is(.je-calendar-header, .je-calendar-actions, [class*="calendar-header"], [class*="CalendarHeader"], [class*="calendar-toolbar"], [class*="CalendarToolbar"], [class*="view-controls"], [class*="ViewControls"]),
+      .jellyfinenhanced.calendar :is(.je-calendar-header, .je-calendar-actions, [class*="calendar-header"], [class*="CalendarHeader"], [class*="calendar-toolbar"], [class*="CalendarToolbar"], [class*="view-controls"], [class*="ViewControls"]),
+      .je-calendar-page :is(.je-calendar-header, .je-calendar-actions, [class*="calendar-header"], [class*="CalendarHeader"], [class*="calendar-toolbar"], [class*="CalendarToolbar"], [class*="view-controls"], [class*="ViewControls"]) {
+        box-sizing: border-box !important;
+        max-width: min(100%, calc(100vw - 4rem)) !important;
+      }
+
+      .homePage .jellyfinenhanced.calendar :is(.je-calendar-legend, .je-calendar-filter-panel, .je-calendar-filters, [class*="calendar-legend"], [class*="CalendarLegend"], [class*="filter-panel"], [class*="FilterPanel"]),
+      .homePage .je-calendar-page :is(.je-calendar-legend, .je-calendar-filter-panel, .je-calendar-filters, [class*="calendar-legend"], [class*="CalendarLegend"], [class*="filter-panel"], [class*="FilterPanel"]),
+      .jellyfinenhanced.calendar :is(.je-calendar-legend, .je-calendar-filter-panel, .je-calendar-filters, [class*="calendar-legend"], [class*="CalendarLegend"], [class*="filter-panel"], [class*="FilterPanel"]),
+      .je-calendar-page :is(.je-calendar-legend, .je-calendar-filter-panel, .je-calendar-filters, [class*="calendar-legend"], [class*="CalendarLegend"], [class*="filter-panel"], [class*="FilterPanel"]) {
+        box-sizing: border-box !important;
+        display: grid !important;
+        gap: .85rem 1rem !important;
+        grid-template-columns: repeat(auto-fit, minmax(9.8rem, 1fr)) !important;
+        justify-items: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        max-width: min(44rem, calc(100vw - 4rem)) !important;
+        min-width: 0 !important;
+        width: min(44rem, calc(100vw - 4rem)) !important;
+      }
+
+      .homePage .jellyfinenhanced.calendar :is(.je-calendar-filter-controls, [class*="filter-controls"], [class*="FilterControls"]),
+      .homePage .je-calendar-page :is(.je-calendar-filter-controls, [class*="filter-controls"], [class*="FilterControls"]),
+      .jellyfinenhanced.calendar :is(.je-calendar-filter-controls, [class*="filter-controls"], [class*="FilterControls"]),
+      .je-calendar-page :is(.je-calendar-filter-controls, [class*="filter-controls"], [class*="FilterControls"]) {
+        grid-column: 1 / -1 !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        width: fit-content !important;
+      }
+
+      .homePage .jellyfinenhanced.calendar :is(.je-calendar-legend-item, [class*="legend-item"], [class*="LegendItem"]),
+      .homePage .je-calendar-page :is(.je-calendar-legend-item, [class*="legend-item"], [class*="LegendItem"]),
+      .jellyfinenhanced.calendar :is(.je-calendar-legend-item, [class*="legend-item"], [class*="LegendItem"]),
+      .je-calendar-page :is(.je-calendar-legend-item, [class*="legend-item"], [class*="LegendItem"]) {
+        justify-content: center !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+      }
+
+      .homePage .jellyfinenhanced.calendar :is(button, [role="button"], .MuiButtonBase-root, .MuiAccordionSummary-root, [class*="AccordionSummary"], [class*="filter-toggle"], [class*="FilterToggle"], [class*="dropdown"], [class*="Dropdown"])[aria-expanded],
+      .homePage .je-calendar-page :is(button, [role="button"], .MuiButtonBase-root, .MuiAccordionSummary-root, [class*="AccordionSummary"], [class*="filter-toggle"], [class*="FilterToggle"], [class*="dropdown"], [class*="Dropdown"])[aria-expanded],
+      .jellyfinenhanced.calendar :is(button, [role="button"], .MuiButtonBase-root, .MuiAccordionSummary-root, [class*="AccordionSummary"], [class*="filter-toggle"], [class*="FilterToggle"], [class*="dropdown"], [class*="Dropdown"])[aria-expanded],
+      .je-calendar-page :is(button, [role="button"], .MuiButtonBase-root, .MuiAccordionSummary-root, [class*="AccordionSummary"], [class*="filter-toggle"], [class*="FilterToggle"], [class*="dropdown"], [class*="Dropdown"])[aria-expanded] {
+        box-sizing: border-box !important;
+        display: flex !important;
+        left: auto !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        max-width: calc(100vw - 4rem) !important;
+        min-width: 6.75rem !important;
+        position: relative !important;
+        right: auto !important;
+        transform: none !important;
+        width: fit-content !important;
+      }
+
+      .homePage .jellyfinenhanced.calendar :is(.je-calendar-grid, .je-calendar-week, .je-calendar-month, .je-calendar-days, .je-calendar-body, [class*="calendar-grid"], [class*="CalendarGrid"], [class*="calendar-week"], [class*="CalendarWeek"], [class*="calendar-body"], [class*="CalendarBody"]),
+      .homePage .je-calendar-page :is(.je-calendar-grid, .je-calendar-week, .je-calendar-month, .je-calendar-days, .je-calendar-body, [class*="calendar-grid"], [class*="CalendarGrid"], [class*="calendar-week"], [class*="CalendarWeek"], [class*="calendar-body"], [class*="CalendarBody"]),
+      .jellyfinenhanced.calendar :is(.je-calendar-grid, .je-calendar-week, .je-calendar-month, .je-calendar-days, .je-calendar-body, [class*="calendar-grid"], [class*="CalendarGrid"], [class*="calendar-week"], [class*="CalendarWeek"], [class*="calendar-body"], [class*="CalendarBody"]),
+      .je-calendar-page :is(.je-calendar-grid, .je-calendar-week, .je-calendar-month, .je-calendar-days, .je-calendar-body, [class*="calendar-grid"], [class*="CalendarGrid"], [class*="calendar-week"], [class*="CalendarWeek"], [class*="calendar-body"], [class*="CalendarBody"]) {
+        box-sizing: border-box !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        max-width: min(100%, calc(100vw - 4rem)) !important;
+        min-width: 0 !important;
+        overflow-x: auto !important;
+        overscroll-behavior-x: contain !important;
+        width: min(100%, calc(100vw - 4rem)) !important;
+      }
+
+      @media (max-width: 980px) {
+        .homePage .jellyfinenhanced.calendar :is(.je-calendar-legend, .je-calendar-filter-panel, .je-calendar-filters, [class*="calendar-legend"], [class*="CalendarLegend"], [class*="filter-panel"], [class*="FilterPanel"]),
+        .homePage .je-calendar-page :is(.je-calendar-legend, .je-calendar-filter-panel, .je-calendar-filters, [class*="calendar-legend"], [class*="CalendarLegend"], [class*="filter-panel"], [class*="FilterPanel"]),
+        .jellyfinenhanced.calendar :is(.je-calendar-legend, .je-calendar-filter-panel, .je-calendar-filters, [class*="calendar-legend"], [class*="CalendarLegend"], [class*="filter-panel"], [class*="FilterPanel"]),
+        .je-calendar-page :is(.je-calendar-legend, .je-calendar-filter-panel, .je-calendar-filters, [class*="calendar-legend"], [class*="CalendarLegend"], [class*="filter-panel"], [class*="FilterPanel"]) {
+          grid-template-columns: repeat(auto-fit, minmax(8.4rem, 1fr)) !important;
+          max-width: calc(100vw - 2rem) !important;
+          padding: .8rem !important;
+          width: calc(100vw - 2rem) !important;
+        }
+
+        .homePage .jellyfinenhanced.calendar :is(.je-calendar-header, .je-calendar-actions, [class*="calendar-header"], [class*="CalendarHeader"], [class*="calendar-toolbar"], [class*="CalendarToolbar"], [class*="view-controls"], [class*="ViewControls"]),
+        .homePage .je-calendar-page :is(.je-calendar-header, .je-calendar-actions, [class*="calendar-header"], [class*="CalendarHeader"], [class*="calendar-toolbar"], [class*="CalendarToolbar"], [class*="view-controls"], [class*="ViewControls"]),
+        .jellyfinenhanced.calendar :is(.je-calendar-header, .je-calendar-actions, [class*="calendar-header"], [class*="CalendarHeader"], [class*="calendar-toolbar"], [class*="CalendarToolbar"], [class*="view-controls"], [class*="ViewControls"]),
+        .je-calendar-page :is(.je-calendar-header, .je-calendar-actions, [class*="calendar-header"], [class*="CalendarHeader"], [class*="calendar-toolbar"], [class*="CalendarToolbar"], [class*="view-controls"], [class*="ViewControls"]),
+        .homePage .jellyfinenhanced.calendar :is(.je-calendar-grid, .je-calendar-week, .je-calendar-month, .je-calendar-days, .je-calendar-body, [class*="calendar-grid"], [class*="CalendarGrid"], [class*="calendar-week"], [class*="CalendarWeek"], [class*="calendar-body"], [class*="CalendarBody"]),
+        .homePage .je-calendar-page :is(.je-calendar-grid, .je-calendar-week, .je-calendar-month, .je-calendar-days, .je-calendar-body, [class*="calendar-grid"], [class*="CalendarGrid"], [class*="calendar-week"], [class*="CalendarWeek"], [class*="calendar-body"], [class*="CalendarBody"]),
+        .jellyfinenhanced.calendar :is(.je-calendar-grid, .je-calendar-week, .je-calendar-month, .je-calendar-days, .je-calendar-body, [class*="calendar-grid"], [class*="CalendarGrid"], [class*="calendar-week"], [class*="CalendarWeek"], [class*="calendar-body"], [class*="CalendarBody"]),
+        .je-calendar-page :is(.je-calendar-grid, .je-calendar-week, .je-calendar-month, .je-calendar-days, .je-calendar-body, [class*="calendar-grid"], [class*="CalendarGrid"], [class*="calendar-week"], [class*="CalendarWeek"], [class*="calendar-body"], [class*="CalendarBody"]) {
+          max-width: calc(100vw - 2rem) !important;
+          width: calc(100vw - 2rem) !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  };
+
   const ensureDrawerColorStyles = () => {
     if (document.getElementById("codex-drawer-color-style")) return;
 
@@ -627,6 +744,26 @@
   };
 
   const markRemoteMusicPlayerPage = () => {
+    const controlSelector = [
+      "paper-icon-button-light",
+      ".paper-icon-button-light",
+      "button",
+      "[role='button']",
+      ".btnCommand",
+      ".btnPlayPause"
+    ].join(",");
+    const playerSelector = [
+      "input[type='range']",
+      ".sliderContainer",
+      ".emby-slider",
+      ".mdl-slider",
+      ".playbackProgress",
+      ".paper-icon-button-light",
+      "paper-icon-button-light",
+      ".btnCommand",
+      ".btnPlayPause"
+    ].join(",");
+    const rowLabelRe = /^(Navigation|Send Message|Enter Text)(?:\s*(expand_more|keyboard_arrow_down|keyboard_arrow_up|chevron_right|chevron_left|arrow_drop_down|arrow_drop_up|⌄|⌃|▾|▴|›|‹))?$/i;
     const pages = document.querySelectorAll(".page, .mainAnimatedPage, .libraryPage, .pageWithAbsoluteTabs, [data-role='page']");
     let found = false;
 
@@ -635,28 +772,71 @@
       const hasRemoteSections = /(^| )Navigation( |$)/i.test(text)
         && /(^| )Send Message( |$)/i.test(text)
         && /(^| )Enter Text( |$)/i.test(text);
-      const hasPlaybackControls = Boolean(
-        page.querySelector(
-          "input[type='range'], .sliderContainer, .emby-slider, .mdl-slider, .playbackProgress, .paper-icon-button-light, paper-icon-button-light, .btnCommand, .btnPlayPause"
-        )
-      );
+      const hasPlaybackControls = Boolean(page.querySelector(playerSelector));
       const shouldMark = hasRemoteSections && hasPlaybackControls;
 
       page.classList.toggle("codex-remote-player-page", shouldMark);
 
-      page.querySelectorAll(".codex-remote-player-row").forEach((row) => {
-        row.classList.remove("codex-remote-player-row");
+      page.querySelectorAll(".codex-remote-player-row, .codex-remote-player-hidden-row, .codex-remote-player-timeline, .codex-remote-player-control-band").forEach((node) => {
+        node.classList.remove("codex-remote-player-row", "codex-remote-player-hidden-row", "codex-remote-player-timeline", "codex-remote-player-control-band");
+      });
+      page.querySelectorAll("[data-codex-remote-hidden='true']").forEach((node) => {
+        node.removeAttribute("hidden");
+        node.removeAttribute("aria-hidden");
+        node.removeAttribute("data-codex-remote-hidden");
       });
 
       if (!shouldMark) return;
       found = true;
 
-      page.querySelectorAll("button, [role='button'], .sectionTitle, .sectionTitleContainer, .listItem, h2, h3").forEach((node) => {
+      page.querySelectorAll("button, [role='button'], .sectionTitle, .sectionTitleContainer, .listItem, h1, h2, h3, h4, p, span, div").forEach((node) => {
         const label = cleanText(node);
-        if (label.length > 80 || !/(^| )(Navigation|Send Message|Enter Text)( |$)/i.test(label)) return;
+        if (label.length > 90 || !rowLabelRe.test(label)) return;
 
-        const row = node.closest("button, [role='button'], .sectionTitleContainer, .listItem, .collapsible, .verticalSection, .formSection") || node;
-        row.classList.add("codex-remote-player-row");
+        let row = node.closest("button, [role='button'], .sectionTitleContainer, .listItem, .collapsible, .verticalSection, .formSection") || node;
+
+        for (let i = 0; i < 5 && row.parentElement && row.parentElement !== page; i += 1) {
+          const parent = row.parentElement;
+          const parentText = cleanText(parent);
+          const parentHasControls = Boolean(parent.querySelector(playerSelector));
+          const parentLooksLikeRow = parentText.length <= 120 && parentText.includes(label) && !parentHasControls;
+
+          if (!parentLooksLikeRow) break;
+          row = parent;
+        }
+
+        row.classList.add("codex-remote-player-row", "codex-remote-player-hidden-row");
+        row.setAttribute("hidden", "hidden");
+        row.setAttribute("aria-hidden", "true");
+        row.setAttribute("data-codex-remote-hidden", "true");
+      });
+
+      page.querySelectorAll("input[type='range'], .sliderContainer, .emby-slider, .mdl-slider, .playbackProgress").forEach((node) => {
+        const timeline = node.closest(".sliderContainer, .emby-slider-container, .mdl-slider-container, .progressContainer, .playbackProgressContainer")
+          || node.closest("div")
+          || node;
+        timeline.classList.add("codex-remote-player-timeline");
+      });
+
+      page.querySelectorAll(controlSelector).forEach((control) => {
+        let band = control.parentElement;
+
+        for (let i = 0; i < 5 && band && band !== page; i += 1) {
+          const controlCount = band.querySelectorAll(controlSelector).length;
+          const bandText = cleanText(band);
+
+          if (controlCount >= 3 && bandText.length < 180) break;
+          band = band.parentElement;
+        }
+
+        if (!band || band === page || band.classList.contains("codex-remote-player-hidden-row")) return;
+        if (band.closest(".skinHeader, .mainDrawer, .headerTop")) return;
+        if (band.querySelector("input[type='range']")) return;
+
+        const bandText = cleanText(band);
+        if (/Navigation|Send Message|Enter Text/i.test(bandText)) return;
+
+        band.classList.add("codex-remote-player-control-band");
       });
     });
 
@@ -1574,6 +1754,7 @@
     }
 
     ensureCalendarColorStyles();
+    ensureCalendarResponsiveStyles();
     ensureDrawerColorStyles();
     ensureSpotlightActionStyles();
     ensureCustomTabPanes();
@@ -1587,6 +1768,7 @@
     window.requestAnimationFrame(() => {
       queued = false;
       ensureCalendarColorStyles();
+      ensureCalendarResponsiveStyles();
       ensureDrawerColorStyles();
       ensureSpotlightActionStyles();
       markRemoteMusicPlayerPage();
@@ -1612,6 +1794,7 @@
     applyTheme(getThemeName());
     ensureColorSwitcher();
     ensureCalendarColorStyles();
+    ensureCalendarResponsiveStyles();
     ensureDrawerColorStyles();
     ensureSpotlightActionStyles();
     markRemoteMusicPlayerPage();
