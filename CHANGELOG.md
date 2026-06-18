@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.5
+
+- Cleaned up music album/detail page hover states so action buttons, metadata pills, and track rows use flat Material-style states without glow.
+
 ## 1.2.4
 
 - Restyled Jellyfin's built-in bottom music now-playing bar into the compact ambient player and removed the old squiggly progress styling from it.

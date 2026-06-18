@@ -9338,3 +9338,108 @@ body:not(.dashboardDocument) :is(.homePage, .libraryPage, .itemDetailPage, .main
   }
 }
 /* Codex full feature polish pass v11.0 end */
+
+/* Codex music browsing hover cleanup v11.2 */
+.codex-music-detail-page :is(.tagButton, .genreButton, .button-link, .textActionButton, .mediaInfoText, .mediaInfoItem, .itemExternalLinks a, .externalLinks a, .metadataLinks a) {
+  align-items: center !important;
+  background: color-mix(in srgb, var(--my-primary) 6%, var(--my-bg-raised)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 6%, var(--my-bg-raised)) !important;
+  background-image: none !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 12%, transparent) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  color: var(--my-primary-2) !important;
+  display: inline-flex !important;
+  filter: none !important;
+  gap: .28rem !important;
+  min-height: 1.55rem !important;
+  padding: .18rem .52rem !important;
+  text-decoration: none !important;
+  text-shadow: none !important;
+  transform: none !important;
+  transition: background-color .16s ease, border-color .16s ease, color .16s ease !important;
+}
+
+.codex-music-detail-page :is(.tagButton, .genreButton, .button-link, .textActionButton, .mediaInfoText, .mediaInfoItem, .itemExternalLinks a, .externalLinks a, .metadataLinks a):is(:hover, :focus-visible) {
+  background: color-mix(in srgb, var(--my-primary) 12%, var(--my-bg-raised)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 12%, var(--my-bg-raised)) !important;
+  border-color: color-mix(in srgb, var(--my-primary) 18%, transparent) !important;
+  box-shadow: none !important;
+  color: var(--my-primary-2) !important;
+  filter: none !important;
+  text-shadow: none !important;
+  transform: none !important;
+}
+
+.codex-music-detail-page .mainDetailButtons :is(.detailButton, .paper-icon-button-light, .emby-button, .MuiIconButton-root) {
+  background: color-mix(in srgb, var(--my-primary) 10%, var(--my-bg-raised)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 10%, var(--my-bg-raised)) !important;
+  background-image: none !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 14%, transparent) !important;
+  box-shadow: none !important;
+  color: var(--my-primary-2) !important;
+  filter: none !important;
+  text-shadow: none !important;
+  transform: none !important;
+}
+
+.codex-music-detail-page .mainDetailButtons :is(.detailButton, .paper-icon-button-light, .emby-button, .MuiIconButton-root):is(:hover, :focus-visible) {
+  background: color-mix(in srgb, var(--my-primary) 16%, var(--my-bg-raised)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 16%, var(--my-bg-raised)) !important;
+  border-color: color-mix(in srgb, var(--my-primary) 22%, transparent) !important;
+  box-shadow: none !important;
+  color: var(--my-primary-2) !important;
+  filter: none !important;
+  transform: none !important;
+}
+
+.codex-music-detail-page .mainDetailButtons :is(.btnPlay, .btnResume, .btnShuffle) {
+  background: var(--my-primary) !important;
+  background-color: var(--my-primary) !important;
+  border-color: var(--my-primary) !important;
+  box-shadow: none !important;
+  color: var(--my-on-primary) !important;
+}
+
+.codex-music-detail-page :is(.listItem, .paperList .listItem, .trackList .listItem, .songList .listItem):has(:is(.listItemBodyText, .primaryText)) {
+  background: color-mix(in srgb, var(--my-primary) 4%, var(--my-bg)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 4%, var(--my-bg)) !important;
+  background-image: none !important;
+  border: 1px solid transparent !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  filter: none !important;
+  margin-block: .08rem !important;
+  min-height: 3.45rem !important;
+  overflow: hidden !important;
+  text-shadow: none !important;
+  transform: none !important;
+  transition: background-color .16s ease, border-color .16s ease !important;
+}
+
+.codex-music-detail-page :is(.listItem, .paperList .listItem, .trackList .listItem, .songList .listItem):has(:is(.listItemBodyText, .primaryText)):is(:hover, :focus-visible) {
+  background: color-mix(in srgb, var(--my-primary) 9%, var(--my-bg-raised)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 9%, var(--my-bg-raised)) !important;
+  border-color: color-mix(in srgb, var(--my-primary) 14%, transparent) !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+}
+
+.codex-music-detail-page :is(.listItemBodyText, .primaryText) {
+  color: var(--my-text) !important;
+  font-weight: 650 !important;
+  text-shadow: none !important;
+}
+
+.codex-music-detail-page :is(.listItemBodyText-secondary, .secondaryText) {
+  color: color-mix(in srgb, var(--my-primary-2) 82%, transparent) !important;
+  font-weight: 500 !important;
+  text-shadow: none !important;
+}
+
+.codex-music-detail-page :is(.listItemIndexNumber, .listItem-indexnumber, .indexNumber, .listItemIndex) {
+  color: var(--my-primary-2) !important;
+  font-weight: 800 !important;
+}
+/* Codex music browsing hover cleanup v11.2 end */

@@ -1881,6 +1881,109 @@
         padding: .18rem .5rem !important;
       }
 
+      .codex-music-detail-page :is(.tagButton, .genreButton, .button-link, .textActionButton, .mediaInfoText, .mediaInfoItem, .itemExternalLinks a, .externalLinks a, .metadataLinks a) {
+        align-items: center !important;
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 6%, var(--my-bg-raised, #0b151a)) !important;
+        background-color: color-mix(in srgb, var(--my-primary, #00e5ff) 6%, var(--my-bg-raised, #0b151a)) !important;
+        background-image: none !important;
+        border: 1px solid color-mix(in srgb, var(--my-primary, #00e5ff) 12%, transparent) !important;
+        border-radius: 999px !important;
+        box-shadow: none !important;
+        color: var(--my-primary-2, #a9f7ff) !important;
+        display: inline-flex !important;
+        filter: none !important;
+        gap: .28rem !important;
+        min-height: 1.55rem !important;
+        padding: .18rem .52rem !important;
+        text-decoration: none !important;
+        text-shadow: none !important;
+        transform: none !important;
+        transition: background-color .16s ease, border-color .16s ease, color .16s ease !important;
+      }
+
+      .codex-music-detail-page :is(.tagButton, .genreButton, .button-link, .textActionButton, .mediaInfoText, .mediaInfoItem, .itemExternalLinks a, .externalLinks a, .metadataLinks a):is(:hover, :focus-visible) {
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 12%, var(--my-bg-raised, #0b151a)) !important;
+        background-color: color-mix(in srgb, var(--my-primary, #00e5ff) 12%, var(--my-bg-raised, #0b151a)) !important;
+        border-color: color-mix(in srgb, var(--my-primary, #00e5ff) 18%, transparent) !important;
+        box-shadow: none !important;
+        color: var(--my-primary-2, #a9f7ff) !important;
+        filter: none !important;
+        text-shadow: none !important;
+        transform: none !important;
+      }
+
+      .codex-music-detail-page .mainDetailButtons :is(.detailButton, .paper-icon-button-light, .emby-button, .MuiIconButton-root) {
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 10%, var(--my-bg-raised, #0b151a)) !important;
+        background-color: color-mix(in srgb, var(--my-primary, #00e5ff) 10%, var(--my-bg-raised, #0b151a)) !important;
+        background-image: none !important;
+        border: 1px solid color-mix(in srgb, var(--my-primary, #00e5ff) 14%, transparent) !important;
+        box-shadow: none !important;
+        color: var(--my-primary-2, #a9f7ff) !important;
+        filter: none !important;
+        text-shadow: none !important;
+        transform: none !important;
+      }
+
+      .codex-music-detail-page .mainDetailButtons :is(.detailButton, .paper-icon-button-light, .emby-button, .MuiIconButton-root):is(:hover, :focus-visible) {
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 16%, var(--my-bg-raised, #0b151a)) !important;
+        background-color: color-mix(in srgb, var(--my-primary, #00e5ff) 16%, var(--my-bg-raised, #0b151a)) !important;
+        border-color: color-mix(in srgb, var(--my-primary, #00e5ff) 22%, transparent) !important;
+        box-shadow: none !important;
+        color: var(--my-primary-2, #a9f7ff) !important;
+        filter: none !important;
+        transform: none !important;
+      }
+
+      .codex-music-detail-page .mainDetailButtons :is(.btnPlay, .btnResume, .btnShuffle) {
+        background: var(--my-primary, #00e5ff) !important;
+        background-color: var(--my-primary, #00e5ff) !important;
+        border-color: var(--my-primary, #00e5ff) !important;
+        box-shadow: none !important;
+        color: var(--my-on-primary, #001f26) !important;
+      }
+
+      .codex-music-detail-page :is(.listItem, .paperList .listItem, .trackList .listItem, .songList .listItem):has(:is(.listItemBodyText, .primaryText)) {
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 4%, var(--my-bg, #071014)) !important;
+        background-color: color-mix(in srgb, var(--my-primary, #00e5ff) 4%, var(--my-bg, #071014)) !important;
+        background-image: none !important;
+        border: 1px solid transparent !important;
+        border-radius: 12px !important;
+        box-shadow: none !important;
+        filter: none !important;
+        margin-block: .08rem !important;
+        min-height: 3.45rem !important;
+        overflow: hidden !important;
+        text-shadow: none !important;
+        transform: none !important;
+        transition: background-color .16s ease, border-color .16s ease !important;
+      }
+
+      .codex-music-detail-page :is(.listItem, .paperList .listItem, .trackList .listItem, .songList .listItem):has(:is(.listItemBodyText, .primaryText)):is(:hover, :focus-visible) {
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 9%, var(--my-bg-raised, #0b151a)) !important;
+        background-color: color-mix(in srgb, var(--my-primary, #00e5ff) 9%, var(--my-bg-raised, #0b151a)) !important;
+        border-color: color-mix(in srgb, var(--my-primary, #00e5ff) 14%, transparent) !important;
+        box-shadow: none !important;
+        filter: none !important;
+        transform: none !important;
+      }
+
+      .codex-music-detail-page :is(.listItemBodyText, .primaryText) {
+        color: var(--my-text, #effcff) !important;
+        font-weight: 650 !important;
+        text-shadow: none !important;
+      }
+
+      .codex-music-detail-page :is(.listItemBodyText-secondary, .secondaryText) {
+        color: color-mix(in srgb, var(--my-primary-2, #a9f7ff) 82%, transparent) !important;
+        font-weight: 500 !important;
+        text-shadow: none !important;
+      }
+
+      .codex-music-detail-page :is(.listItemIndexNumber, .listItem-indexnumber, .indexNumber, .listItemIndex) {
+        color: var(--my-primary-2, #a9f7ff) !important;
+        font-weight: 800 !important;
+      }
+
       @media (max-width: 900px) {
         :is(.jellyfinenhanced.calendar, .je-calendar-page) {
           padding-left: 1rem !important;
@@ -1911,6 +2014,29 @@
       }
     `;
     document.head.appendChild(style);
+  };
+
+  const markMusicDetailPage = () => {
+    const pages = document.querySelectorAll(".itemDetailPage, .musicAlbumPage, .musicArtistPage, .libraryPage, .mainAnimatedPage, [data-role='page']");
+
+    pages.forEach((page) => {
+      const text = cleanText(page);
+      const hasDiscHeader = /\bDisc\s+\d+\b/i.test(text);
+      const hasTrackCount = /\b\d+\s+tracks?\b/i.test(text);
+      const hasMusicProviderLinks = /\bRelease\b/i.test(text)
+        && /\bArtist\b/i.test(text)
+        && /\bAlbum\b/i.test(text);
+      const hasAudioHint = Boolean(page.querySelector("[data-type='Audio'], [data-mediatype='Audio'], .audioTrackList, .trackList, .songList, .songsContainer"));
+      const hasTrackRows = Array.from(page.querySelectorAll(".listItem, .paperList .listItem")).some((row) => {
+        const rowText = cleanText(row);
+        return rowText.length > 0
+          && rowText.length < 220
+          && Boolean(row.querySelector(".listItemBodyText, .primaryText"));
+      });
+      const shouldMark = hasAudioHint || hasTrackCount || hasMusicProviderLinks || (hasDiscHeader && hasTrackRows);
+
+      page.classList.toggle("codex-music-detail-page", shouldMark);
+    });
   };
 
   const markRemoteMusicPlayerPage = () => {
@@ -3257,6 +3383,7 @@
       ensureDrawerColorStyles();
       ensureSpotlightActionStyles();
       ensureFeaturePassStyles();
+      markMusicDetailPage();
       markRemoteMusicPlayerPage();
       reorderHome();
       ensureCustomTabPanes();
@@ -3284,6 +3411,7 @@
     ensureDrawerColorStyles();
     ensureSpotlightActionStyles();
     ensureFeaturePassStyles();
+    markMusicDetailPage();
     markRemoteMusicPlayerPage();
     ensureCustomTabPanes();
     ensureAmbientNowPlayingBar();
