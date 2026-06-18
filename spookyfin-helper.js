@@ -1022,9 +1022,19 @@
         .swiper-pagination,
         .swiper-pagination *,
         .swiper-button-prev,
-        .swiper-button-next
+        .swiper-button-next,
+        .arrow,
+        .arrow *,
+        .left-arrow,
+        .right-arrow
       ) {
         pointer-events: auto !important;
+      }
+
+      body:has(#slides-container) #slides-container :is(.arrow, .left-arrow, .right-arrow) {
+        cursor: pointer !important;
+        position: absolute !important;
+        z-index: 80 !important;
       }
 
       body:has(#slides-container) .homeSectionsContainer,
