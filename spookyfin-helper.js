@@ -1367,6 +1367,65 @@
         fill: currentColor !important;
         stroke: currentColor !important;
       }
+
+      body:has(#slides-container) #slides-container .button-container {
+        filter: none !important;
+        isolation: isolate !important;
+        mix-blend-mode: normal !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        z-index: 140 !important;
+      }
+
+      body:has(#slides-container) #slides-container .button-container :is(button, .emby-button, .detailButton, .detail-button, .favorite-button, .watchlist-button, .bookmark-button, [role="button"]) {
+        filter: none !important;
+        mix-blend-mode: normal !important;
+        opacity: 1 !important;
+        position: relative !important;
+        text-shadow: none !important;
+        transform: none !important;
+        z-index: 141 !important;
+      }
+
+      body:has(#slides-container) #slides-container .button-container .detailButton.play-button.btnPlay,
+      body:has(#slides-container) #slides-container .button-container .detailButton.play-button.btnPlay:hover,
+      body:has(#slides-container) #slides-container .button-container .detailButton.play-button.btnPlay:focus-visible {
+        background: var(--my-primary, #00e5ff) !important;
+        background-color: var(--my-primary, #00e5ff) !important;
+        border-color: color-mix(in srgb, var(--my-primary, #00e5ff) 72%, transparent) !important;
+        box-shadow: 0 10px 22px rgba(0, 0, 0, .36) !important;
+        color: var(--my-on-primary, #001f26) !important;
+      }
+
+      body:has(#slides-container) #slides-container .button-container > *:not(.play-button):not(.btnPlay),
+      body:has(#slides-container) #slides-container .button-container :is(.detail-button, .favorite-button, .watchlist-button, .bookmark-button, [class*="watchlist"], [class*="Watchlist"], [class*="bookmark"], [class*="Bookmark"]):not(.play-button):not(.btnPlay) {
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 24%, var(--my-bg-raised, #0b151a)) !important;
+        background-color: color-mix(in srgb, var(--my-primary, #00e5ff) 24%, var(--my-bg-raised, #0b151a)) !important;
+        border-color: color-mix(in srgb, var(--my-primary, #00e5ff) 28%, transparent) !important;
+        box-shadow: 0 10px 22px rgba(0, 0, 0, .32) !important;
+        color: var(--my-primary-2, #a9f7ff) !important;
+      }
+
+      body:has(#slides-container) #slides-container .button-container > *:not(.play-button):not(.btnPlay):hover,
+      body:has(#slides-container) #slides-container .button-container > *:not(.play-button):not(.btnPlay):focus-visible,
+      body:has(#slides-container) #slides-container .button-container :is(.detail-button, .favorite-button, .watchlist-button, .bookmark-button, [class*="watchlist"], [class*="Watchlist"], [class*="bookmark"], [class*="Bookmark"]):not(.play-button):not(.btnPlay):hover,
+      body:has(#slides-container) #slides-container .button-container :is(.detail-button, .favorite-button, .watchlist-button, .bookmark-button, [class*="watchlist"], [class*="Watchlist"], [class*="bookmark"], [class*="Bookmark"]):not(.play-button):not(.btnPlay):focus-visible {
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 34%, var(--my-bg-raised, #0b151a)) !important;
+        background-color: color-mix(in srgb, var(--my-primary, #00e5ff) 34%, var(--my-bg-raised, #0b151a)) !important;
+        border-color: color-mix(in srgb, var(--my-primary, #00e5ff) 40%, transparent) !important;
+        box-shadow: 0 12px 26px rgba(0, 0, 0, .34) !important;
+        color: var(--my-primary-2, #a9f7ff) !important;
+        transform: none !important;
+      }
+
+      body:has(#slides-container) #slides-container .button-container :is(.detailButton, .detail-button, .favorite-button, .watchlist-button, .bookmark-button, [role="button"]) :is(.play-text, span, svg, path, .material-icons, .material-symbols-rounded),
+      body:has(#slides-container) #slides-container .button-container :is(.detailButton, .detail-button, .favorite-button, .watchlist-button, .bookmark-button, [role="button"])::before {
+        color: currentColor !important;
+        fill: currentColor !important;
+        opacity: 1 !important;
+        stroke: currentColor !important;
+        text-shadow: none !important;
+      }
     `;
     document.head.appendChild(style);
   };
