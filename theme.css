@@ -1,4 +1,4 @@
-﻿/* Codex Material You Fast Rounded v2.6 for Jellyfin
+/* Codex Material You Fast Rounded v2.6 for Jellyfin
    Installed 2026-06-14. Local CSS only: no imports, no blur, no heavy animation. */
 :root {
   --my-bg: #071014;
@@ -7875,6 +7875,138 @@ body:has(#slides-container) .homeSectionsContainer {
   width: 100% !important;
 }
 /* Codex Jellyfin Enhanced calendar layout repair v10.11 end */
+
+/* Codex Jellyfin Enhanced compact calendar filter grid v10.13 */
+.homePage .jellyfinenhanced.calendar .je-calendar-page,
+.homePage .je-calendar-page,
+.jellyfinenhanced.calendar .je-calendar-page,
+.je-calendar-page {
+  --codex-calendar-max: 80rem;
+}
+
+.homePage .jellyfinenhanced.calendar .je-calendar-sidebar,
+.homePage .je-calendar-page .je-calendar-sidebar,
+.jellyfinenhanced.calendar .je-calendar-sidebar,
+.je-calendar-page .je-calendar-sidebar {
+  align-items: center !important;
+  gap: .45rem !important;
+  margin: .15rem auto .6rem !important;
+}
+
+.homePage .jellyfinenhanced.calendar .je-calendar-sidebar .je-calendar-legend,
+.homePage .je-calendar-page .je-calendar-sidebar .je-calendar-legend,
+.jellyfinenhanced.calendar .je-calendar-sidebar .je-calendar-legend,
+.je-calendar-page .je-calendar-sidebar .je-calendar-legend,
+.homePage .jellyfinenhanced.calendar .je-calendar-legend.je-calendar-legend-vertical,
+.homePage .je-calendar-page .je-calendar-legend.je-calendar-legend-vertical,
+.jellyfinenhanced.calendar .je-calendar-legend.je-calendar-legend-vertical,
+.je-calendar-page .je-calendar-legend.je-calendar-legend-vertical {
+  align-items: center !important;
+  background: color-mix(in srgb, var(--my-primary) 7%, var(--my-bg-raised)) !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 16%, transparent) !important;
+  border-radius: 14px !important;
+  box-shadow: none !important;
+  display: grid !important;
+  flex-direction: initial !important;
+  gap: .48rem !important;
+  grid-template-columns: repeat(3, minmax(8.2rem, 1fr)) !important;
+  justify-content: center !important;
+  margin: 0 auto .7rem !important;
+  max-width: min(100%, 32rem) !important;
+  padding: .56rem !important;
+  width: min(100%, 32rem) !important;
+}
+
+.homePage .jellyfinenhanced.calendar .je-calendar-sidebar .je-calendar-filter-controls,
+.homePage .je-calendar-page .je-calendar-sidebar .je-calendar-filter-controls,
+.jellyfinenhanced.calendar .je-calendar-sidebar .je-calendar-filter-controls,
+.je-calendar-page .je-calendar-sidebar .je-calendar-filter-controls {
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  grid-column: 1 / -1 !important;
+  justify-self: center !important;
+  margin: 0 0 .08rem !important;
+  max-width: max-content !important;
+  order: 0 !important;
+  width: max-content !important;
+}
+
+.homePage .jellyfinenhanced.calendar .je-calendar-sidebar .je-calendar-legend > *,
+.homePage .je-calendar-page .je-calendar-sidebar .je-calendar-legend > *,
+.jellyfinenhanced.calendar .je-calendar-sidebar .je-calendar-legend > *,
+.je-calendar-page .je-calendar-sidebar .je-calendar-legend > * {
+  box-sizing: border-box !important;
+  flex: none !important;
+  grid-column: auto !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+.homePage .jellyfinenhanced.calendar .je-calendar-legend-item,
+.homePage .je-calendar-page .je-calendar-legend-item,
+.jellyfinenhanced.calendar .je-calendar-legend-item,
+.je-calendar-page .je-calendar-legend-item {
+  align-items: center !important;
+  background: color-mix(in srgb, var(--my-primary) 6%, var(--my-bg)) !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 12%, transparent) !important;
+  border-radius: 10px !important;
+  display: inline-flex !important;
+  font-size: .75rem !important;
+  gap: .38rem !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  min-height: 2.15rem !important;
+  overflow: hidden !important;
+  padding: .38rem .5rem !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+.homePage .jellyfinenhanced.calendar .je-calendar-legend-item:hover,
+.homePage .je-calendar-page .je-calendar-legend-item:hover,
+.jellyfinenhanced.calendar .je-calendar-legend-item:hover,
+.je-calendar-page .je-calendar-legend-item:hover {
+  background: color-mix(in srgb, var(--my-primary) 14%, var(--my-bg)) !important;
+}
+
+.homePage .jellyfinenhanced.calendar .je-calendar-day,
+.homePage .je-calendar-page .je-calendar-day,
+.jellyfinenhanced.calendar .je-calendar-day,
+.je-calendar-page .je-calendar-day {
+  min-height: 12.8rem !important;
+}
+
+.homePage .jellyfinenhanced.calendar .je-calendar-day-cards > .je-calendar-card,
+.homePage .je-calendar-page .je-calendar-day-cards > .je-calendar-card,
+.jellyfinenhanced.calendar .je-calendar-day-cards > .je-calendar-card,
+.je-calendar-page .je-calendar-day-cards > .je-calendar-card {
+  max-width: min(100%, 7.35rem) !important;
+}
+
+.homePage .jellyfinenhanced.calendar.je-display-cards .je-calendar-card-image,
+.homePage .je-calendar-page.je-display-cards .je-calendar-card-image,
+.jellyfinenhanced.calendar.je-display-cards .je-calendar-card-image,
+.je-calendar-page.je-display-cards .je-calendar-card-image {
+  max-height: 8.9rem !important;
+  object-fit: contain !important;
+}
+
+@media (max-width: 760px) {
+  .homePage .jellyfinenhanced.calendar .je-calendar-sidebar .je-calendar-legend,
+  .homePage .je-calendar-page .je-calendar-sidebar .je-calendar-legend,
+  .jellyfinenhanced.calendar .je-calendar-sidebar .je-calendar-legend,
+  .je-calendar-page .je-calendar-sidebar .je-calendar-legend,
+  .homePage .jellyfinenhanced.calendar .je-calendar-legend.je-calendar-legend-vertical,
+  .homePage .je-calendar-page .je-calendar-legend.je-calendar-legend-vertical,
+  .jellyfinenhanced.calendar .je-calendar-legend.je-calendar-legend-vertical,
+  .je-calendar-page .je-calendar-legend.je-calendar-legend-vertical {
+    grid-template-columns: repeat(2, minmax(8rem, 1fr)) !important;
+    max-width: min(100%, 22rem) !important;
+    width: min(100%, 22rem) !important;
+  }
+}
+/* Codex Jellyfin Enhanced compact calendar filter grid v10.13 end */
 
 /* Codex remote music player polish v10.9 */
 .codex-remote-player-page {
