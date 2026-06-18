@@ -884,6 +884,68 @@
     const style = document.createElement("style");
     style.id = "codex-spotlight-action-style";
     style.textContent = `
+      body:has(#slides-container) #slides-container {
+        pointer-events: none !important;
+      }
+
+      body:has(#slides-container) #slides-container :is(
+        a,
+        button,
+        input,
+        select,
+        textarea,
+        [role="button"],
+        .button-container,
+        .button-container *,
+        .detailButton,
+        .detail-button,
+        .favorite-button,
+        .watchlist-button,
+        .bookmark-button,
+        .swiper-pagination,
+        .swiper-pagination *,
+        .swiper-button-prev,
+        .swiper-button-next
+      ) {
+        pointer-events: auto !important;
+      }
+
+      body:has(#slides-container) .homeSectionsContainer,
+      body:has(#slides-container) .homePage .sections {
+        pointer-events: auto !important;
+        position: relative !important;
+        z-index: 30 !important;
+      }
+
+      body:has(#slides-container) .homePage .sections > .verticalSection:first-child,
+      body:has(#slides-container) .homePage .sections > .homePageSection:first-child,
+      body:has(#slides-container) .homePage .sections > .homeSection:first-child,
+      body:has(#slides-container) .homePage .sections > [class*="Section"]:first-child,
+      body:has(#slides-container) .homePage .sections > [class*="section"]:first-child {
+        position: relative !important;
+        z-index: 45 !important;
+      }
+
+      body:has(#slides-container) .homePage .sections > .verticalSection:first-child .emby-scrollbuttons,
+      body:has(#slides-container) .homePage .sections > .homePageSection:first-child .emby-scrollbuttons,
+      body:has(#slides-container) .homePage .sections > .homeSection:first-child .emby-scrollbuttons,
+      body:has(#slides-container) .homePage .sections > [class*="Section"]:first-child .emby-scrollbuttons,
+      body:has(#slides-container) .homePage .sections > [class*="section"]:first-child .emby-scrollbuttons {
+        pointer-events: none !important;
+        z-index: 70 !important;
+      }
+
+      body:has(#slides-container) .homePage .sections > .verticalSection:first-child .emby-scrollbuttons-button,
+      body:has(#slides-container) .homePage .sections > .homePageSection:first-child .emby-scrollbuttons-button,
+      body:has(#slides-container) .homePage .sections > .homeSection:first-child .emby-scrollbuttons-button,
+      body:has(#slides-container) .homePage .sections > [class*="Section"]:first-child .emby-scrollbuttons-button,
+      body:has(#slides-container) .homePage .sections > [class*="section"]:first-child .emby-scrollbuttons-button {
+        cursor: pointer !important;
+        pointer-events: auto !important;
+        position: relative !important;
+        z-index: 71 !important;
+      }
+
       #slides-container .button-container .detailButton.play-button.btnPlay,
       #slides-container .button-container .detailButton.play-button.btnPlay:hover,
       #slides-container .button-container .detailButton.play-button.btnPlay:focus-visible {
