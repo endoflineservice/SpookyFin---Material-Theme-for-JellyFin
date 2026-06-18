@@ -8795,6 +8795,211 @@ body.codex-now-playing-visible:not(.codex-remote-player-active) {
 }
 /* Codex ambient now-playing bar v11.0 end */
 
+/* Codex built-in now-playing ambient bar v11.1 */
+body:has(.nowPlayingBar) .codex-now-playing-bar,
+body:has(.nowPlayingBar) #codex-now-playing-bar {
+  display: none !important;
+}
+
+body.codex-now-playing-visible:has(.nowPlayingBar) {
+  padding-bottom: 0 !important;
+}
+
+.nowPlayingBar {
+  align-items: center !important;
+  background: color-mix(in srgb, var(--my-primary) 13%, var(--my-bg-raised)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 13%, var(--my-bg-raised)) !important;
+  background-image: none !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 28%, transparent) !important;
+  border-radius: 18px !important;
+  bottom: clamp(.65rem, 1.6vh, 1rem) !important;
+  box-shadow: 0 18px 42px color-mix(in srgb, var(--my-primary) 16%, transparent) !important;
+  box-sizing: border-box !important;
+  color: var(--my-text) !important;
+  display: flex !important;
+  gap: .62rem !important;
+  height: auto !important;
+  justify-content: center !important;
+  left: 50% !important;
+  max-height: none !important;
+  max-width: calc(100vw - 1.5rem) !important;
+  min-height: 4.35rem !important;
+  overflow: hidden !important;
+  padding: .54rem .68rem .96rem !important;
+  position: fixed !important;
+  right: auto !important;
+  top: auto !important;
+  transform: translateX(-50%) !important;
+  width: min(44rem, calc(100vw - 1.5rem)) !important;
+  z-index: 9998 !important;
+}
+
+.nowPlayingBar > * {
+  min-width: 0 !important;
+}
+
+.nowPlayingBar :is(.nowPlayingBarInfoContainer, .nowPlayingBarInfo, .nowPlayingInfo, .nowPlayingBarText, .listItemBody, .mediaInfoText) {
+  flex: 1 1 13rem !important;
+  min-width: 0 !important;
+}
+
+.nowPlayingBar :is(.nowPlayingBarTitle, .primaryText, .listItemBodyText, .mediaInfoText:first-child) {
+  color: var(--my-primary-2) !important;
+  font-size: .88rem !important;
+  font-weight: 850 !important;
+  line-height: 1.12 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  text-shadow: none !important;
+  white-space: nowrap !important;
+}
+
+.nowPlayingBar :is(.nowPlayingBarArtist, .secondaryText, .listItemBodyText-secondary, .mediaInfoText + .mediaInfoText) {
+  color: color-mix(in srgb, var(--my-text) 78%, transparent) !important;
+  font-size: .74rem !important;
+  font-weight: 650 !important;
+  line-height: 1.15 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  text-shadow: none !important;
+  white-space: nowrap !important;
+}
+
+.nowPlayingBar :is(.nowPlayingBarImage, .nowPlayingImage, .listItemImage, .listItemImageButton, .cardImageContainer, .cardImage, img) {
+  aspect-ratio: 1 / 1 !important;
+  background-color: color-mix(in srgb, var(--my-primary) 12%, var(--my-bg)) !important;
+  border-radius: 11px !important;
+  box-shadow: none !important;
+  flex: 0 0 3rem !important;
+  height: 3rem !important;
+  min-height: 3rem !important;
+  min-width: 3rem !important;
+  object-fit: cover !important;
+  overflow: hidden !important;
+  width: 3rem !important;
+}
+
+.nowPlayingBar :is(.btnPreviousTrack, .btnNextTrack, .btnStop, .btnRewind, .btnFastForward, .btnAudioTracks, .btnSubtitles, .btnToggleFullscreen, .btnFullscreen, .btnQueue, .btnRepeat, .btnShuffle, .btnCast, .btnMute, .btnVolume, .volumeSlider, .btnUserRating, .btnFavorite, .btnMoreCommands, [title*="Previous"], [aria-label*="Previous"], [title*="Next"], [aria-label*="Next"], [title*="Stop"], [aria-label*="Stop"], [title*="Shuffle"], [aria-label*="Shuffle"], [title*="Repeat"], [aria-label*="Repeat"], [title*="Volume"], [aria-label*="Volume"], [title*="Favorite"], [aria-label*="Favorite"], [title*="More"], [aria-label*="More"]):not(.btnPlay):not(.btnPause):not(.btnPlayPause) {
+  display: none !important;
+}
+
+.nowPlayingBar :is(button, .paper-icon-button-light, paper-icon-button-light) {
+  align-items: center !important;
+  aspect-ratio: 1 / 1 !important;
+  background: color-mix(in srgb, var(--my-primary) 12%, var(--my-bg-raised)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 12%, var(--my-bg-raised)) !important;
+  border: 1px solid color-mix(in srgb, var(--my-primary) 14%, transparent) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  color: var(--my-primary-2) !important;
+  display: inline-flex !important;
+  height: 2.45rem !important;
+  justify-content: center !important;
+  min-height: 2.45rem !important;
+  min-width: 2.45rem !important;
+  padding: 0 !important;
+  width: 2.45rem !important;
+}
+
+.nowPlayingBar :is(.btnPlay, .btnPause, .btnPlayPause, [title="Play"], [title="Pause"], [aria-label="Play"], [aria-label="Pause"]) {
+  background: var(--my-primary) !important;
+  background-color: var(--my-primary) !important;
+  border-color: var(--my-primary) !important;
+  color: var(--my-on-primary) !important;
+}
+
+.nowPlayingBar :is(button, .paper-icon-button-light, paper-icon-button-light) :is(svg, path, .material-icons, .material-symbols-rounded) {
+  color: currentColor !important;
+  fill: currentColor !important;
+  font-size: 1.14rem !important;
+  height: 1.14rem !important;
+  line-height: 1 !important;
+  stroke: currentColor !important;
+  width: 1.14rem !important;
+}
+
+.nowPlayingBar :is(.playbackProgressContainer, .progressContainer, .nowPlayingBarPositionSlider, .sliderContainer, .emby-slider-container, .mdl-slider-container) {
+  bottom: .58rem !important;
+  height: .36rem !important;
+  left: 4.4rem !important;
+  margin: 0 !important;
+  max-width: none !important;
+  min-height: .36rem !important;
+  position: absolute !important;
+  right: 4.4rem !important;
+  top: auto !important;
+  width: auto !important;
+}
+
+.nowPlayingBar :is(.playbackProgress, .mdl-slider-background-flex, .mdl-slider-background-upper, .mdl-slider-background-lower, input[type="range"]),
+.nowPlayingBar input[type="range"]::-webkit-slider-runnable-track,
+.nowPlayingBar input[type="range"]::-moz-range-track {
+  animation: none !important;
+  background-image: none !important;
+  background-position: initial !important;
+  background-repeat: no-repeat !important;
+  background-size: auto !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  filter: none !important;
+  height: .36rem !important;
+  min-height: .36rem !important;
+}
+
+.nowPlayingBar :is(.playbackProgress, .mdl-slider-background-flex, .mdl-slider-background-upper, input[type="range"]),
+.nowPlayingBar input[type="range"]::-webkit-slider-runnable-track,
+.nowPlayingBar input[type="range"]::-moz-range-track {
+  background: color-mix(in srgb, var(--my-primary) 14%, var(--my-bg)) !important;
+  background-color: color-mix(in srgb, var(--my-primary) 14%, var(--my-bg)) !important;
+}
+
+.nowPlayingBar :is(.mdl-slider-background-lower, .playbackProgress > div),
+.nowPlayingBar input[type="range"]::-moz-range-progress {
+  animation: none !important;
+  background: var(--my-primary) !important;
+  background-color: var(--my-primary) !important;
+  background-image: none !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  filter: none !important;
+  height: .36rem !important;
+  min-height: .36rem !important;
+}
+
+.nowPlayingBar input[type="range"]::-webkit-slider-thumb {
+  background: var(--my-primary) !important;
+  background-image: none !important;
+  border: .14rem solid var(--my-bg) !important;
+  box-shadow: none !important;
+  height: .88rem !important;
+  margin-top: -.26rem !important;
+  width: .88rem !important;
+}
+
+@media (max-width: 720px) {
+  .nowPlayingBar {
+    border-radius: 16px !important;
+    justify-content: flex-start !important;
+    min-height: 4.15rem !important;
+    padding: .5rem .56rem .9rem !important;
+    width: calc(100vw - 1rem) !important;
+  }
+
+  .nowPlayingBar :is(.nowPlayingBarImage, .nowPlayingImage, .listItemImage, .listItemImageButton, .cardImageContainer, .cardImage, img) {
+    flex-basis: 2.75rem !important;
+    height: 2.75rem !important;
+    min-height: 2.75rem !important;
+    min-width: 2.75rem !important;
+    width: 2.75rem !important;
+  }
+
+  .nowPlayingBar :is(.playbackProgressContainer, .progressContainer, .nowPlayingBarPositionSlider, .sliderContainer, .emby-slider-container, .mdl-slider-container) {
+    left: 3.85rem !important;
+    right: 3.85rem !important;
+  }
+}
+/* Codex built-in now-playing ambient bar v11.1 end */
+
 /* Codex full feature polish pass v11.0 */
 @keyframes codexPageEnterV11 {
   from {

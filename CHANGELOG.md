@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.4
+
+- Restyled Jellyfin's built-in bottom music now-playing bar into the compact ambient player and removed the old squiggly progress styling from it.
+
 ## 1.2.3
 
 - Added an ambient now-playing mini-player for music sessions with album art, title, progress, and play/pause.
