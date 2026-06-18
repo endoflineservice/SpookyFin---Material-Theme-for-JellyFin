@@ -3,6 +3,7 @@
 ## 1.2.5
 
 - Cleaned up music album/detail page hover states so action buttons, metadata pills, and track rows use flat Material-style states without glow.
+- Centered music album/detail action button icons inside their circular controls.
 
 ## 1.2.4
 

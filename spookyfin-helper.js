@@ -1912,19 +1912,24 @@
         transform: none !important;
       }
 
-      .codex-music-detail-page .mainDetailButtons :is(.detailButton, .paper-icon-button-light, .emby-button, .MuiIconButton-root) {
+      .codex-music-detail-page .mainDetailButtons :is(.detailButton, .paper-icon-button-light, paper-icon-button-light, .emby-button, .MuiIconButton-root) {
+        align-items: center !important;
         background: color-mix(in srgb, var(--my-primary, #00e5ff) 10%, var(--my-bg-raised, #0b151a)) !important;
         background-color: color-mix(in srgb, var(--my-primary, #00e5ff) 10%, var(--my-bg-raised, #0b151a)) !important;
         background-image: none !important;
         border: 1px solid color-mix(in srgb, var(--my-primary, #00e5ff) 14%, transparent) !important;
         box-shadow: none !important;
         color: var(--my-primary-2, #a9f7ff) !important;
+        display: inline-flex !important;
         filter: none !important;
+        justify-content: center !important;
+        line-height: 1 !important;
+        padding: 0 !important;
         text-shadow: none !important;
         transform: none !important;
       }
 
-      .codex-music-detail-page .mainDetailButtons :is(.detailButton, .paper-icon-button-light, .emby-button, .MuiIconButton-root):is(:hover, :focus-visible) {
+      .codex-music-detail-page .mainDetailButtons :is(.detailButton, .paper-icon-button-light, paper-icon-button-light, .emby-button, .MuiIconButton-root):is(:hover, :focus-visible) {
         background: color-mix(in srgb, var(--my-primary, #00e5ff) 16%, var(--my-bg-raised, #0b151a)) !important;
         background-color: color-mix(in srgb, var(--my-primary, #00e5ff) 16%, var(--my-bg-raised, #0b151a)) !important;
         border-color: color-mix(in srgb, var(--my-primary, #00e5ff) 22%, transparent) !important;
@@ -1940,6 +1945,30 @@
         border-color: var(--my-primary, #00e5ff) !important;
         box-shadow: none !important;
         color: var(--my-on-primary, #001f26) !important;
+      }
+
+      .codex-music-detail-page .mainDetailButtons :is(.detailButton, .paper-icon-button-light, paper-icon-button-light, .emby-button, .MuiIconButton-root) > * {
+        flex: 0 0 auto !important;
+        margin: 0 !important;
+      }
+
+      .codex-music-detail-page .mainDetailButtons :is(.detailButton, .paper-icon-button-light, paper-icon-button-light, .emby-button, .MuiIconButton-root) :is(.material-icons, .material-symbols-rounded, .material-icons-round, svg, img) {
+        display: block !important;
+        font-size: 1.12rem !important;
+        height: 1.12rem !important;
+        line-height: 1 !important;
+        margin: 0 !important;
+        max-height: 1.12rem !important;
+        max-width: 1.12rem !important;
+        min-height: 0 !important;
+        min-width: 0 !important;
+        position: static !important;
+        transform: none !important;
+        width: 1.12rem !important;
+      }
+
+      .codex-music-detail-page .mainDetailButtons :is(.detailButton, .paper-icon-button-light, paper-icon-button-light, .emby-button, .MuiIconButton-root) :is(path, use) {
+        transform: none !important;
       }
 
       .codex-music-detail-page :is(.listItem, .paperList .listItem, .trackList .listItem, .songList .listItem):has(:is(.listItemBodyText, .primaryText)) {
