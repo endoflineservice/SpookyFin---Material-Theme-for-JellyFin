@@ -1164,7 +1164,28 @@
         pointer-events: none !important;
         position: absolute !important;
         right: 0 !important;
-        z-index: 9 !important;
+        z-index: 4 !important;
+      }
+
+      body:has(#slides-container) #slides-container :is(
+        .logo-container,
+        .info-container,
+        .genre,
+        .plot-container,
+        .button-container,
+        .dots-container,
+        .arrow,
+        .pause-button,
+        .volume-toggle
+      ) {
+        opacity: 1 !important;
+        z-index: 24 !important;
+      }
+
+      body:has(#slides-container) #slides-container .button-container,
+      body:has(#slides-container) #slides-container .button-container * {
+        filter: none !important;
+        opacity: 1 !important;
       }
 
       body:has(#slides-container) .homeSectionsContainer {
