@@ -946,6 +946,65 @@
         z-index: 71 !important;
       }
 
+      :root {
+        --codex-spotlight-height: clamp(30rem, 64vh, 40rem);
+        --codex-spotlight-row-start: clamp(29rem, 63vh, 39rem);
+      }
+
+      body:has(#slides-container) #slides-container {
+        height: var(--codex-spotlight-height) !important;
+        max-height: var(--codex-spotlight-height) !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+      }
+
+      body:has(#slides-container) #slides-container :is(
+        .swiper,
+        .swiper-container,
+        .swiper-wrapper,
+        .swiper-slide,
+        .slide,
+        .slideContent,
+        .slide-content,
+        .slide-image,
+        .backdrop,
+        .backdropImage,
+        .itemBackdrop,
+        [class*="backdrop"],
+        [class*="Backdrop"],
+        [class*="slide"],
+        [class*="Slide"]
+      ) {
+        height: 100% !important;
+        max-height: 100% !important;
+        min-height: 0 !important;
+      }
+
+      body:has(#slides-container) #slides-container :is(img, video, canvas, picture) {
+        height: 100% !important;
+        max-height: 100% !important;
+        object-fit: cover !important;
+        object-position: center 38% !important;
+      }
+
+      body:has(#slides-container) .homeSectionsContainer {
+        top: var(--codex-spotlight-row-start) !important;
+      }
+
+      @media only screen and (max-width: 767px) and (orientation: portrait) {
+        :root {
+          --codex-spotlight-height: clamp(24rem, 57vh, 34rem);
+          --codex-spotlight-row-start: clamp(23rem, 56vh, 33rem);
+        }
+      }
+
+      @media only screen and (max-height: 767px) and (orientation: landscape) {
+        :root {
+          --codex-spotlight-height: clamp(20rem, 56vh, 31rem);
+          --codex-spotlight-row-start: clamp(19rem, 55vh, 30rem);
+        }
+      }
+
       #slides-container .button-container .detailButton.play-button.btnPlay,
       #slides-container .button-container .detailButton.play-button.btnPlay:hover,
       #slides-container .button-container .detailButton.play-button.btnPlay:focus-visible {
