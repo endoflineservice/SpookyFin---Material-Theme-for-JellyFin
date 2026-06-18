@@ -1122,6 +1122,106 @@
         }
       }
 
+      :root {
+        --codex-spotlight-height: clamp(28rem, 58vh, 36rem);
+        --codex-spotlight-row-overlap: clamp(4.75rem, 8vh, 6.75rem);
+        --codex-spotlight-row-start: calc(var(--codex-spotlight-height) - var(--codex-spotlight-row-overlap));
+      }
+
+      body:has(#slides-container) #slides-container {
+        background: var(--my-bg, #021214) !important;
+        background-color: var(--my-bg, #021214) !important;
+        isolation: isolate !important;
+        position: relative !important;
+      }
+
+      body:has(#slides-container) #slides-container::after {
+        background:
+          linear-gradient(
+            to bottom,
+            transparent 0%,
+            color-mix(in srgb, var(--my-bg, #021214) 14%, transparent) 16%,
+            color-mix(in srgb, var(--my-bg, #021214) 60%, transparent) 48%,
+            color-mix(in srgb, var(--my-bg, #021214) 88%, transparent) 76%,
+            var(--my-bg, #021214) 100%
+          ) !important;
+        bottom: 0 !important;
+        content: "" !important;
+        display: block !important;
+        height: clamp(15rem, 32vh, 21rem) !important;
+        left: 0 !important;
+        opacity: 1 !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        right: 0 !important;
+        z-index: 9 !important;
+      }
+
+      body:has(#slides-container) .homeSectionsContainer {
+        top: var(--codex-spotlight-row-start) !important;
+      }
+
+      body:has(#slides-container) .homePage .sections > .verticalSection:first-child,
+      body:has(#slides-container) .homePage .sections > .homePageSection:first-child,
+      body:has(#slides-container) .homePage .sections > .homeSection:first-child,
+      body:has(#slides-container) .homePage .sections > [class*="Section"]:first-child,
+      body:has(#slides-container) .homePage .sections > [class*="section"]:first-child {
+        margin-top: 0 !important;
+        padding-top: clamp(.75rem, 1.8vh, 1.35rem) !important;
+      }
+
+      @media only screen and (max-width: 767px) and (orientation: portrait) {
+        :root {
+          --codex-spotlight-height: clamp(22rem, 52vh, 30rem);
+          --codex-spotlight-row-overlap: clamp(4.25rem, 9vh, 5.75rem);
+        }
+      }
+
+      @media only screen and (max-height: 767px) and (orientation: landscape) {
+        :root {
+          --codex-spotlight-height: clamp(18.5rem, 50vh, 27rem);
+          --codex-spotlight-row-overlap: clamp(3.25rem, 8vh, 5rem);
+        }
+      }
+
+      body:has(#slides-container) #slides-container .logo-container {
+        align-items: center !important;
+        height: clamp(5.8rem, 17vh, 9rem) !important;
+        justify-content: flex-start !important;
+        left: clamp(2rem, 4vw, 4.25rem) !important;
+        overflow: visible !important;
+        top: clamp(4.75rem, 11vh, 7.5rem) !important;
+        width: clamp(16rem, 32vw, 31rem) !important;
+      }
+
+      body:has(#slides-container) #slides-container .logo {
+        background-position: left center !important;
+        background-repeat: no-repeat !important;
+        background-size: contain !important;
+        display: block !important;
+        font-size: clamp(2.35rem, 5.4vw, 4.1rem) !important;
+        height: auto !important;
+        line-height: .95 !important;
+        max-height: 100% !important;
+        max-width: 100% !important;
+        object-fit: contain !important;
+        object-position: left center !important;
+        transform-origin: left center !important;
+        width: auto !important;
+      }
+
+      @media only screen and (max-height: 767px) and (orientation: landscape) {
+        body:has(#slides-container) #slides-container .logo-container {
+          height: clamp(4.5rem, 16vh, 7rem) !important;
+          top: clamp(3.85rem, 10vh, 5.75rem) !important;
+          width: clamp(14rem, 30vw, 26rem) !important;
+        }
+
+        body:has(#slides-container) #slides-container .logo {
+          font-size: clamp(2rem, 4.8vw, 3.35rem) !important;
+        }
+      }
+
       #slides-container .button-container .detailButton.play-button.btnPlay,
       #slides-container .button-container .detailButton.play-button.btnPlay:hover,
       #slides-container .button-container .detailButton.play-button.btnPlay:focus-visible {
