@@ -24,6 +24,9 @@ It is built for people searching for:
 - Home page image blanking repair for lazy-loaded Jellyfin card art.
 - Included spooky-cute library artwork for common media libraries, including 3D Movies.
 - Jellyfin Enhanced-friendly styling for custom tabs, calendar views, watchlist pages, and the remote/music player.
+- Ambient now-playing mini-player for music sessions, with album art, progress, and play/pause.
+- Matching polish for TV season/episode cards, calendar release dashboards, and detail page heroes.
+- Subtle page transitions for a smoother Android-style feel.
 
 ## Quick Setup Walkthrough
 

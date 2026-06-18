@@ -1371,6 +1371,345 @@
     document.head.appendChild(style);
   };
 
+  const ensureFeaturePassStyles = () => {
+    if (document.getElementById("codex-feature-pass-style")) return;
+
+    const style = document.createElement("style");
+    style.id = "codex-feature-pass-style";
+    style.textContent = `
+      @keyframes codexPageEnterV11 {
+        from {
+          opacity: 0;
+          transform: translateY(7px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      body:not(.dashboardDocument) :is(.homePage, .libraryPage, .itemDetailPage, .mainAnimatedPage, .codex-custom-tabContent.is-active, .jellyfinenhanced.calendar, .je-calendar-page) {
+        animation: codexPageEnterV11 .18s ease-out both;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        body:not(.dashboardDocument) :is(.homePage, .libraryPage, .itemDetailPage, .mainAnimatedPage, .codex-custom-tabContent.is-active, .jellyfinenhanced.calendar, .je-calendar-page) {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+
+      :is(.jellyfinenhanced.calendar, .je-calendar-page) {
+        color: var(--my-text, #effcff) !important;
+        padding-left: clamp(1rem, 2.4vw, 2.25rem) !important;
+        padding-right: clamp(1rem, 2.4vw, 2.25rem) !important;
+      }
+
+      .homePage .codex-custom-tabContent.is-active:has(.jellyfinenhanced.calendar) {
+        padding-top: calc(var(--codex-header-wave-clearance, 2.4rem) + .45rem) !important;
+      }
+
+      :is(.jellyfinenhanced.calendar, .je-calendar-page) :is(.je-calendar-header, .je-calendar-actions, [class*="calendar-header"], [class*="CalendarHeader"], [class*="calendar-toolbar"], [class*="CalendarToolbar"], [class*="view-controls"], [class*="ViewControls"]) {
+        gap: .65rem !important;
+        margin-bottom: .72rem !important;
+        max-width: min(100%, 94rem) !important;
+      }
+
+      :is(.jellyfinenhanced.calendar, .je-calendar-page) :is(.je-calendar-title, h1, h2) {
+        color: var(--my-primary-2, #a9f7ff) !important;
+        letter-spacing: 0 !important;
+      }
+
+      :is(.jellyfinenhanced.calendar, .je-calendar-page) .je-calendar-layout {
+        align-items: stretch !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: .72rem !important;
+        margin: 0 auto !important;
+        max-width: min(100%, 94rem) !important;
+        width: 100% !important;
+      }
+
+      :is(.jellyfinenhanced.calendar, .je-calendar-page) .je-calendar-main {
+        margin: 0 auto !important;
+        max-width: min(100%, 94rem) !important;
+        order: 2 !important;
+        width: 100% !important;
+      }
+
+      :is(.jellyfinenhanced.calendar, .je-calendar-page) .je-calendar-sidebar {
+        align-items: center !important;
+        align-self: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: .45rem !important;
+        margin: 0 auto .55rem !important;
+        max-width: min(100%, 62rem) !important;
+        order: 1 !important;
+        position: static !important;
+        width: 100% !important;
+      }
+
+      :is(.jellyfinenhanced.calendar, .je-calendar-page) :is(.je-calendar-sidebar-content, [class*="sidebar-content"], [class*="SidebarContent"]) {
+        display: flex !important;
+        justify-content: center !important;
+        max-width: 100% !important;
+        overflow: visible !important;
+        width: 100% !important;
+      }
+
+      :is(.jellyfinenhanced.calendar, .je-calendar-page) :is(.je-calendar-sidebar .je-calendar-legend, .je-calendar-legend.je-calendar-legend-vertical, .je-calendar-filter-panel, .je-calendar-filters, [class*="calendar-legend"], [class*="CalendarLegend"], [class*="filter-panel"], [class*="FilterPanel"]) {
+        align-items: center !important;
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 7%, var(--my-bg-raised, #0b151a)) !important;
+        border: 1px solid color-mix(in srgb, var(--my-primary, #00e5ff) 14%, transparent) !important;
+        border-radius: 18px !important;
+        box-shadow: none !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: .45rem !important;
+        justify-content: center !important;
+        margin: 0 auto !important;
+        max-width: min(100%, 62rem) !important;
+        padding: .58rem !important;
+        width: fit-content !important;
+      }
+
+      :is(.jellyfinenhanced.calendar, .je-calendar-page) :is(.je-calendar-sidebar .je-calendar-legend, .je-calendar-legend.je-calendar-legend-vertical, .je-calendar-filter-panel, .je-calendar-filters, [class*="calendar-legend"], [class*="CalendarLegend"], [class*="filter-panel"], [class*="FilterPanel"]) > * {
+        flex: 0 1 auto !important;
+        width: auto !important;
+      }
+
+      :is(.jellyfinenhanced.calendar, .je-calendar-page) :is(.je-calendar-filter-controls, [class*="filter-controls"], [class*="FilterControls"]) {
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 9%, var(--my-bg, #071014)) !important;
+        border: 1px solid color-mix(in srgb, var(--my-primary, #00e5ff) 12%, transparent) !important;
+        border-radius: 999px !important;
+        flex: 0 0 auto !important;
+        margin: 0 .25rem 0 0 !important;
+        padding: .22rem !important;
+        width: auto !important;
+      }
+
+      :is(.jellyfinenhanced.calendar, .je-calendar-page) :is(.je-calendar-legend-item, [class*="legend-item"], [class*="LegendItem"]) {
+        align-items: center !important;
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 6%, var(--my-bg, #071014)) !important;
+        border: 1px solid color-mix(in srgb, var(--my-primary, #00e5ff) 12%, transparent) !important;
+        border-radius: 999px !important;
+        box-sizing: border-box !important;
+        color: var(--my-primary-2, #a9f7ff) !important;
+        display: inline-flex !important;
+        font-size: .76rem !important;
+        font-weight: 800 !important;
+        gap: .38rem !important;
+        justify-content: center !important;
+        line-height: 1 !important;
+        min-height: 2rem !important;
+        min-width: 0 !important;
+        padding: .34rem .68rem !important;
+        white-space: nowrap !important;
+        width: auto !important;
+      }
+
+      :is(.jellyfinenhanced.calendar, .je-calendar-page) :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-nav-btn, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn) {
+        min-height: 2.12rem !important;
+        transition: background-color .16s ease, border-color .16s ease, color .16s ease, transform .16s ease !important;
+      }
+
+      :is(.jellyfinenhanced.calendar, .je-calendar-page) :is(button, .emby-button, [role="button"], .btn, .MuiButton-root, .MuiToggleButton-root, .je-calendar-view-btn, .je-calendar-mode-btn, .je-calendar-filter-btn, .je-calendar-icon-btn):is(.active, .is-active, .selected, .is-selected, .Mui-selected, [aria-selected="true"], [aria-pressed="true"], [data-active="true"]) {
+        background: var(--my-primary, #00e5ff) !important;
+        background-color: var(--my-primary, #00e5ff) !important;
+        border-color: var(--my-primary, #00e5ff) !important;
+        color: var(--my-on-primary, #001f26) !important;
+      }
+
+      :is(.jellyfinenhanced.calendar, .je-calendar-page) :is(.je-calendar-grid, .je-calendar-month-grid, .je-calendar-weekdays, .je-calendar-dayline, [class*="calendar-grid"], [class*="CalendarGrid"], [class*="calendar-week"], [class*="CalendarWeek"], [class*="calendar-body"], [class*="CalendarBody"]) {
+        gap: .62rem !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        max-width: min(100%, 94rem) !important;
+        width: 100% !important;
+      }
+
+      :is(.jellyfinenhanced.calendar, .je-calendar-page) .je-calendar-day {
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 7%, var(--my-bg-raised, #0b151a)) !important;
+        border: 1px solid color-mix(in srgb, var(--my-primary, #00e5ff) 15%, transparent) !important;
+        border-radius: 13px !important;
+        box-shadow: none !important;
+        min-height: clamp(12rem, 21vh, 16rem) !important;
+        padding: .52rem !important;
+      }
+
+      :is(.jellyfinenhanced.calendar, .je-calendar-page) .je-calendar-day-cards {
+        gap: .45rem !important;
+      }
+
+      :is(.jellyfinenhanced.calendar, .je-calendar-page) .je-calendar-day-cards > .je-calendar-card {
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 9%, var(--my-bg, #071014)) !important;
+        border: 1px solid color-mix(in srgb, var(--my-primary, #00e5ff) 17%, transparent) !important;
+        border-radius: 11px !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+        width: 100% !important;
+      }
+
+      :is(.jellyfinenhanced.calendar, .je-calendar-page) .je-calendar-card :is(.je-calendar-card-title, .je-calendar-card-title-text, .je-calendar-event-title, .je-calendar-agenda-event-title) {
+        color: var(--my-primary-2, #a9f7ff) !important;
+        font-weight: 850 !important;
+      }
+
+      :is(.jellyfinenhanced.calendar, .je-calendar-page) .je-calendar-card :is(.je-calendar-card-subtitle, .je-calendar-card-meta, .je-calendar-event-subtitle, .je-calendar-event-type),
+      :is(.jellyfinenhanced.calendar, .je-calendar-page) .je-calendar-card :is([class*="source"], [class*="Source"], [class*="service"], [class*="Service"]) {
+        color: color-mix(in srgb, var(--my-text, #effcff) 82%, transparent) !important;
+      }
+
+      :is(.jellyfinenhanced.calendar, .je-calendar-page) .je-calendar-card :is(.je-calendar-card-image, img.je-calendar-card-image, .cardImageContainer img, .cardImage) {
+        background-color: color-mix(in srgb, var(--my-primary, #00e5ff) 8%, var(--my-bg, #071014)) !important;
+        border-radius: 8px !important;
+        object-fit: contain !important;
+        object-position: center !important;
+      }
+
+      :is(.itemDetailPage, .seriesPage, .seasonPage) .itemsContainer .card:not(.codex-marvel-card),
+      :is(.itemDetailPage, .seriesPage, .seasonPage) .childrenItemsContainer .card:not(.codex-marvel-card) {
+        border-radius: 15px !important;
+        isolation: isolate !important;
+        overflow: visible !important;
+      }
+
+      :is(.itemDetailPage, .seriesPage, .seasonPage) .itemsContainer .cardBox,
+      :is(.itemDetailPage, .seriesPage, .seasonPage) .childrenItemsContainer .cardBox {
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 6%, var(--my-bg-raised, #0b151a)) !important;
+        border: 1px solid color-mix(in srgb, var(--my-primary, #00e5ff) 12%, transparent) !important;
+        border-radius: 15px !important;
+        box-shadow: none !important;
+        overflow: hidden !important;
+      }
+
+      :is(.itemDetailPage, .seriesPage, .seasonPage) .itemsContainer :is(.cardImageContainer, .cardScalable, .cardContent),
+      :is(.itemDetailPage, .seriesPage, .seasonPage) .childrenItemsContainer :is(.cardImageContainer, .cardScalable, .cardContent) {
+        border-radius: 15px 15px 0 0 !important;
+        overflow: hidden !important;
+      }
+
+      :is(.itemDetailPage, .seriesPage, .seasonPage) .itemsContainer .cardText,
+      :is(.itemDetailPage, .seriesPage, .seasonPage) .childrenItemsContainer .cardText {
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 8%, var(--my-bg-raised, #0b151a)) !important;
+        border-radius: 0 0 15px 15px !important;
+        color: var(--my-primary-2, #a9f7ff) !important;
+        font-weight: 800 !important;
+        margin-top: 0 !important;
+        padding: .5rem .62rem .56rem !important;
+        text-align: center !important;
+      }
+
+      :is(.itemDetailPage, .seriesPage, .seasonPage) .itemsContainer .cardText-secondary,
+      :is(.itemDetailPage, .seriesPage, .seasonPage) .childrenItemsContainer .cardText-secondary {
+        color: color-mix(in srgb, var(--my-text, #effcff) 82%, transparent) !important;
+        font-weight: 650 !important;
+      }
+
+      .itemDetailPage {
+        background:
+          radial-gradient(circle at 18% 8%, color-mix(in srgb, var(--my-primary, #00e5ff) 11%, transparent), transparent 28rem),
+          var(--my-bg, #071014) !important;
+      }
+
+      .itemDetailPage .detailPagePrimaryContainer,
+      .itemDetailPage .detailPagePrimaryContent {
+        background:
+          linear-gradient(to bottom, color-mix(in srgb, var(--my-bg, #071014) 70%, transparent), var(--my-bg, #071014)),
+          color-mix(in srgb, var(--my-primary, #00e5ff) 4%, var(--my-bg, #071014)) !important;
+      }
+
+      .itemDetailPage .detailPagePrimaryContainer {
+        min-height: clamp(20rem, 42vh, 31rem) !important;
+        padding-top: calc(var(--codex-header-wave-clearance, 2.4rem) + .9rem) !important;
+      }
+
+      .itemDetailPage :is(.detailLogo, .itemLogo, .logo) {
+        max-height: clamp(4.5rem, 13vh, 8.2rem) !important;
+        max-width: min(35rem, 58vw) !important;
+        object-fit: contain !important;
+        object-position: left center !important;
+      }
+
+      .itemDetailPage :is(.itemName, .nameContainer h1, .detailTitle) {
+        color: var(--my-primary-2, #a9f7ff) !important;
+        font-weight: 850 !important;
+        letter-spacing: 0 !important;
+      }
+
+      .itemDetailPage .overview,
+      .itemDetailPage .itemOverview,
+      .itemDetailPage .tagline {
+        color: var(--my-text, #effcff) !important;
+        max-width: min(70ch, 68vw) !important;
+      }
+
+      .itemDetailPage .mainDetailButtons {
+        gap: .55rem !important;
+        position: relative !important;
+        z-index: 12 !important;
+      }
+
+      .itemDetailPage :is(.btnPlay, .btnResume, .btnShuffle, .mainDetailButtons .btnPlay, .mainDetailButtons .btnResume, .mainDetailButtons .btnShuffle) {
+        aspect-ratio: auto !important;
+        border-radius: 999px !important;
+        box-shadow: 0 10px 24px color-mix(in srgb, var(--my-primary, #00e5ff) 20%, transparent) !important;
+        height: 3.12rem !important;
+        min-height: 3.12rem !important;
+        min-width: 3.12rem !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        width: auto !important;
+      }
+
+      .itemDetailPage .mainDetailButtons :is(.detailButton, .paper-icon-button-light, .emby-button:not(.btnPlay):not(.btnResume):not(.btnShuffle), .MuiIconButton-root) {
+        height: 2.9rem !important;
+        min-height: 2.9rem !important;
+        min-width: 2.9rem !important;
+        width: 2.9rem !important;
+      }
+
+      .itemDetailPage :is(.mediaInfoText, .mediaInfoItem, .mediaStream, .streamInfo) {
+        border-radius: 999px !important;
+        color: var(--my-primary-2, #a9f7ff) !important;
+        padding: .18rem .5rem !important;
+      }
+
+      @media (max-width: 900px) {
+        :is(.jellyfinenhanced.calendar, .je-calendar-page) {
+          padding-left: 1rem !important;
+          padding-right: 1rem !important;
+        }
+
+        :is(.jellyfinenhanced.calendar, .je-calendar-page) :is(.je-calendar-sidebar .je-calendar-legend, .je-calendar-legend.je-calendar-legend-vertical, .je-calendar-filter-panel, .je-calendar-filters, [class*="calendar-legend"], [class*="CalendarLegend"], [class*="filter-panel"], [class*="FilterPanel"]) {
+          max-width: 100% !important;
+          width: 100% !important;
+        }
+
+        :is(.jellyfinenhanced.calendar, .je-calendar-page) .je-calendar-main {
+          overflow-x: auto !important;
+          overscroll-behavior-x: contain !important;
+        }
+
+        :is(.jellyfinenhanced.calendar, .je-calendar-page) :is(.je-calendar-grid, .je-calendar-month-grid, .je-calendar-weekdays, .je-calendar-dayline, [class*="calendar-grid"], [class*="CalendarGrid"], [class*="calendar-week"], [class*="CalendarWeek"], [class*="calendar-body"], [class*="CalendarBody"]) {
+          min-width: 52rem !important;
+        }
+
+        .itemDetailPage .detailPagePrimaryContainer {
+          min-height: 20rem !important;
+        }
+
+        .itemDetailPage :is(.detailLogo, .itemLogo, .logo) {
+          max-width: min(28rem, 82vw) !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  };
+
   const markRemoteMusicPlayerPage = () => {
     const controlSelector = [
       "paper-icon-button-light",
@@ -1771,6 +2110,320 @@
 
     if (!response.ok) throw new Error(`Jellyfin request failed: ${response.status}`);
     return response.json();
+  };
+
+  let ambientNowPlayingTimer = null;
+  let ambientNowPlayingSessionId = "";
+  let ambientNowPlayingPaused = false;
+
+  const getAmbientImageUrl = (item) => {
+    if (!item?.Id) return "";
+
+    const params = new URLSearchParams({
+      fillHeight: "96",
+      fillWidth: "96",
+      quality: "92"
+    });
+
+    if (item.ImageTags?.Primary) {
+      params.set("tag", item.ImageTags.Primary);
+    }
+
+    return `/Items/${item.Id}/Images/Primary?${params.toString()}`;
+  };
+
+  const isAudioNowPlayingItem = (item) => {
+    if (!item) return false;
+    return item.MediaType === "Audio" || item.Type === "Audio" || item.MediaType === "Music";
+  };
+
+  const shouldHideAmbientNowPlaying = () => {
+    const hash = window.location.hash || "";
+    return /\/video|\/livetv|\/play/i.test(hash) || Boolean(document.querySelector(".videoOsdPage, .videoPlayerContainer, .videoOsdBottom"));
+  };
+
+  const ensureAmbientNowPlayingStyles = () => {
+    if (document.getElementById("codex-ambient-now-playing-style")) return;
+
+    const style = document.createElement("style");
+    style.id = "codex-ambient-now-playing-style";
+    style.textContent = `
+      .codex-now-playing-bar {
+        align-items: center !important;
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 13%, var(--my-bg-raised, #0b151a)) !important;
+        border: 1px solid color-mix(in srgb, var(--my-primary, #00e5ff) 28%, transparent) !important;
+        border-radius: 18px !important;
+        bottom: clamp(.7rem, 2vh, 1.2rem) !important;
+        box-shadow: 0 18px 42px color-mix(in srgb, var(--my-primary, #00e5ff) 16%, transparent) !important;
+        box-sizing: border-box !important;
+        color: var(--my-text, #effcff) !important;
+        column-gap: .82rem !important;
+        display: grid !important;
+        grid-template-columns: 3.15rem minmax(0, 1fr) 2.8rem !important;
+        left: 50% !important;
+        max-width: calc(100vw - 1.5rem) !important;
+        min-height: 4.3rem !important;
+        opacity: 0 !important;
+        padding: .55rem .62rem .58rem !important;
+        pointer-events: none !important;
+        position: fixed !important;
+        transform: translate(-50%, calc(100% + 2rem)) !important;
+        transition: opacity .18s ease, transform .22s ease !important;
+        width: min(34rem, calc(100vw - 1.5rem)) !important;
+        z-index: 9999 !important;
+      }
+
+      body.codex-now-playing-visible .codex-now-playing-bar {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transform: translate(-50%, 0) !important;
+      }
+
+      body.codex-now-playing-visible:not(.codex-remote-player-active) {
+        padding-bottom: 5.2rem !important;
+      }
+
+      .codex-now-playing-art {
+        aspect-ratio: 1 / 1 !important;
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 18%, var(--my-bg, #071014)) !important;
+        border-radius: 12px !important;
+        display: block !important;
+        height: 3.15rem !important;
+        object-fit: cover !important;
+        overflow: hidden !important;
+        width: 3.15rem !important;
+      }
+
+      .codex-now-playing-bar.is-no-art .codex-now-playing-art {
+        display: none !important;
+      }
+
+      .codex-now-playing-bar.is-no-art {
+        grid-template-columns: minmax(0, 1fr) 2.8rem !important;
+      }
+
+      .codex-now-playing-meta {
+        min-width: 0 !important;
+      }
+
+      .codex-now-playing-title,
+      .codex-now-playing-subtitle {
+        display: block !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+      }
+
+      .codex-now-playing-title {
+        color: var(--my-primary-2, #a9f7ff) !important;
+        font-size: .93rem !important;
+        font-weight: 850 !important;
+        line-height: 1.15 !important;
+      }
+
+      .codex-now-playing-subtitle {
+        color: color-mix(in srgb, var(--my-text, #effcff) 76%, transparent) !important;
+        font-size: .74rem !important;
+        font-weight: 650 !important;
+        line-height: 1.2 !important;
+        margin-top: .12rem !important;
+      }
+
+      .codex-now-playing-progress {
+        background: color-mix(in srgb, var(--my-primary, #00e5ff) 12%, var(--my-bg, #071014)) !important;
+        border-radius: 999px !important;
+        height: .32rem !important;
+        margin-top: .42rem !important;
+        overflow: hidden !important;
+        width: 100% !important;
+      }
+
+      .codex-now-playing-progress > span {
+        background: var(--my-primary, #00e5ff) !important;
+        border-radius: inherit !important;
+        display: block !important;
+        height: 100% !important;
+        transform-origin: left center !important;
+        transition: transform .25s ease !important;
+        width: 100% !important;
+      }
+
+      .codex-now-playing-play {
+        align-items: center !important;
+        aspect-ratio: 1 / 1 !important;
+        background: var(--my-primary, #00e5ff) !important;
+        border: 0 !important;
+        border-radius: 999px !important;
+        box-shadow: none !important;
+        color: var(--my-on-primary, #001f26) !important;
+        cursor: pointer !important;
+        display: inline-flex !important;
+        height: 2.8rem !important;
+        justify-content: center !important;
+        min-height: 2.8rem !important;
+        min-width: 2.8rem !important;
+        padding: 0 !important;
+        width: 2.8rem !important;
+      }
+
+      .codex-now-playing-play:hover,
+      .codex-now-playing-play:focus-visible {
+        background: var(--my-primary-2, #a9f7ff) !important;
+        color: var(--my-on-primary, #001f26) !important;
+      }
+
+      .codex-now-playing-play :is(.material-icons, .material-symbols-rounded) {
+        color: currentColor !important;
+        font-size: 1.35rem !important;
+        line-height: 1 !important;
+      }
+
+      @media (max-width: 560px) {
+        .codex-now-playing-bar {
+          border-radius: 16px !important;
+          grid-template-columns: 2.8rem minmax(0, 1fr) 2.55rem !important;
+          min-height: 3.95rem !important;
+          padding: .5rem !important;
+        }
+
+        .codex-now-playing-art {
+          height: 2.8rem !important;
+          width: 2.8rem !important;
+        }
+
+        .codex-now-playing-play {
+          height: 2.55rem !important;
+          min-height: 2.55rem !important;
+          min-width: 2.55rem !important;
+          width: 2.55rem !important;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .codex-now-playing-bar,
+        .codex-now-playing-progress > span {
+          transition: none !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  };
+
+  const ensureAmbientNowPlayingBar = () => {
+    ensureAmbientNowPlayingStyles();
+
+    let bar = document.getElementById("codex-now-playing-bar");
+    if (!bar) {
+      bar = document.createElement("div");
+      bar.id = "codex-now-playing-bar";
+      bar.className = "codex-now-playing-bar";
+      bar.setAttribute("role", "status");
+      bar.setAttribute("aria-live", "polite");
+      bar.innerHTML = `
+        <img class="codex-now-playing-art" alt="" loading="lazy">
+        <div class="codex-now-playing-meta">
+          <span class="codex-now-playing-title"></span>
+          <span class="codex-now-playing-subtitle"></span>
+          <div class="codex-now-playing-progress" aria-hidden="true"><span></span></div>
+        </div>
+        <button type="button" class="codex-now-playing-play" aria-label="Pause">
+          <span class="material-icons pause" aria-hidden="true"></span>
+        </button>
+      `;
+      document.body.appendChild(bar);
+
+      bar.querySelector(".codex-now-playing-play")?.addEventListener("click", async (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        await toggleAmbientPlayback();
+      });
+    }
+
+    if (!ambientNowPlayingTimer) {
+      ambientNowPlayingTimer = window.setInterval(refreshAmbientNowPlaying, 3500);
+    }
+
+    refreshAmbientNowPlaying();
+    return bar;
+  };
+
+  const getAmbientNowPlayingSession = async () => {
+    const apiInfo = getJellyfinApiInfo();
+    if (!apiInfo?.userId) return null;
+
+    try {
+      const params = new URLSearchParams({ ControllableByUserId: apiInfo.userId });
+      const sessions = await fetchJson(`/Sessions?${params.toString()}`);
+      if (!Array.isArray(sessions)) return null;
+
+      return sessions.find((session) => isAudioNowPlayingItem(session?.NowPlayingItem)) || null;
+    } catch {
+      return null;
+    }
+  };
+
+  const refreshAmbientNowPlaying = async () => {
+    const bar = document.getElementById("codex-now-playing-bar");
+    if (!bar) return;
+
+    const session = await getAmbientNowPlayingSession();
+    const item = session?.NowPlayingItem;
+    const visible = Boolean(session && item && !shouldHideAmbientNowPlaying());
+
+    document.body.classList.toggle("codex-now-playing-visible", visible);
+    if (!visible) return;
+
+    ambientNowPlayingSessionId = session.Id || "";
+    ambientNowPlayingPaused = Boolean(session.PlayState?.IsPaused);
+
+    const title = item.Name || "Now playing";
+    const artist = item.Artists?.join(", ") || item.AlbumArtist || item.Album || "Music";
+    const runtime = Number(item.RunTimeTicks || 0);
+    const position = Number(session.PlayState?.PositionTicks || 0);
+    const progress = runtime > 0 ? Math.max(0, Math.min(1, position / runtime)) : 0;
+    const imageUrl = getAmbientImageUrl(item);
+
+    const art = bar.querySelector(".codex-now-playing-art");
+    if (art) {
+      if (imageUrl) {
+        if (art.getAttribute("src") !== imageUrl) art.setAttribute("src", imageUrl);
+        bar.classList.remove("is-no-art");
+      } else {
+        art.removeAttribute("src");
+        bar.classList.add("is-no-art");
+      }
+    }
+
+    bar.querySelector(".codex-now-playing-title").textContent = title;
+    bar.querySelector(".codex-now-playing-subtitle").textContent = artist;
+    bar.querySelector(".codex-now-playing-progress > span").style.transform = `scaleX(${progress})`;
+
+    const playButton = bar.querySelector(".codex-now-playing-play");
+    const icon = playButton?.querySelector(".material-icons");
+    if (playButton && icon) {
+      playButton.setAttribute("aria-label", ambientNowPlayingPaused ? "Play" : "Pause");
+      icon.className = `material-icons ${ambientNowPlayingPaused ? "play_arrow" : "pause"}`;
+    }
+  };
+
+  const toggleAmbientPlayback = async () => {
+    const apiInfo = getJellyfinApiInfo();
+    if (!apiInfo?.token || !ambientNowPlayingSessionId) return;
+
+    const command = ambientNowPlayingPaused ? "Unpause" : "Pause";
+    try {
+      await fetch(`/Sessions/${ambientNowPlayingSessionId}/Playing/${command}`, {
+        credentials: "same-origin",
+        method: "POST",
+        headers: {
+          "X-Emby-Token": apiInfo.token
+        }
+      });
+      ambientNowPlayingPaused = !ambientNowPlayingPaused;
+      window.setTimeout(refreshAmbientNowPlaying, 250);
+    } catch {
+      // The bar is ambient; failed playback commands should not interrupt browsing.
+    }
   };
 
   const getMarvelImageUrl = (item) => {
@@ -2385,6 +3038,7 @@
     ensureCalendarResponsiveStyles();
     ensureDrawerColorStyles();
     ensureSpotlightActionStyles();
+    ensureFeaturePassStyles();
     ensureCustomTabPanes();
     hydrateHomeImages();
   };
@@ -2399,6 +3053,7 @@
       ensureCalendarResponsiveStyles();
       ensureDrawerColorStyles();
       ensureSpotlightActionStyles();
+      ensureFeaturePassStyles();
       markRemoteMusicPlayerPage();
       reorderHome();
       ensureCustomTabPanes();
@@ -2425,8 +3080,10 @@
     ensureCalendarResponsiveStyles();
     ensureDrawerColorStyles();
     ensureSpotlightActionStyles();
+    ensureFeaturePassStyles();
     markRemoteMusicPlayerPage();
     ensureCustomTabPanes();
+    ensureAmbientNowPlayingBar();
     queueReorder();
     observer.observe(document.body, { childList: true, subtree: true });
     window.addEventListener("hashchange", queueReorder, { passive: true });

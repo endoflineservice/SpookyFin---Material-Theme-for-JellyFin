@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.3
+
+- Added an ambient now-playing mini-player for music sessions with album art, title, progress, and play/pause.
+- Added a feature polish pass for TV season/episode cards, Jellyfin Enhanced calendar layouts, and item detail heroes.
+- Added subtle page entry transitions with reduced-motion support.
+
 ## 1.2.2
 
 - Added a new home spotlight preview screenshot showing the current purple accent, scalloped header, MediaBar spotlight, and library rows.
